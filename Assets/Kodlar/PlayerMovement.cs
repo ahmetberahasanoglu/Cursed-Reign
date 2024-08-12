@@ -55,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
             return animator.GetBool(AnimStrings.canMove);
         }
     }
+    public bool IsAlive { get
+        { return animator.GetBool(AnimStrings.isAlive); } 
+    }
+
     private bool _isJumping;
     public bool IsJumping { get
         {
@@ -86,8 +90,13 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput =context.ReadValue<Vector2>();
-
+        if(IsAlive) { 
         IsMoving = moveInput != Vector2.zero;//if(moveInput!=vecor2.zero){Ismoving=true; else false;} kodu gibi
+        }
+        else
+        {
+            IsMoving = false;
+        }
     }
     
     public void OnJump(InputAction.CallbackContext context)
@@ -118,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
         animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
-
+        if (IsAlive) { 
         if (moveInput.x > 0 )
         {
             transform.localScale = new Vector2(3,3);
@@ -127,9 +136,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector2(-3, 3);
         }
-       /* if (Input.GetKey(KeyCode.Space))
-        {
-            rb.velocity= new Vector2(rb.velocity.x, Jump);
-        } */
+        }
+        /* if (Input.GetKey(KeyCode.Space))
+         {
+             rb.velocity= new Vector2(rb.velocity.x, Jump);
+         } */
     }
 }

@@ -8828,25 +8828,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2917562628165599255, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
-      propertyPath: castFilter.useLayerMask
-      value: 1
+    - target: {fileID: 2431517604056551772, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
+      propertyPath: m_Size.x
+      value: 3.6123314
       objectReference: {fileID: 0}
-    - target: {fileID: 2917562628165599255, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
-      propertyPath: castFilter.layerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4118986475372600196, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
+    - target: {fileID: 2431517604056551772, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.20667076
       objectReference: {fileID: 0}
     - target: {fileID: 5084948634785516639, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.98
+      value: -24.69
       objectReference: {fileID: 0}
     - target: {fileID: 5084948634785516639, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.13
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: 5084948634785516639, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8880,17 +8876,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8104708037551262805, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
-      propertyPath: speed
-      value: 3
+    - target: {fileID: 7470216546924940227, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8781544902742631903, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_Name
       value: skeletonEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8781544902742631903, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8905,25 +8897,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 454807262382106257, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
-      propertyPath: m_CollisionDetection
+    - target: {fileID: 2325702848725647394, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
+      propertyPath: invincibilityTime
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 624363654235900777, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
-      propertyPath: castFilter.useLayerMask
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 624363654235900777, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
-      propertyPath: castFilter.layerMask.m_Bits
-      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 2614096723743006477, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614096723743006477, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6660010246155529486, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8964,14 +8944,6 @@ PrefabInstance:
     - target: {fileID: 6660010246155529486, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8945047924046015798, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
-      propertyPath: m_Size.y
-      value: 0.5139035
-      objectReference: {fileID: 0}
-    - target: {fileID: 8945047924046015798, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.23809904
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

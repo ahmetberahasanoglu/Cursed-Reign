@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6404784648025843444}
   - component: {fileID: 8945047924046015798}
   - component: {fileID: 624363654235900777}
-  - component: {fileID: 4565332719546159706}
+  - component: {fileID: 2325702848725647394}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -344,7 +344,7 @@ MonoBehaviour:
   _isGrounded: 0
   _isOnWall: 0
   _isOnTavan: 0
---- !u!114 &4565332719546159706
+--- !u!114 &2325702848725647394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -353,26 +353,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2614096723743006477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46089ddaeca395a448a4fee2d35ba8f6, type: 3}
+  m_Script: {fileID: 11500000, guid: aa5bc5a59187d814b9992dd2b55a1c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  groundDistance: 0.05
-  tavanDistance: 0.05
-  wallDistance: 0.2
-  _isGrounded: 0
-  _isOnWall: 0
-  _isOnTavan: 0
+  maxHealth: 100
+  _health: 100
+  isAlive: 1
+  isInvincible: 0
+  invincibilityTime: 0.2
