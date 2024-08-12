@@ -8830,11 +8830,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2431517604056551772, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_Size.x
-      value: 3.6123314
+      value: 2.6887708
       objectReference: {fileID: 0}
     - target: {fileID: 2431517604056551772, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_Offset.x
-      value: 0.20667076
+      value: -0.25515962
       objectReference: {fileID: 0}
     - target: {fileID: 5084948634785516639, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8876,10 +8876,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7470216546924940227, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8781544902742631903, guid: df3e54fe1b57dfe4793c1364fbf5d54a, type: 3}
       propertyPath: m_Name
       value: skeletonEnemy
@@ -8897,9 +8893,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2325702848725647394, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
-      propertyPath: invincibilityTime
-      value: 1
+    - target: {fileID: 539731889434677298, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2614096723743006477, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
       propertyPath: m_Name

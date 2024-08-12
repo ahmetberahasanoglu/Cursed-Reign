@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(TouchDirection))]
+[RequireComponent(typeof(TouchDirection), typeof(Damageable) )]
 public class PlayerMovement : MonoBehaviour
 {
     TouchDirection touchDirection;
@@ -13,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     Animator animator;
     Vector2 moveInput;
-
+    Damageable damageable;
     public float CurrentMoveSpeed
     {
         get
@@ -79,13 +80,18 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool(AnimStrings.isMoving, value);
         }
     }
-    
+
+  /*  public bool LockVelocity { get 
+        {
+            return animator.GetBool(AnimStrings.lockVelocity)}
+        } trigger ile hasar alma mantýgý olsaydý bunu kullanabilirdik damagable instance'ýna gerek kalmzaDI*/ 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         touchDirection= GetComponent<TouchDirection>();
+        damageable = GetComponent<Damageable>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -123,9 +129,17 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger(AnimStrings.attackTrigger);
         }
     }
-   private void FixedUpdate()
+    public void OnHit(int damage, Vector2 knockback)
     {
-        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+    private void FixedUpdate()
+    {
+        if (!damageable.IsHit)//LockVelocity
+        {
+            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        }
+       
         animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
         if (IsAlive) { 
         if (moveInput.x > 0 )

@@ -13,6 +13,7 @@ public class skeleton : MonoBehaviour
 
     TouchDirection touchDirection;
     Animator animator;
+    Damageable damageable;
     public enum WalkableDirection
     {
         Sag, Sol
@@ -66,6 +67,7 @@ public class skeleton : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         touchDirection = GetComponent<TouchDirection>();
         animator = GetComponent<Animator>();
+        damageable = GetComponent<Damageable>();
     }
 
     private void Update()
@@ -80,10 +82,16 @@ public class skeleton : MonoBehaviour
         {
             FlipDirection();
         }
+        if(!damageable.IsHit)
+        {
+
+        
+
         if(CanMove) { rb.velocity = new Vector2(speed * walkDirectionVector.x, rb.velocity.y); }
         else
         {
                 rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x,0,walkStopRate),rb.velocity.y);
+        }
         }
 
     }
@@ -101,5 +109,9 @@ public class skeleton : MonoBehaviour
         {
             Debug.Log("saga ya da sola yürümüpo");
         }
+    }
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 }
