@@ -9,12 +9,18 @@ public class SetBoolBehaviour : StateMachineBehaviour
     public bool updateOnStateMachine;
     public bool valueOnEnter, valueOnExit;
 
+    
+
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (updateOnState)
         {
-            animator.SetBool(boolName, valueOnEnter);
+            
+                bool isGrounded = animator.GetBool("isGrounded");
+                animator.SetBool(boolName, isGrounded ? valueOnEnter : false);
+            
+          
         }
     }
 
@@ -31,7 +37,19 @@ public class SetBoolBehaviour : StateMachineBehaviour
     override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
     {
         if (updateOnStateMachine)
-            animator.SetBool(boolName, valueOnEnter);
+        {
+            bool isGrounded = animator.GetBool("isGrounded");
+            if(isGrounded)
+            {
+                animator.SetBool(boolName, valueOnEnter);
+            }
+            else
+            {
+                animator.SetBool(boolName, valueOnExit);
+            }
+            
+        }
+           // animator.SetBool(boolName, valueOnEnter);
     }
 
     // OnStateMachineExit is called when exiting a state machine via its Exit Node

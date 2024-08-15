@@ -9,6 +9,7 @@ public class skeleton : MonoBehaviour
     public float speed = 3f;
     [SerializeField] private float walkStopRate=0.6f;
     public DetectionZone attackZone;
+    public DetectionZone cliffDetection;
     Rigidbody2D rb;
 
     TouchDirection touchDirection;
@@ -62,6 +63,18 @@ public class skeleton : MonoBehaviour
             return animator.GetBool(AnimStrings.canMove);
         }
     }
+
+    public float AttackCooldown
+    {
+        get
+        {
+            return animator.GetFloat(AnimStrings.attackCooldown);
+        }
+        set
+        { 
+            animator.SetFloat(AnimStrings.attackCooldown, Mathf.Max(value,0));
+        }
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -73,12 +86,15 @@ public class skeleton : MonoBehaviour
     private void Update()
     {
         HasTarget=attackZone.detectedColliders.Count> 0;
+        if(AttackCooldown> 0) {
+            AttackCooldown -= Time.deltaTime;
+        }
        
     }
     void FixedUpdate()
     {
 
-        if (touchDirection.IsOnWall && touchDirection.IsGrounded)
+        if (touchDirection.IsOnWall && touchDirection.IsGrounded)        //|| cliffDetection.detectedColliders.Count  == 0
         {
             FlipDirection();
         }
@@ -113,5 +129,11 @@ public class skeleton : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+    public void OnCliffDetected()
+    {
+        if(touchDirection.IsGrounded) {
+            FlipDirection();
+        }
     }
 }
