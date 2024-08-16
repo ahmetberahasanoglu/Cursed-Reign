@@ -164,6 +164,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger(AnimStrings.attackTrigger);
         }
     }
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger(AnimStrings.rangedAttackTrigger);
+        }
+    }
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);

@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour
   
     public void SetHealth(float health,float maxHealth)
     {
-        //slider.gameObject.SetActive(health<maxHealth);//hasar almadýgýmýz sürece slider aktif olmayacak
+        slider.gameObject.SetActive(health<maxHealth);//hasar almadýgýmýz sürece slider aktif olmayacak
         slider.value = health;
         slider.maxValue = maxHealth;
         slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);//normalizedvalue 1-0 arasý bir deger
