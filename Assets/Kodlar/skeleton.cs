@@ -10,6 +10,7 @@ public class skeleton : MonoBehaviour
     [SerializeField] private float walkStopRate=0.6f;
     public DetectionZone attackZone;
     public DetectionZone cliffDetection;
+    public HealthBar healthBar;
     Rigidbody2D rb;
     TouchDirection touchDirection;
     Animator animator;
@@ -80,7 +81,7 @@ public class skeleton : MonoBehaviour
         touchDirection = GetComponent<TouchDirection>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
-        
+        healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
     }
 
     private void Update()
@@ -89,7 +90,8 @@ public class skeleton : MonoBehaviour
         if(AttackCooldown> 0) {
             AttackCooldown -= Time.deltaTime;
         }
-       
+        healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
+
     }
     void FixedUpdate()
     {
@@ -98,16 +100,18 @@ public class skeleton : MonoBehaviour
         {
             FlipDirection();
         }
+
         if(!damageable.IsHit)
         {
-
-        
-
-        if(CanMove) { rb.velocity = new Vector2(speed * walkDirectionVector.x, rb.velocity.y); }
-        else
-        {
+            if(CanMove) 
+            { 
+                rb.velocity = new Vector2(speed * walkDirectionVector.x, rb.velocity.y);
+            }
+            else
+            {
                 rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x,0,walkStopRate),rb.velocity.y);
-        }
+            }
+
         }
 
     }
