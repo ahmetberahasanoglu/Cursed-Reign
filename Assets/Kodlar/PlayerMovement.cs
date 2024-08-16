@@ -129,11 +129,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Zýplama iptalini yönetmek (örneðin, düðmeye kýsa süre basarak zýplamayý iptal etme)
-        if (context.canceled && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-       
+        /*
+       if (context.canceled && rb.velocity.y > 0f)
+       {
+           rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+       }*/
+
 
     }
     private void Update()

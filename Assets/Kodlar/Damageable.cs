@@ -84,6 +84,15 @@ public class Damageable : MonoBehaviour
         // Unable to be hit
         return false;
     }
+    public bool Heal(int healAmount) {
+        if(IsAlive && Health<maxHealth)
+        {
+            int maxHeal = Mathf.Max(maxHealth - Health, 0);//health max healthtan buyuk olursa sýfýr dondurucez
+            Health +=Mathf.Min(maxHeal,healAmount);
+            return true;
+        }
+        return false;
+    }
    
     void Update()
     {

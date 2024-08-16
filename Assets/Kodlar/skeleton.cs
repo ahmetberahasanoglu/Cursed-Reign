@@ -6,7 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchDirection))]
 public class skeleton : MonoBehaviour
 {
-    public float speed = 3f;
+    public float ivme = 3f;
+    public float maxSpeed= 3f;
     [SerializeField] private float walkStopRate=0.6f;
     public DetectionZone attackZone;
     public DetectionZone cliffDetection;
@@ -105,7 +106,8 @@ public class skeleton : MonoBehaviour
         {
             if(CanMove) 
             { 
-                rb.velocity = new Vector2(speed * walkDirectionVector.x, rb.velocity.y);
+               
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + (ivme * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed), rb.velocity.y); //eSKÝDEN HÝZ * walkDirectionVector.x ÝDÝ
             }
             else
             {
