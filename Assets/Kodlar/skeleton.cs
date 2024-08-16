@@ -11,7 +11,6 @@ public class skeleton : MonoBehaviour
     public DetectionZone attackZone;
     public DetectionZone cliffDetection;
     Rigidbody2D rb;
-
     TouchDirection touchDirection;
     Animator animator;
     Damageable damageable;
@@ -81,6 +80,7 @@ public class skeleton : MonoBehaviour
         touchDirection = GetComponent<TouchDirection>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
+        
     }
 
     private void Update()

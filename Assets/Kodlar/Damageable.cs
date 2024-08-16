@@ -7,8 +7,10 @@ public class Damageable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damageableHit;
     Animator animator;
+    public HealthBar healthBar;
     [SerializeField] int maxHealth = 100;
-    public int MaxHeath {
+    
+    public int MaxHealth {
         get
         {
             return maxHealth;
@@ -62,6 +64,7 @@ public class Damageable : MonoBehaviour
     {
         
         animator = GetComponent<Animator>();
+        healthBar.SetHealth(Health, MaxHealth);
     }
     public bool Hit(int damage, Vector2 knockback)
     {
@@ -72,6 +75,7 @@ public class Damageable : MonoBehaviour
 
             IsHit = true;
             damageableHit?.Invoke(damage, knockback);
+            healthBar.SetHealth(Health, MaxHealth);
             //CharacterEvents.characterDamaged.Invoke(gameObject, damage);
 
             return true;
