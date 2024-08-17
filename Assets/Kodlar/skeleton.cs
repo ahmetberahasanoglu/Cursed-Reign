@@ -104,7 +104,7 @@ public class skeleton : MonoBehaviour
 
         if(!damageable.IsHit)
         {
-            if(CanMove) 
+            if(CanMove&& touchDirection.IsGrounded) 
             { 
                
                 rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + (ivme * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed), rb.velocity.y); //eSKÝDEN HÝZ * walkDirectionVector.x ÝDÝ
