@@ -2,73 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TekGoz : MonoBehaviour
+public class tekgoz : MonoBehaviour
 {
-    public DetectionZone isirmaDetectionZone;
-    Damageable damageable;
+
+    public float flightSpeed = 2f;
+    public float waypointReachedDistance = 0.1f;
+    public DetectionZone biteDetectionZone;
+   // public Collider2D deathCollider;
+    public List<Transform> waypoints;
+
     Animator animator;
     Rigidbody2D rb;
-    public List<Transform> wayPoints;
-    Transform nextWayPoint;
-    public float waypointReachedDistance = 0.15f;
-    public float ucusHizi = 2f;
+    Damageable damageable;
 
-    int waypointsayisi = 0;
-    public HealthBar healthBar;
+    Transform nextWaypoint;
+    int waypointNum = 0;
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-        damageable = GetComponent<Damageable>();
-
-        if (healthBar != null)
-        {
-            healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
-        }
-        else
-        {
-            Debug.LogWarning("HealthBar is not assigned!");
-        }
-    }
-
-    private void Start()
-    {
-        if (wayPoints != null && wayPoints.Count > 0)
-        {
-            nextWayPoint = wayPoints[waypointsayisi];
-        }
-        else
-        {
-            Debug.LogError("Waypoints are not assigned or empty!");
-        }
-    }
-
-    private void Update()
-    {
-        if (healthBar != null)
-        {
-            healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
-        }
-
-        HasTarget = isirmaDetectionZone.detectedColliders.Count > 0;
-    }
-
-    private bool hasTarget = false;
+    public bool _hasTarget = false;
 
     public bool HasTarget
     {
-        get
-        {
-            return hasTarget;
-        }
+        get { return _hasTarget; }
         private set
         {
-            if (hasTarget != value)
-            {
-                hasTarget = value;
-                animator.SetBool(AnimStrings.hasTarget, value);
-            }
+            _hasTarget = value;
+            animator.SetBool(AnimStrings.hasTarget, value);
         }
     }
 
@@ -80,40 +38,96 @@ public class TekGoz : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        damageable = GetComponent<Damageable>();
+    }
+
+    private void Start()
+    {
+        nextWaypoint = waypoints[waypointNum];
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        HasTarget = biteDetectionZone.detectedColliders.Count > 0;
+    }
+
     private void FixedUpdate()
     {
         if (damageable.IsAlive)
         {
-            if (CanMove && wayPoints.Count > 0)
+            if (CanMove)
             {
                 Flight();
             }
             else
             {
-                rb.velocity = Vector2.zero;
+                rb.velocity = Vector3.zero;
             }
         }
     }
 
-    void Flight()
+    // Fly between waypoints and loop back to start when final waypoint is reached
+    private void Flight()
     {
-        // Next waypoint'e uç
-        Vector2 directionToWayPoint = (nextWayPoint.position - transform.position).normalized;
+        // Fly to next waypoint
+        Vector2 directionToWaypoint = (nextWaypoint.position - transform.position).normalized;
 
-        // Waypoint'e ulaþýlýp ulaþýlmadýðýný kontrol et
-        float distance = Vector2.Distance(nextWayPoint.position, transform.position);
+        // Check if we have reached the waypoint already
+        float distance = Vector2.Distance(nextWaypoint.position, transform.position);
 
-        rb.velocity = directionToWayPoint * ucusHizi;
+        rb.velocity = directionToWaypoint * flightSpeed;
+        UpdateDirection();
 
-        // Waypoint deðiþtirme
+        // See if we need to switch waypoints
         if (distance <= waypointReachedDistance)
         {
-            waypointsayisi++;
-            if (waypointsayisi >= wayPoints.Count)
+            // Switch to next waypoint
+            waypointNum++;
+
+            if (waypointNum >= waypoints.Count)
             {
-                waypointsayisi = 0; // Baþlangýç waypoint'ine dön
+                // Loop back to original waypoint
+                waypointNum = 0;
             }
-            nextWayPoint = wayPoints[waypointsayisi];
+
+            nextWaypoint = waypoints[waypointNum];
         }
     }
+
+    private void UpdateDirection()
+    {
+        Vector3 locScale = transform.localScale;
+
+        if (transform.localScale.x > 0)
+        {
+            // Facing the right
+            if (rb.velocity.x < 0)
+            {
+                // Flip
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
+        }
+        else
+        {
+            // Facing the Left
+            if (rb.velocity.x > 0)
+            {
+                // Flip
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
+        }
+    }
+
+   // public void OnDeath()
+   // {
+   //     // Dead flyier falls to the ground
+   //     rb.gravityScale = 2f;
+   //     rb.velocity = new Vector2(0, rb.velocity.y);
+   //     deathCollider.enabled = true;
+   // }
 }
