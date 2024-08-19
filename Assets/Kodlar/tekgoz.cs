@@ -2,39 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tekgoz : MonoBehaviour
+public class TekGoz : MonoBehaviour
 {
- 
     public DetectionZone isirmaDetectionZone;
     Damageable damageable;
     Animator animator;
-    Rigidbody rb;
+    Rigidbody2D rb;
     public List<Transform> wayPoints;
     Transform nextWayPoint;
-    public float waypointReachedDistance=0.15f;
+    public float waypointReachedDistance = 0.15f;
     public float ucusHizi = 2f;
 
     int waypointsayisi = 0;
-
-    //public HealthBar healthBar;
+    public HealthBar healthBar;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();    
-        rb = GetComponent<Rigidbody>();
-      //  healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        damageable = GetComponent<Damageable>();
+
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
+        }
+        else
+        {
+            Debug.LogWarning("HealthBar is not assigned!");
+        }
     }
+
     private void Start()
     {
-        nextWayPoint = wayPoints[waypointsayisi];
+        if (wayPoints != null && wayPoints.Count > 0)
+        {
+            nextWayPoint = wayPoints[waypointsayisi];
+        }
+        else
+        {
+            Debug.LogError("Waypoints are not assigned or empty!");
+        }
     }
+
     private void Update()
     {
-      //  healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
-        HasTarget = isirmaDetectionZone.detectedColliders.Count>0;
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
+        }
+
+        HasTarget = isirmaDetectionZone.detectedColliders.Count > 0;
     }
+
     private bool hasTarget = false;
-  
 
     public bool HasTarget
     {
@@ -44,11 +64,14 @@ public class tekgoz : MonoBehaviour
         }
         private set
         {
-            hasTarget = value;
-            animator.SetBool(AnimStrings.hasTarget, value);
+            if (hasTarget != value)
+            {
+                hasTarget = value;
+                animator.SetBool(AnimStrings.hasTarget, value);
+            }
         }
-
     }
+
     public bool CanMove
     {
         get
@@ -56,11 +79,12 @@ public class tekgoz : MonoBehaviour
             return animator.GetBool(AnimStrings.canMove);
         }
     }
+
     private void FixedUpdate()
     {
         if (damageable.IsAlive)
         {
-            if (CanMove)
+            if (CanMove && wayPoints.Count > 0)
             {
                 Flight();
             }
@@ -70,24 +94,24 @@ public class tekgoz : MonoBehaviour
             }
         }
     }
+
     void Flight()
     {
-        //Soonraki waypointe uc
-        Vector2 directionToWayPoint= (nextWayPoint.position-transform.position).normalized;
+        // Next waypoint'e uç
+        Vector2 directionToWayPoint = (nextWayPoint.position - transform.position).normalized;
 
-        //ulastýk mý kontorl
+        // Waypoint'e ulaþýlýp ulaþýlmadýðýný kontrol et
         float distance = Vector2.Distance(nextWayPoint.position, transform.position);
 
         rb.velocity = directionToWayPoint * ucusHizi;
-        //waypoint degistirmel imiyiz
-        if(distance <= waypointReachedDistance)
+
+        // Waypoint deðiþtirme
+        if (distance <= waypointReachedDistance)
         {
-            //sonraki wayP
             waypointsayisi++;
-            if(waypointsayisi >= wayPoints.Count)
+            if (waypointsayisi >= wayPoints.Count)
             {
-                //baslangýc waypointine don
-                waypointsayisi = 0;
+                waypointsayisi = 0; // Baþlangýç waypoint'ine dön
             }
             nextWayPoint = wayPoints[waypointsayisi];
         }
