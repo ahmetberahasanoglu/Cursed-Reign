@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damageableHit;
+    public UnityEvent damageableDeath;
+    public UnityEvent<int, int> healthChanged;
     Animator animator;
  
     [SerializeField] int maxHealth = 100;
@@ -30,6 +32,7 @@ public class Damageable : MonoBehaviour
         set
         {
             _health = value;
+            healthChanged?.Invoke(_health, MaxHealth);
             if (_health <= 0)
             {
                 IsAlive = false;
@@ -58,6 +61,11 @@ public class Damageable : MonoBehaviour
         set { isAlive= value;
             animator.SetBool(AnimStrings.isAlive, value);
             Debug.Log(value);
+
+            if(value==false )
+            {
+                damageableDeath.Invoke();
+            }
         }
     }
     private void Awake()

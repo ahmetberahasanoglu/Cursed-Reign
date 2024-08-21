@@ -8,6 +8,8 @@ public class tekgoz : MonoBehaviour
     public float flightSpeed = 2f;
     public float waypointReachedDistance = 0.1f;
     public DetectionZone biteDetectionZone;
+    public HealthBar healthBar;
+   
    // public Collider2D deathCollider;
     public List<Transform> waypoints;
 
@@ -43,6 +45,7 @@ public class tekgoz : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         damageable = GetComponent<Damageable>();
+        healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
     }
 
     private void Start()
@@ -54,6 +57,7 @@ public class tekgoz : MonoBehaviour
     void Update()
     {
         HasTarget = biteDetectionZone.detectedColliders.Count > 0;
+        healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
     }
 
     private void FixedUpdate()
@@ -123,11 +127,11 @@ public class tekgoz : MonoBehaviour
         }
     }
 
-   // public void OnDeath()
-   // {
-   //     // Dead flyier falls to the ground
-   //     rb.gravityScale = 2f;
-   //     rb.velocity = new Vector2(0, rb.velocity.y);
-   //     deathCollider.enabled = true;
-   // }
+   public void OnDeath()
+   {
+       
+       rb.gravityScale = 2f;
+       rb.velocity = new Vector2(0, rb.velocity.y);
+      // deathCollider.enabled = true;
+   }
 }

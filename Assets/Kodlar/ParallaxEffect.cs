@@ -24,6 +24,10 @@ public class ParallaxEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (followTarget == null)
+        {
+            return;
+        }
         Vector2 newPosition = startingPos + camMoveSinceStart * parallaxFactor;
         transform.position = new Vector3(newPosition.x, newPosition.y, startingZ);
 

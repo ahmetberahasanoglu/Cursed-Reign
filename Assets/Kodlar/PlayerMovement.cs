@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 2f; // Kýsa zýplamalar için yerçekimi kuvvetini artýrmak için
     [SerializeField] private float coyoteTime = 0.2f; // Coyote time süresi
     [SerializeField] private float hangTime = 0.1f;
+    private float lastXDirection;
+    public ParticleSystem dust;
     private float coyoteTimeCounter; // Coyote time sayacý
     private float hangTimeCounter;
     private Rigidbody2D rb;
@@ -124,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.started && (touchDirection.IsGrounded || coyoteTimeCounter > 0f) && CanMove)
         {
             animator.SetTrigger(AnimStrings.jumpTrigger);
+            PlayDust();
             rb.velocity = new Vector2(rb.velocity.x, Jump);
             hangTimeCounter = hangTime; // Hang time baþlatýlýyor
         }
@@ -194,20 +197,39 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
-      
-        if (IsAlive) { 
-        if (moveInput.x > 0 )
+
+        if (IsAlive)
         {
-            transform.localScale = new Vector2(3,3);
-        }
-        else if(moveInput.x < 0 ) 
-        {
-            transform.localScale = new Vector2(-3, 3);
-        }
+            if (moveInput.x > 0)
+            {
+                if (lastXDirection <= 0) // Yön deðiþtiriyorsa
+                {
+                    transform.localScale = new Vector2(3, 3);
+                    PlayDust();
+                }
+                lastXDirection = 1;
+            }
+            else if (moveInput.x < 0)
+            {
+                if (lastXDirection >= 0) // Yön deðiþtiriyorsa
+                {
+                    transform.localScale = new Vector2(-3, 3);
+                    PlayDust();
+                }
+                lastXDirection = -1;
+            }
         }
         /* if (Input.GetKey(KeyCode.Space))
          {
              rb.velocity= new Vector2(rb.velocity.x, Jump);
          } */
+    }
+    private void PlayDust()
+    {
+        if (dust.isPlaying)
+        {
+            dust.Stop();
+        }
+        dust.Play();
     }
 }
