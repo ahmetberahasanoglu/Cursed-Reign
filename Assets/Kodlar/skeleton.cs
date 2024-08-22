@@ -15,7 +15,11 @@ public class skeleton : MonoBehaviour
     Rigidbody2D rb;
     TouchDirection touchDirection;
     Animator animator;
+
     Damageable damageable;
+
+    
+
     public enum WalkableDirection
     {
         Sag, Sol

@@ -8,15 +8,15 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     TouchDirection touchDirection;
+    public ParticleSystem dust;
     [SerializeField] private float speed;
+    [Header("Ziplama Ozellikleri")]
     [SerializeField] private float airWSpeed;
     [SerializeField] private float Jump;
     [SerializeField] private float fallMultiplier = 2.5f; // Düþerken yerçekimi kuvvetini artýrmak için
-    [SerializeField] private float lowJumpMultiplier = 2f; // Kýsa zýplamalar için yerçekimi kuvvetini artýrmak için
     [SerializeField] private float coyoteTime = 0.2f; // Coyote time süresi
     [SerializeField] private float hangTime = 0.1f;
     private float lastXDirection;
-    public ParticleSystem dust;
     private float coyoteTimeCounter; // Coyote time sayacý
     private float hangTimeCounter;
     private Rigidbody2D rb;
@@ -45,13 +45,13 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    // Idle speed is 0
+                    // Idle speed 0
                     return 0;
                 }
             }
             else
             {
-                // Movement locked
+                // yürüyemez durumdaysak hýz zaten 0 
                 return 0;
             }
 
@@ -140,6 +140,25 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger(AnimStrings.attackTrigger);
+        }
+    }
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger(AnimStrings.rangedAttackTrigger);
+        }
+    }
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
     private void Update()
     {
         // Coyote time sayacýný güncelleme
@@ -160,25 +179,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            animator.SetTrigger(AnimStrings.attackTrigger);
-        }
-    }
-
-    public void OnFire(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            animator.SetTrigger(AnimStrings.rangedAttackTrigger);
-        }
-    }
-    public void OnHit(int damage, Vector2 knockback)
-    {
-        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
-    }
+    
     private void FixedUpdate()
     {
         if (!damageable.IsHit)//LockVelocity
@@ -190,10 +191,6 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-        }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
         }
 
         animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
