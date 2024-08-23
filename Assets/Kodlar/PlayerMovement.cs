@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [Header("Ziplama Ozellikleri")]
     [SerializeField] private float airWSpeed;
-    [SerializeField] private float Jump;
+    public float Jump=12f;
     [SerializeField] private float fallMultiplier = 2.5f; // Düþerken yerçekimi kuvvetini artýrmak için
     [SerializeField] private float coyoteTime = 0.2f; // Coyote time süresi
     [SerializeField] private float hangTime = 0.1f;
@@ -100,7 +100,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         touchDirection= GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
+        Jump = 12f;
     }
+    
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput =context.ReadValue<Vector2>();

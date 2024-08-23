@@ -17,9 +17,9 @@ public class Projectile : MonoBehaviour
         rb.velocity = new Vector2(speed.x * transform.localScale.x, speed.y);
     }
     
-   
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         Damageable damageable = collision.GetComponent<Damageable>();
         if (damageable != null)
         {
@@ -30,9 +30,10 @@ public class Projectile : MonoBehaviour
 
             if (gotHit)
                 Debug.Log(collision.name + " hit for " + damage);
-
+            
         }
         Destroy(gameObject);
     }
+    
 }
 
