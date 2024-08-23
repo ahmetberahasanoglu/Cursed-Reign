@@ -6,7 +6,7 @@ public class HourglassCollectable : Collectable
 {
     public override void OnCollect()
     {
-      
+      ActionsListener.OnHourglassCollected();
     }
 
    
