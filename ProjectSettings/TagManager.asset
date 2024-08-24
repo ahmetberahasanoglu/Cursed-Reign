@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Projectile
+  - OneWayPlatform
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - PlayerHitbox
   - EnemyHitbox
   - GroundDetection
-  - Collectible
+  - Collectable
   - projectileHitbox
   - jumpPad
   - Loot

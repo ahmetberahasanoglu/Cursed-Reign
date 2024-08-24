@@ -100,7 +100,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         touchDirection= GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
-        Jump = 12f;
     }
     
     public void OnMove(InputAction.CallbackContext context)

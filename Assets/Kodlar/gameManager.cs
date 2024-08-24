@@ -9,7 +9,8 @@ public class gameManager : MonoBehaviour
     int Score;
     public TMP_Text ScoreText;
     string ScoreFormat = "{0,5:0000}";
-    public AudioSource hourglassSound;
+    public AudioSource SFXCollectable;
+    public AudioClip hourglassSound;
 
     private void OnEnable()
     {
@@ -29,6 +30,6 @@ public class gameManager : MonoBehaviour
     {
         Score += 50;
         ScoreText.text = string.Format(ScoreFormat, Score);
-        hourglassSound.PlayOneShot(hourglassSound.clip,0.4f);
+        SFXCollectable.PlayOneShot(hourglassSound,0.2f);
     }
 }
