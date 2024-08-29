@@ -43,6 +43,9 @@ TagManager:
   - name: bg
     uniqueID: 3451245025
     locked: 0
+  - name: FrontBG
+    uniqueID: 1712316373
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
