@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/quitScene.unity
     guid: f64ce89c041153d438354955020b8559
+  - enabled: 1
+    path: Assets/Scenes/Door1.unity
+    guid: 111c28fd3d1c899428904a3ee9483300
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 948b12dfedb73884cb16586e22dd2774, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 6e706ec9e755f5c4d8c0ec1b6cf01bb8, type: 2}

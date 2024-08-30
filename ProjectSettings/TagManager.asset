@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Projectile
   - OneWayPlatform
+  - respawn
+  - CheckPoint
+  - HUD
   layers:
   - Default
   - TransparentFX

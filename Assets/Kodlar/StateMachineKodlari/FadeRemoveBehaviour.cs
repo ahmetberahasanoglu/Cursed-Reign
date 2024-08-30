@@ -32,10 +32,14 @@ public class FadeRemoveBehaviour : StateMachineBehaviour
         else
         {
             timeElapsed += Time.deltaTime;
-
+            
             float newAlpha = startColor.a * (1 - (timeElapsed / fadeTime));
-            spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, newAlpha);
-            if (timeElapsed > fadeTime)
+            if (!objToRemove.CompareTag("Player"))
+            {
+                spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, newAlpha);
+            }
+           
+            if (timeElapsed > fadeTime&& !objToRemove.CompareTag("Player"))
             {
                 Destroy(objToRemove);
             }
@@ -44,3 +48,5 @@ public class FadeRemoveBehaviour : StateMachineBehaviour
 
   
 }
+
+

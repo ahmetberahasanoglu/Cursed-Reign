@@ -217,6 +217,7 @@ public class PlayerMovement : MonoBehaviour
                 lastXDirection = -1;
             }
         }
+       
         /* if (Input.GetKey(KeyCode.Space))
          {
              rb.velocity= new Vector2(rb.velocity.x, Jump);
