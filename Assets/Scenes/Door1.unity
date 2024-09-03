@@ -269,12 +269,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87902641}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.44, y: 2.12, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.55577946, y: -0.2957945, z: 0.06162729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1777646673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &127876054
 PrefabInstance:
@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 184442642}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19206,12 +19206,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919622675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.74, y: 8.67, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.1442204, y: 6.2542057, z: 0.06162729}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1777646673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &927591869
 GameObject:
@@ -19312,12 +19312,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927591869}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.21, y: 1.75, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.67422, y: -0.6657944, z: 0.06162729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1777646673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &927800162
 GameObject:
@@ -19664,12 +19664,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080367268}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.56, y: 2.75, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -18.44422, y: 0.33420563, z: 0.06162729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1777646673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1288611117
 GameObject:
@@ -29671,12 +29671,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361636537}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.826, y: 2.515, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.94178, y: 0.09920573, z: 0.06162729}
   m_LocalScale: {x: 1.8, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1777646673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405871997
 GameObject:
@@ -29861,12 +29861,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446935550}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.66, y: 5.59, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.7757797, y: 3.1742058, z: 0.06162729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1777646673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1546129873 stripped
 MonoBehaviour:
@@ -30155,11 +30155,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8437396570085899848, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+      propertyPath: typingSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+--- !u!1 &1777646672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777646673}
+  m_Layer: 0
+  m_Name: MapThings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1777646673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777646672}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.88422, y: 2.4157944, z: -0.06162729}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 927591872}
+  - {fileID: 1948363898}
+  - {fileID: 1080367271}
+  - {fileID: 1446935553}
+  - {fileID: 919622678}
+  - {fileID: 1361636540}
+  - {fileID: 87902644}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876219718
 GameObject:
   m_ObjectHideFlags: 0
@@ -30343,12 +30385,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948363895}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.32, y: 4.33, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.56422, y: 1.9142056, z: 0.06162729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1777646673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1957695421
 GameObject:
@@ -30684,17 +30726,27 @@ MonoBehaviour:
   dialogue:
     dialogueLines:
     - character:
-        name: Player
-        icon: {fileID: 430488988, guid: 82c7e2b952c2e154ca4dc28969324c63, type: 3}
-      line: Sen de kimsin
-    - character:
         name: "F\u0131s\u0131ldayan"
         icon: {fileID: -628718815, guid: 82c7e2b952c2e154ca4dc28969324c63, type: 3}
-      line: "Zindandaki g\xFCnleri \xE7abuk unuttun herhalde"
+      line: "Sonunda gelebildiniz kral\u0131m. Mesaj\u0131m\u0131 alm\u0131\u015Fs\u0131n\u0131z"
     - character:
-        name: Player
+        name: Eski Kral Isildan
         icon: {fileID: 430488988, guid: 82c7e2b952c2e154ca4dc28969324c63, type: 3}
-      line: O sen miydin!
+      line: "Harlaus anahtar\u0131 veren sendin demek.  \u015E\xFCk\xFCrler olsun
+        bir tane akl\u0131 ba\u015F\u0131nda insan kalm\u0131\u015F... B\xFCy\xFCn\xFCn
+        kayna\u011F\u0131n\u0131 nas\u0131l yok edece\u011Fiz."
+    - character:
+        name: Vezir Harlaus
+        icon: {fileID: -628718815, guid: 82c7e2b952c2e154ca4dc28969324c63, type: 3}
+      line: "Kral\u0131m. General sarduk sava\u015F sonras\u0131 t\xFCm konseyi ele
+        ge\xE7irdi ve ay tutulmas\u0131nda yeni bir ayin yapacak. Kara b\xFCy\xFCn\xFCn
+        etkilerini sonland\u0131rmay\u0131 \xF6\u011Frendim ama onunla sava\u015Facak
+        g\xFCc\xFCm yok. "
+    - character:
+        name: Vezir Harlaus
+        icon: {fileID: -628718815, guid: 82c7e2b952c2e154ca4dc28969324c63, type: 3}
+      line: "Bana ham kaynaklar\u0131n\u0131z\u0131 verirseniz size yeni ekipmanlar
+        olu\u015Fturaca\u011F\u0131m."
 --- !u!61 &2005550326
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30920,10 +30972,4 @@ SceneRoots:
   - {fileID: 1765779525}
   - {fileID: 2005550323}
   - {fileID: 184442642}
-  - {fileID: 927591872}
-  - {fileID: 1948363898}
-  - {fileID: 1080367271}
-  - {fileID: 1446935553}
-  - {fileID: 919622678}
-  - {fileID: 1361636540}
-  - {fileID: 87902644}
+  - {fileID: 1777646673}
