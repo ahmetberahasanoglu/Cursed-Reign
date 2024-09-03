@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         get
         {
-            if (CanMove)
+            if (CanMove &&!DialogueManager.Instance.isDialogueActive)
             {
                 if (IsMoving && !touchDirection.IsOnWall)
                 {
@@ -183,41 +183,49 @@ public class PlayerMovement : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (!damageable.IsHit)//LockVelocity
-        {
-            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
-        }
-
-        // Yüksek zýplamalarý veya düþüþleri yönetmek için yerçekimi kuvvetini artýrma
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-        }
-
-        animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
-
-        if (IsAlive)
-        {
-            if (moveInput.x > 0)
+        
+        
+            if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive) // LockVelocity ve diyalog kontrolü
             {
-                if (lastXDirection <= 0) // Yön deðiþtiriyorsa
-                {
-                    transform.localScale = new Vector2(3, 3);
-                    PlayDust();
-                }
-                lastXDirection = 1;
+                rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             }
-            else if (moveInput.x < 0)
+            else
             {
-                if (lastXDirection >= 0) // Yön deðiþtiriyorsa
-                {
-                    transform.localScale = new Vector2(-3, 3);
-                    PlayDust();
-                }
-                lastXDirection = -1;
+                rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda yatay hýzý sýfýrla
             }
-        }
-       
+
+            // Yüksek zýplamalarý veya düþüþleri yönetmek için yerçekimi kuvvetini artýrma
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            }
+
+            animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
+
+            if (IsAlive)
+            {
+                if (moveInput.x > 0)
+                {
+                    if (lastXDirection <= 0) // Yön deðiþtiriyorsa
+                    {
+                        transform.localScale = new Vector2(3, 3);
+                        PlayDust();
+                    }
+                    lastXDirection = 1;
+                }
+                else if (moveInput.x < 0)
+                {
+                    if (lastXDirection >= 0) // Yön deðiþtiriyorsa
+                    {
+                        transform.localScale = new Vector2(-3, 3);
+                        PlayDust();
+                    }
+                    lastXDirection = -1;
+                }
+            }
+        
+
+
         /* if (Input.GetKey(KeyCode.Space))
          {
              rb.velocity= new Vector2(rb.velocity.x, Jump);
