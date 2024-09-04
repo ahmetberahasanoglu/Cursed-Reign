@@ -19184,8 +19184,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -843722271
-  m_SortingLayer: -2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -990684450, guid: a486f126672d547478b692a55ed13d98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -19207,8 +19207,8 @@ Transform:
   m_GameObject: {fileID: 919622675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.1442204, y: 6.2542057, z: 0.06162729}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalPosition: {x: -6.24, y: 5.36, z: 0.06162729}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1777646673}
@@ -25002,7 +25002,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 5, y: 5, z: 0}
+  - first: {x: 4, y: 5, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 91
@@ -29223,7 +29223,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 1299d6e39c9156c41aa093ef2d57018a, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 6c6e825c96709da4aac15d7978342bc7, type: 2}
+    m_Data: {fileID: 11400000, guid: bbf080b8372b47b4bbc176168f8d3ce4, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7c944ccb43c17974884e8db04f702984, type: 2}
   - m_RefCount: 1
@@ -29432,7 +29432,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -21433827, guid: 463b676b4c931ee4ca1788390b05bbc9, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 343880683, guid: 463b676b4c931ee4ca1788390b05bbc9, type: 3}
+    m_Data: {fileID: -335092021, guid: 463b676b4c931ee4ca1788390b05bbc9, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1134086814, guid: de23e503c056e084f923c28e73432d9f, type: 3}
   - m_RefCount: 1
@@ -30155,6 +30155,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6037075950300775499, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21416654
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037075950300775499, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.16460484
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037075950300775499, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.254717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257173992569774026, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.254717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257173992569774026, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.18154591
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257173992569774026, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.08050018
+      objectReference: {fileID: 0}
     - target: {fileID: 8437396570085899848, guid: 132d44f22351f8b4aa777a7e80e75e6d, type: 3}
       propertyPath: typingSpeed
       value: 0.02
@@ -30745,8 +30769,7 @@ MonoBehaviour:
     - character:
         name: Vezir Harlaus
         icon: {fileID: -628718815, guid: 82c7e2b952c2e154ca4dc28969324c63, type: 3}
-      line: "Bana ham kaynaklar\u0131n\u0131z\u0131 verirseniz size yeni ekipmanlar
-        olu\u015Fturaca\u011F\u0131m."
+      line: "Bana kaynaklar\u0131n\u0131z\u0131 verirseniz size yeni ekipmanlar olu\u015Fturaca\u011F\u0131m."
 --- !u!61 &2005550326
 BoxCollider2D:
   m_ObjectHideFlags: 0

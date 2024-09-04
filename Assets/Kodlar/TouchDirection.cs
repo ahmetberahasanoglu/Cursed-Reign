@@ -12,12 +12,13 @@ public class TouchDirection : MonoBehaviour
     RaycastHit2D[] groundHit = new RaycastHit2D[5];
     RaycastHit2D[] wallHit = new RaycastHit2D[5];
     RaycastHit2D[] tavanHit = new RaycastHit2D[5];
-    private Vector2 wallCheckDirection => gameObject.transform.localScale.x>0? Vector2.right : Vector2.left;
+    private Vector2 wallCheckDirection => gameObject.transform.localScale.x > 0 ? Vector2.right : Vector2.left;
     Animator animator;
 
-    [SerializeField] private bool _isGrounded ;
-    public bool IsGrounded { get { 
-        return _isGrounded;}
+    [SerializeField] private bool _isGrounded;
+    public bool IsGrounded
+    {
+        get { return _isGrounded; }
         private set
         {
             _isGrounded = value;
@@ -40,7 +41,6 @@ public class TouchDirection : MonoBehaviour
     }
 
     [SerializeField] private bool _isOnTavan;
-   
 
     public bool IsOnTavan
     {
@@ -60,11 +60,28 @@ public class TouchDirection : MonoBehaviour
         touchCol = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
     }
-    
+
     private void FixedUpdate()
     {
-        IsGrounded= touchCol.Cast(Vector2.down, castFilter,groundHit,groundDistance)>0;
-        IsOnWall = touchCol.Cast(wallCheckDirection, castFilter,wallHit, wallDistance) > 0;
+        IsGrounded = touchCol.Cast(Vector2.down, castFilter, groundHit, groundDistance) > 0;
+        IsOnWall = touchCol.Cast(wallCheckDirection, castFilter, wallHit, wallDistance) > 0;
         IsOnTavan = touchCol.Cast(Vector2.up, castFilter, tavanHit, tavanDistance) > 0;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (touchCol == null) return;
+
+        // Ground check ray
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(touchCol.bounds.center, touchCol.bounds.center + Vector3.down * groundDistance);
+
+        // Wall check ray
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(touchCol.bounds.center, touchCol.bounds.center + (Vector3)wallCheckDirection * wallDistance);
+
+        // Ceiling check ray (tavan)
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(touchCol.bounds.center, touchCol.bounds.center + Vector3.up * tavanDistance);
     }
 }
