@@ -9,8 +9,10 @@ public class Wizard : MonoBehaviour
     public HealthBar healthBar;
     public DetectionZone attackZone;
     public DetectionZone cliffDetection;
+    public DetectionZone trackDetection;
     public float moveSpeed;
-    public float timer;
+    public float rayDistance; // Raycast uzaklýðýný belirlemek için
+    public LayerMask playerLayer; // Sadece player layer'ý ile çarpýþacak raycast
     #endregion
 
     #region Privates
@@ -19,6 +21,8 @@ public class Wizard : MonoBehaviour
     private TouchDirection touchDirection;
     private Damageable damageable;
     private Rigidbody2D rb;
+    private bool inArea = false;
+    private Vector2 rayDirection; // Raycast yönünü saklamak için
     #endregion
 
     private void Awake()
@@ -30,9 +34,22 @@ public class Wizard : MonoBehaviour
         healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
     }
 
-    private void Update()
+    private void Update() 
     {
         HasTarget = attackZone.detectedColliders.Count > 0;
+        if (trackDetection.detectedColliders.Count > 0)
+        {
+            target = trackDetection.detectedColliders[0].gameObject;
+        }
+        else
+        {
+            target = null;
+        }
+        inArea = target != null;
+        if (AttackCooldown > 0)
+        {
+            AttackCooldown -= Time.deltaTime;
+        }
         healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
     }
 
@@ -58,6 +75,17 @@ public class Wizard : MonoBehaviour
             return anim.GetBool("canMove");
         }
     }
+    public float AttackCooldown
+    {
+        get
+        {
+            return anim.GetFloat(AnimStrings.attackCooldown);
+        }
+        set
+        {
+            anim.SetFloat(AnimStrings.attackCooldown, Mathf.Max(value, 0));
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -66,27 +94,45 @@ public class Wizard : MonoBehaviour
             FlipDirection();
         }
 
-        if (!damageable.IsHit && touchDirection.IsGrounded)
+        if (!damageable.IsHit && touchDirection.IsGrounded && inArea)
         {
-            Move();
+            PerformRaycast(); // Raycast'i çaðýrýyoruz.
         }
     }
 
-    private void Move()
+    private void PerformRaycast()
     {
-        anim.SetBool("canMove", true);
+        rayDirection = target.transform.position.x < transform.position.x ? Vector2.left : Vector2.right;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, rayDistance, playerLayer);
+
+        if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
+        {
+            // Hedefe doðru hareket et
+            Move(hit.collider.gameObject.transform.position);
+        }
+    }
+
+    private void Move(Vector2 targetPosition)
+    {
         if (target != null && !anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"))
         {
-            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        }
-    }
+            anim.SetBool("canMove", true);
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+            // Hedefin saðýnda mý solunda mý olduðunu kontrol et
+            if ((targetPosition.x < transform.position.x && transform.localScale.x > 0) ||
+                (targetPosition.x > transform.position.x && transform.localScale.x < 0))
+            {
+                // Karakterin yönünü hedefe doðru döndür
+                FlipDirection();
+            }
+
+            // Hedefin konumuna doðru hareket et
+            Vector2 newPosition = new Vector2(targetPosition.x, transform.position.y);
+            transform.position = Vector2.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+        }
+        else
         {
-            target = collision.gameObject;
+            anim.SetBool("canMove", false);
         }
     }
 
@@ -107,5 +153,12 @@ public class Wizard : MonoBehaviour
     {
         // Karakterin yönünü deðiþtir
         transform.localScale = new Vector2(gameObject.transform.localScale.x * -1, transform.localScale.y);
+    }
+
+    // Gizmos ile Raycast'i göster
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(rayDirection * rayDistance));
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
+    
     Animator animator;
     bool isOpen=false;
     private void Awake()
@@ -20,7 +21,7 @@ public class Door : MonoBehaviour
     {
         if (collision.CompareTag("Player")&&isOpen )
         {
-            SceneManager.LoadScene("Door1",LoadSceneMode.Single);
+            gameManager.instance.NextLevel();
         }
     }
 }

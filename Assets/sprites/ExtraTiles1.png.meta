@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -108,7 +108,326 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ExtraTiles1_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 192
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7651c13200006214aaac06d0d398d400
+      internalID: -242078740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 192
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a31574cfc620849830968081a6b4f7
+      internalID: -1095515766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 192
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a081c0717aaf0c34c92e6a705fa30829
+      internalID: 1368801964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_4
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 196
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e46683c05e28749ba77935ae50e8fe
+      internalID: 396140590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 192
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d574240b5b3aa7747a99d2673f1ff3e9
+      internalID: -1468143604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_6
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 192
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e60bf666476cef14682767ca5d78ff53
+      internalID: -806348519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 170
+        width: 27
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e818c17025a27034da1ce60f95ffede1
+      internalID: -35030340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_8
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 163
+        width: 9
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd3ebd438a1ef944a2580bfb56e5fe6
+      internalID: 717981632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 171
+        width: 27
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b848d69d33bf3ec4a84ca4aea45fc6de
+      internalID: -1202175740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_10
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 161
+        width: 9
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5d0366e21fb7a42a6672aba3c7aefd
+      internalID: -1385832603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraTiles1_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 96
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 32, y: 0}
+        - {x: 0, y: 16}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c828efd87de9249ae5a70d2d2fbc8e
+      internalID: 872046282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +438,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ExtraTiles1_0: -242078740
+      ExtraTiles1_1: -1095515766
+      ExtraTiles1_10: -1385832603
+      ExtraTiles1_11: 872046282
+      ExtraTiles1_2: -1226025542
+      ExtraTiles1_3: 1368801964
+      ExtraTiles1_4: 396140590
+      ExtraTiles1_5: -1468143604
+      ExtraTiles1_6: -806348519
+      ExtraTiles1_7: -35030340
+      ExtraTiles1_8: 717981632
+      ExtraTiles1_9: -1202175740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
