@@ -1294,7 +1294,7 @@ MonoBehaviour:
   isDialogueActive: 0
   typingSpeed: 0.02
   animator: {fileID: 2049772863568953671}
-  shopCanvas: {fileID: 0}
+  shopCanvas: {fileID: 3437666712373629894, guid: 8c7af7dbedf55124ca03badc7760f35e, type: 3}
 --- !u!1 &3487451894367908271
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,7 +85,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (shopCanvas != null)
         {
-            shopCanvas.SetActive(true); // ShopCanvas'ý aktif et
+            Instantiate(shopCanvas);
+          
         }
         else
         {
