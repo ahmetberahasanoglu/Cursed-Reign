@@ -7,6 +7,7 @@ public class ButtonInfo : MonoBehaviour
 {
     public TMP_Text priceText;
     public TMP_Text descriptionText;
+    public TMP_Text durumText;
     public Button purchaseButton;
     public int itemPrice;
 
@@ -25,12 +26,13 @@ public class ButtonInfo : MonoBehaviour
         if (gameManager.instance.GetScore() >= itemPrice)
         {
             gameManager.instance.DeductScore(itemPrice);
-            Debug.Log("Ürün alýndý: " + descriptionText.text);
+           
+            durumText.text=("Ürün alýndý: " + descriptionText.text);
             purchaseButton.interactable = false; // Ürün alýndýðýnda butonu devre dýþý býrak
         }
         else
         {
-            Debug.Log("Yeterli skor yok!");
+            durumText.text = "Yeterli skor yok!";
         }
     }
 

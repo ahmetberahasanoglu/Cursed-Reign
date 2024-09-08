@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,10 +16,9 @@ public class DialogueManager : MonoBehaviour
     private Queue<DialogueLine> lines;
 
     public bool isDialogueActive = false;
-
     public float typingSpeed = 0.2f;
-
     public Animator animator;
+    public GameObject shopCanvas;
 
     private void Awake()
     {
@@ -58,7 +58,6 @@ public class DialogueManager : MonoBehaviour
         characterName.text = currentLine.character.name;
 
         StopAllCoroutines();
-
         StartCoroutine(TypeSentence(currentLine));
     }
 
@@ -76,5 +75,21 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         animator.Play("hide");
+
+        // Diyalog bittikten sonra shop açýlýr
+        OpenShop();
+    }
+
+    // ShopCanvas'ý aktif eden fonksiyon
+    void OpenShop()
+    {
+        if (shopCanvas != null)
+        {
+            shopCanvas.SetActive(true); // ShopCanvas'ý aktif et
+        }
+        else
+        {
+            Debug.LogError("ShopCanvas referansý atanmadý.");
+        }
     }
 }

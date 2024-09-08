@@ -272,7 +272,7 @@ MonoBehaviour:
   dust: {fileID: 5615672872084226852}
   speed: 6
   airWSpeed: 5
-  Jump: 10.2
+  Jump: 10.6
   fallMultiplier: 3
   coyoteTime: 0.15
   hangTime: 0.02
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  knockback: {x: 4, y: 1.4}
+  knockback: {x: 2, y: 1}
 --- !u!60 &539731889434677298
 PolygonCollider2D:
   m_ObjectHideFlags: 0
