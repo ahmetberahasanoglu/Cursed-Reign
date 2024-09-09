@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(TouchDirection), typeof(Damageable) )]
 public class PlayerMovement : MonoBehaviour
@@ -23,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     Vector2 moveInput;
     Damageable damageable;
+
+    [Header("Sesler")]
+    [SerializeField] float avolume = 0.5f;
+    [SerializeField] float bvolume = 0.5f;
+    [SerializeField] float cvolume = 0.5f;
+    audiomanager manager;
     public float CurrentMoveSpeed
     {
         get
@@ -100,20 +107,56 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         touchDirection= GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
+
     }
-    
+
+    private void Start()
+    {
+        manager = audiomanager.Instance;
+        if (manager == null)
+        {
+            Debug.LogError("AudioManager instance bulunamadý player Movement");
+        }
+    }
+
+   
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput =context.ReadValue<Vector2>();
-        if(IsAlive) { 
-        IsMoving = moveInput != Vector2.zero;//if(moveInput!=vecor2.zero){Ismoving=true; else false;} kodu gibi
+        moveInput = context.ReadValue<Vector2>();
+
+        if (IsAlive)
+        {
+            IsMoving = moveInput != Vector2.zero;//if(moveInput!=vecor2.zero){Ismoving=true; else false;} kodu gibi
+
+            if (IsMoving && touchDirection.IsGrounded)
+            {
+                // Eðer ses oynatýlmýyorsa veya baþka bir ses çalýnýyorsa
+                if (!manager.SFXSource.isPlaying || manager.SFXSource.clip != manager.groundTouch)
+                {
+                   
+                    manager.SFXSource.clip = manager.groundTouch;
+                    manager.SFXSource.volume = cvolume;
+                    manager.SFXSource.loop = true; 
+                    manager.SFXSource.Play();
+                }
+            }
+            else
+            {
+                // Karakter durduðunda veya havada olduðunda yürüme sesi durduruluyor
+                if (manager.SFXSource.isPlaying && manager.SFXSource.clip == manager.groundTouch)
+                {
+                    manager.SFXSource.loop = false;
+                    manager.SFXSource.Stop();
+                }
+            }
         }
         else
         {
             IsMoving = false;
         }
     }
-    
+
+
     public void OnJump(InputAction.CallbackContext context)
     {
         /* basýp býraktýðýnda daha az zýplama. 
@@ -130,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
             PlayDust();
             rb.velocity = new Vector2(rb.velocity.x, Jump);
             hangTimeCounter = hangTime; // Hang time baþlatýlýyor
+            manager.PlaySFX(manager.pjump, bvolume);
         }
 
         // Zýplama iptalini yönetmek (örneðin, düðmeye kýsa süre basarak zýplamayý iptal etme)
@@ -146,6 +190,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimStrings.attackTrigger);
+            manager.PlaySFX(manager.attack, cvolume);
         }
     }
 
@@ -154,11 +199,13 @@ public class PlayerMovement : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimStrings.rangedAttackTrigger);
+            manager.PlaySFX(manager.laser, cvolume);
         }
     }
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        manager.PlaySFX(manager.pTakeHit, cvolume);
     }
     private void Update()
     {

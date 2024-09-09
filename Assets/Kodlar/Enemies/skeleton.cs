@@ -12,13 +12,15 @@ public class skeleton : MonoBehaviour
     public DetectionZone attackZone;
     public DetectionZone cliffDetection;
     public HealthBar healthBar;
+  
     Rigidbody2D rb;
     TouchDirection touchDirection;
     Animator animator;
 
     Damageable damageable;
-
-    
+    // [SerializeField] float volume = 0.5f;
+    // audiomanager manager;
+    // private bool isDead = false;
 
     public enum WalkableDirection
     {
@@ -87,7 +89,16 @@ public class skeleton : MonoBehaviour
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
         healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
+      
     }
+    /*private void Start()
+    {
+        manager = audiomanager.Instance;
+        if (manager == null)
+        {
+            Debug.LogError("AudioManager instance bulunamadý player Movement");
+        }
+    }*/
 
     private void Update()
     {
@@ -119,6 +130,14 @@ public class skeleton : MonoBehaviour
             }
 
         }
+        /*
+        if (!damageable.IsAlive&&!isDead)
+        {
+            manager.PlaySFX(manager.skeletonDeath, volume);
+            isDead= true;
+           StartCoroutine(DestroyAfterSound());
+        }
+        */
 
     }
 
@@ -139,6 +158,7 @@ public class skeleton : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        //manager.PlaySFX(manager.enemyTakeHit, volume);
     }
     public void OnCliffDetected()
     {
@@ -146,4 +166,12 @@ public class skeleton : MonoBehaviour
             FlipDirection();
         }
     }
+    /*
+    private IEnumerator DestroyAfterSound()
+    {
+        // Sesin çalma süresini bekle
+        yield return new WaitForSeconds(manager.skeletonDeath.length);
+
+        
+    }*/
 }

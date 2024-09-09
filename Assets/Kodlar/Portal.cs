@@ -6,6 +6,17 @@ public class Portal : MonoBehaviour
 {
     private HashSet<GameObject> portalObjects = new HashSet<GameObject>();
     [SerializeField] private Transform destination;
+    audiomanager manager;
+    [SerializeField] float volume = 0.5f;
+    [SerializeField] private AudioSource portalAudioSource;
+    private void Start()
+    {
+        manager = audiomanager.Instance;
+        if (manager == null)
+        {
+            Debug.LogError("AudioManager instance bulunamadý!");
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,20 +25,28 @@ public class Portal : MonoBehaviour
             return;
         }
 
-        // Eðer projeler isTrigger ise
+       
         if (collision.CompareTag("Projectile"))
         {
             TeleportProjectile(collision);
             return;
         }
 
-        // Diðer nesneler için normal portal taþýma iþlemi
+        // Diðer nesneler için portal 
         if (destination.TryGetComponent(out Portal destinationPortal))
         {
             destinationPortal.portalObjects.Add(collision.gameObject);
         }
 
         collision.transform.position = destination.position;
+        if (portalAudioSource != null)
+        {
+            portalAudioSource.PlayOneShot(manager.portal, volume);
+        }
+        else
+        {
+            Debug.LogWarning("Portal AudioSource eksik, ses çalýnamadý.");
+        }
     }
 
     private void TeleportProjectile(Collider2D collision)

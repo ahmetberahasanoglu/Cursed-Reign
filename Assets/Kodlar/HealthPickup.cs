@@ -7,20 +7,19 @@ public class HealthPickup : MonoBehaviour
     public int healthRestore = 10;
     public Vector3 rotationSpeed=new Vector3(0,180,0);
     [SerializeField] float dropForce = 5f;
-    AudioSource pickupSource;
+    [SerializeField] float volume = 0.5f;
+    audiomanager manager;
     Rigidbody2D rb;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector2.up*dropForce,ForceMode2D.Impulse); 
+        rb.AddForce(Vector2.up*dropForce,ForceMode2D.Impulse);
+        manager = audiomanager.Instance;
+        if (manager == null)
+        {
+            Debug.LogError("AudioManager instance bulunamadý player Movement");
+        }
     }
-
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        pickupSource = GetComponent<AudioSource>();
-    }
-   
     void Update()
     {
         transform.eulerAngles += rotationSpeed* Time.deltaTime;
@@ -34,7 +33,7 @@ public class HealthPickup : MonoBehaviour
             bool isHealed = damageable.Heal(healthRestore);
             if (isHealed)
             {
-                AudioSource.PlayClipAtPoint(pickupSource.clip, gameObject.transform.position, pickupSource.volume);
+                manager.PlaySFX(manager.healthPickup,volume);
              
             }//can doldurduysak alýocak silmediysek almayacak
             Destroy(gameObject);

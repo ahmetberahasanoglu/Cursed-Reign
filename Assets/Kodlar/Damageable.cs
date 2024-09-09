@@ -35,7 +35,7 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool isAlive = true;
+     public bool isAlive = true;
     [SerializeField] private bool isInvincible = false; // Vurulduktan sonra hasar alýnmaz
     public bool IsHit
     {

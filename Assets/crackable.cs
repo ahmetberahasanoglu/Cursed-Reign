@@ -6,6 +6,7 @@ public class crackable : MonoBehaviour
 {
     bool hitted = false; // Vurulmuþ olup olmadýðýný takip eder
     Animator animator;
+ 
 
     [Header("Loot")]
     public List<LootItem> lootTable = new List<LootItem>();
@@ -14,6 +15,7 @@ public class crackable : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
