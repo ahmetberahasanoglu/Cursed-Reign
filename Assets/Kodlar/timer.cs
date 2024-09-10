@@ -11,11 +11,19 @@ public class Timer : MonoBehaviour
     public Color normalColor = Color.white; // Normal renk (Beyaz)
     public Color warningColor = Color.red; // Uyarý rengi (Kýrmýzý)
     public float warningThreshold = 120f; // Zamanýn kýrmýzýya dönmeye baþladýðý eþik (2 dakika)
+    audiomanager manager;
+    bool audioRunned = false;
+    [SerializeField] float volume = 0.5f;
 
     void Start()
     {
         timeIsRunning = true;
         timeText.color = normalColor; // Ýlk baþta beyaz rengiyle baþla
+        manager = audiomanager.Instance;
+        if(manager==null)
+        {
+            Debug.Log("timer hata instance");
+        }
     }
 
     void Update()
@@ -26,6 +34,7 @@ public class Timer : MonoBehaviour
             DisplayTime(timeElapsed);
             UpdateTextColor(timeElapsed); // Zamaný gösterirken rengi güncelle
         }
+        
     }
 
     void DisplayTime(float timeToDisplay)
@@ -40,6 +49,11 @@ public class Timer : MonoBehaviour
         if (timeToDisplay >= warningThreshold)
         {
             timeText.color = warningColor; // Kýrmýzý renk
+            if (!audioRunned)
+            {
+                manager.PlaySFX(manager.timesUP, volume);
+                audioRunned = true;
+            }
         }
         else
         {

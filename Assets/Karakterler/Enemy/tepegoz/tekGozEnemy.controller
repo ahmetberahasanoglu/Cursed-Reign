@@ -289,8 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9855b8cb8c4f1e49805ca72d436c8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: 3af29bc57a477af4b9e58b082773ba9b, type: 3}
-  volume: 1
+  soundToPlay: {fileID: 8300000, guid: 9172f4c5cd41b114696e60f529e06d47, type: 3}
+  volume: 0.25
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0
@@ -514,8 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9855b8cb8c4f1e49805ca72d436c8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: d1a3e9a4dcce4fc4d949910a1d95eaf2, type: 3}
-  volume: 0.5
+  soundToPlay: {fileID: 8300000, guid: a224ce5e38ae25541b11bff6493d937b, type: 3}
+  volume: 0.15
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0

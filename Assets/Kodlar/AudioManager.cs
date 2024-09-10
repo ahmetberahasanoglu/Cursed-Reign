@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio; 
+using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class audiomanager : MonoBehaviour
 {
@@ -13,13 +12,15 @@ public class audiomanager : MonoBehaviour
     public AudioMixer audioMixer;
 
     [Header("---AUDIO Clip---")]
-    public AudioClip introClip, loopClip;
+    // public AudioClip introClip;
+    public AudioClip loopClip;
     public AudioClip death;
     public AudioClip attack;
     public AudioClip checkPoint;
     public AudioClip groundTouch;
     public AudioClip portal;
     public AudioClip healthPickup;
+    public AudioClip manaPickup;
     public AudioClip laser;
     public AudioClip samdanCrack;
     public AudioClip sandikCrack;
@@ -38,11 +39,18 @@ public class audiomanager : MonoBehaviour
     public AudioClip unPause;
     public AudioClip denied;
     public AudioClip doorOpen;
- 
+    public AudioClip timesUP;
 
     public static audiomanager Instance { get; private set; }
 
-    void Awake()
+    [Header("Pause Menu Buttonlari")]
+    public Button musicToggleButton;
+    public Button SFXToggleButton;
+
+    private bool isMusicMuted = false;  // Müzik durumu
+    private bool isSFXMuted = false;    // SFX durumu
+
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -55,40 +63,67 @@ public class audiomanager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
-        musicSource.clip = introClip;
+        musicSource.clip = loopClip;
+        musicSource.loop = true;
         musicSource.Play();
-        musicSource.PlayScheduled(AudioSettings.dspTime + introClip.length);
-        Invoke("PlayLoopMusic", introClip.length);
+
+        // Butonlara iþlevleri atama
+        musicToggleButton.onClick.AddListener(ToggleMusic);
+        SFXToggleButton.onClick.AddListener(ToggleSFX);
     }
 
-    void Update()
+    private void Update()
     {
         // gameManager.isPaused kontrolü
         if (gameManager.isPaused)
         {
-     
             audioMixer.SetFloat("MyExposedParam 1", -80f);
             audioMixer.SetFloat("MyExposedParam", -80f);
         }
         else
         {
-       
-            audioMixer.SetFloat("MyExposedParam 1", 0f);
-            audioMixer.SetFloat("MyExposedParam", 0f);
+            if (!isMusicMuted)
+                audioMixer.SetFloat("MyExposedParam 1", -18f); // Orijinal ses seviyesi
+            if (!isSFXMuted)
+                audioMixer.SetFloat("MyExposedParam", 0f);     // Orijinal ses seviyesi
         }
     }
 
-    void PlayLoopMusic()
+    public void ToggleMusic()
     {
-        musicSource.clip = loopClip;
-        musicSource.loop = true;
-        musicSource.Play();
+        isMusicMuted = !isMusicMuted;
+
+        if (isMusicMuted)
+        {
+            audioMixer.SetFloat("MyExposedParam 1", -80f);  // Müzik sesi tamamen kapatýldý
+        }
+        else
+        {
+            audioMixer.SetFloat("MyExposedParam 1", -18f);  // Müzik sesi açýldý
+        }
+    }
+
+    public void ToggleSFX()
+    {
+        isSFXMuted = !isSFXMuted;
+
+        if (isSFXMuted)
+        {
+            audioMixer.SetFloat("MyExposedParam", -80f);  // SFX sesi tamamen kapatýldý
+        }
+        else
+        {
+            audioMixer.SetFloat("MyExposedParam", 0f);  // SFX sesi açýldý
+        }
     }
 
     public void PlaySFX(AudioClip clip, float volume)
     {
-        SFXSource.PlayOneShot(clip, volume);
+        if (!isSFXMuted)
+        {
+            SFXSource.PlayOneShot(clip, volume);
+        }
     }
 }

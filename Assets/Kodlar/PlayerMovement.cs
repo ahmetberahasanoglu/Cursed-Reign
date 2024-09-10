@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
             PlayDust();
             rb.velocity = new Vector2(rb.velocity.x, Jump);
             hangTimeCounter = hangTime; // Hang time baþlatýlýyor
-            manager.PlaySFX(manager.pjump, bvolume);
+            manager.PlaySFX(manager.pjump, 0.8f);
         }
 
         // Zýplama iptalini yönetmek (örneðin, düðmeye kýsa süre basarak zýplamayý iptal etme)
@@ -190,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimStrings.attackTrigger);
-            manager.PlaySFX(manager.attack, cvolume);
+            manager.PlaySFX(manager.attack, avolume);
         }
     }
 
@@ -205,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
-        manager.PlaySFX(manager.pTakeHit, cvolume);
+        manager.PlaySFX(manager.pTakeHit, bvolume);
     }
     private void Update()
     {

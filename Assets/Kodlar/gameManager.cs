@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     public TMP_Text ScoreText;
     string ScoreFormat = "{0,5:000}";
     [SerializeField] Animator animator;
+    [SerializeField] ManaBar manaBar;
     [SerializeField] Button pauseButton;
     [SerializeField] Button resumeButton; // Devam butonu için
     public GameObject pauseMenuUI;
@@ -48,7 +49,10 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
     }
-
+    public ManaBar GetManaBar()
+    {
+        return manaBar; 
+    }
     void HourglassCollected()
     {
         Score += 50;

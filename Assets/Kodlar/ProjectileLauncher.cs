@@ -7,15 +7,20 @@ public class ProjectileLauncher : MonoBehaviour
     public Transform launchPoint;
     public GameObject projectilePrefab;
     public ManaBar manaBar;
-    public int maxMana = 3;
+    public int maxMana;
     private int currentMana;
 
     private void Start()
     {
-        currentMana = maxMana;
-        manaBar.SetMaxMana(maxMana);
+        currentMana = manaBar.GetCurrentMana();
+        maxMana = manaBar.GetMaxMana();
     }
-
+    private void FixedUpdate()
+    {
+        currentMana=manaBar.GetCurrentMana();
+        maxMana = manaBar.GetMaxMana();
+        
+    }
     public void FireProjectile()
     {
         if (currentMana > 0)
@@ -33,9 +38,4 @@ public class ProjectileLauncher : MonoBehaviour
         }
     }
 
-    public void RegenerateMana(int amount)
-    {
-        currentMana = Mathf.Min(currentMana + amount, maxMana);
-        manaBar.SetMana(currentMana);
-    }
 }
