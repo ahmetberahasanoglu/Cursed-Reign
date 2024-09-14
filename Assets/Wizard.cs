@@ -5,24 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchDirection))]
 public class Wizard : MonoBehaviour
 {
-    #region Public degiskenler
+    #region Public Degiskenler
     public HealthBar healthBar;
     public DetectionZone attackZone;
     public DetectionZone cliffDetection;
     public DetectionZone trackDetection;
     public float moveSpeed;
-    public float rayDistance; // Raycast uzaklýðýný belirlemek için
-    public LayerMask playerLayer; // Sadece player layer'ý ile çarpýþacak raycast
+    public Transform LeftLimit;
+    public Transform RightLimit;
     #endregion
 
     #region Privates
-    private GameObject target;
+    private Transform target;
     private Animator anim;
     private TouchDirection touchDirection;
     private Damageable damageable;
     private Rigidbody2D rb;
     private bool inArea = false;
-    private Vector2 rayDirection; // Raycast yönünü saklamak için
     #endregion
 
     private void Awake()
@@ -34,12 +33,13 @@ public class Wizard : MonoBehaviour
         healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
     }
 
-    private void Update() 
+    private void Update()
     {
+        // Hedef varsa attackZone'dan hedef al
         HasTarget = attackZone.detectedColliders.Count > 0;
         if (trackDetection.detectedColliders.Count > 0)
         {
-            target = trackDetection.detectedColliders[0].gameObject;
+            target = trackDetection.detectedColliders[0].transform;
         }
         else
         {
@@ -57,10 +57,7 @@ public class Wizard : MonoBehaviour
 
     public bool HasTarget
     {
-        get
-        {
-            return hasTarget;
-        }
+        get { return hasTarget; }
         private set
         {
             hasTarget = value;
@@ -70,65 +67,57 @@ public class Wizard : MonoBehaviour
 
     public bool CanMove
     {
-        get
-        {
-            return anim.GetBool("canMove");
-        }
+        get { return anim.GetBool("canMove"); }
     }
+
     public float AttackCooldown
     {
-        get
-        {
-            return anim.GetFloat(AnimStrings.attackCooldown);
-        }
-        set
-        {
-            anim.SetFloat(AnimStrings.attackCooldown, Mathf.Max(value, 0));
-        }
+        get { return anim.GetFloat(AnimStrings.attackCooldown); }
+        set { anim.SetFloat(AnimStrings.attackCooldown, Mathf.Max(value, 0)); }
     }
 
     private void FixedUpdate()
     {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget") && !InsideOfLimits())
+        {
+            SelectTarget();
+            Debug.Log("Has target="+anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"));
+        }
+
         if (touchDirection.IsOnWall && touchDirection.IsGrounded)
         {
             FlipDirection();
         }
 
-        if (!damageable.IsHit && touchDirection.IsGrounded && inArea)
+        if (!damageable.IsHit && touchDirection.IsGrounded)
         {
-            PerformRaycast(); // Raycast'i çaðýrýyoruz.
+            // Hareket fonksiyonunu çaðýrýyoruz
+            Move(target);
         }
     }
 
-    private void PerformRaycast()
+    private void Move(Transform targetTransform)
     {
-        rayDirection = target.transform.position.x < transform.position.x ? Vector2.left : Vector2.right;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, rayDistance, playerLayer);
-
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
+        if (targetTransform != null)
         {
-            // Hedefe doðru hareket et
-            Move(hit.collider.gameObject.transform.position);
-        }
-    }
+            Vector2 targetPosition = targetTransform.position;
 
-    private void Move(Vector2 targetPosition)
-    {
-        if (target != null && !anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"))
-        {
-            anim.SetBool("canMove", true);
-
-            // Hedefin saðýnda mý solunda mý olduðunu kontrol et
-            if ((targetPosition.x < transform.position.x && transform.localScale.x > 0) ||
-                (targetPosition.x > transform.position.x && transform.localScale.x < 0))
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget")) // Saldýrmýyorsak
             {
-                // Karakterin yönünü hedefe doðru döndür
-                FlipDirection();
-            }
+                anim.SetBool("canMove", true);
 
-            // Hedefin konumuna doðru hareket et
-            Vector2 newPosition = new Vector2(targetPosition.x, transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+                // Karakterin saðýnda mý solunda mý olduðunu kontrol et
+                if ((targetPosition.x < transform.position.x && transform.localScale.x > 0) ||
+                    (targetPosition.x > transform.position.x && transform.localScale.x < 0))
+                {
+                    // Karakterin yönünü hedefe doðru döndür
+                    FlipDirection();
+                }
+
+                // Hedefin konumuna doðru hareket et
+                Vector2 newPosition = new Vector2(targetPosition.x, transform.position.y);
+                transform.position = Vector2.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+            }
         }
         else
         {
@@ -152,13 +141,29 @@ public class Wizard : MonoBehaviour
     private void FlipDirection()
     {
         // Karakterin yönünü deðiþtir
-        transform.localScale = new Vector2(gameObject.transform.localScale.x * -1, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
     }
 
-    // Gizmos ile Raycast'i göster
-    private void OnDrawGizmos()
+    private bool InsideOfLimits()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(rayDirection * rayDistance));
+        bool inside = transform.position.x > LeftLimit.position.x && transform.position.x < RightLimit.position.x;
+        Debug.Log("Inside of limits: " + inside);
+        return inside;
+    }
+
+    private void SelectTarget()
+    {
+        float distanceToLeft = Vector2.Distance(transform.position, LeftLimit.position);
+        float distanceToRight = Vector2.Distance(transform.position, RightLimit.position);
+
+        if (distanceToLeft > distanceToRight)
+        {
+            target = LeftLimit;
+        }
+        else
+        {
+            target = RightLimit;
+        }
+        FlipDirection();
     }
 }
