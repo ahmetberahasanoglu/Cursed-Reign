@@ -80,12 +80,19 @@ public class Wizard : MonoBehaviour
         get { return anim.GetFloat(AnimStrings.attackCooldown); }
         set { anim.SetFloat(AnimStrings.attackCooldown, Mathf.Max(value, 0)); }
     }
+    public float closeDistance = 1; // Hedefle çarpýþmayý engellemek için belirli bir mesafe
+
+    private bool IsCloseToTarget(Transform target)
+    {
+        if (target == null) return false;
+        return Vector2.Distance(transform.position, target.position) < closeDistance;
+    }
 
     private void FixedUpdate()
     {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"))
         {
-            if (!isChasing && !InsideOfLimits()) 
+            if (!isChasing && !InsideOfLimits())
             {
                 SelectTarget();
             }
@@ -108,25 +115,25 @@ public class Wizard : MonoBehaviour
         {
             Move(SelectTarget());
         }
-  
+
     }
 
-    public float treshold = 2f; 
-    public float minChaseDistance = 1f; 
+    public float treshold = 2f;
+    public float minChaseDistance = 1f;
 
     private void Move(Transform targetTransform)
     {
         if (targetTransform != null)
         {
             Vector2 targetPosition = targetTransform.position;
-            float distanceToTarget = Mathf.Abs(targetPosition.x - transform.position.x); 
-           // Debug.Log("Hedefe uzaklýk: " + distanceToTarget);
+            float distanceToTarget = Mathf.Abs(targetPosition.x - transform.position.x);
+            // Debug.Log("Hedefe uzaklýk: " + distanceToTarget);
 
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"))
             {
                 anim.SetBool("canMove", true);
 
-              
+
                 if (distanceToTarget > minChaseDistance && distanceToTarget > treshold)
                 {
                     // Hedef karakterin solunda mý saðýnda mý onu kontrol et
@@ -137,10 +144,10 @@ public class Wizard : MonoBehaviour
                     }
                 }
 
-            
+
                 if (distanceToTarget > minChaseDistance)
                 {
-      
+
                     Vector2 newPosition = new Vector2(targetPosition.x, transform.position.y);
                     transform.position = Vector2.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
                 }
@@ -156,6 +163,8 @@ public class Wizard : MonoBehaviour
             anim.SetBool("canMove", false);
         }
     }
+
+
 
 
 

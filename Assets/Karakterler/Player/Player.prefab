@@ -276,6 +276,9 @@ MonoBehaviour:
   fallMultiplier: 3
   coyoteTime: 0.15
   hangTime: 0.02
+  avolume: 0.13
+  bvolume: 1
+  cvolume: 0.5
   isMoving: 0
 --- !u!114 &8485705082576621271
 MonoBehaviour:

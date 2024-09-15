@@ -8,6 +8,8 @@ public class TouchDirection : MonoBehaviour
     [SerializeField] float groundDistance = 0.05f;
     [SerializeField] float tavanDistance = 0.05f;
     [SerializeField] float wallDistance = 0.2f;
+    [SerializeField] private LayerMask wallLayer; // Duvar katmaný
+
     CapsuleCollider2D touchCol;
     RaycastHit2D[] groundHit = new RaycastHit2D[5];
     RaycastHit2D[] wallHit = new RaycastHit2D[5];
@@ -63,9 +65,13 @@ public class TouchDirection : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // IsGrounded = touchCol.Cast(Vector2.down, castFilter, groundHit, groundDistance) > 0;
+        // IsOnWall = touchCol.Cast(wallCheckDirection, castFilter, wallHit, wallDistance) > 0;
+        // IsOnTavan = touchCol.Cast(Vector2.up, castFilter, tavanHit, tavanDistance) > 0;
         IsGrounded = touchCol.Cast(Vector2.down, castFilter, groundHit, groundDistance) > 0;
-        IsOnWall = touchCol.Cast(wallCheckDirection, castFilter, wallHit, wallDistance) > 0;
+        IsOnWall = Physics2D.Raycast(touchCol.bounds.center, wallCheckDirection, wallDistance, wallLayer); 
         IsOnTavan = touchCol.Cast(Vector2.up, castFilter, tavanHit, tavanDistance) > 0;
+
     }
 
     private void OnDrawGizmos()

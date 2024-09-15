@@ -64,7 +64,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -81,8 +81,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.34611422, y: 0.5068104}
-  m_Size: {x: 1.2169528, y: 1.346115}
+  m_Offset: {x: -0.4961423, y: 0.5068104}
+  m_Size: {x: 0.91689664, y: 1.346115}
   m_Direction: 0
 --- !u!1 &1188086054089179928
 GameObject:
@@ -208,7 +208,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.25734782, y: -0.07720429}
+  m_Offset: {x: -0.35278684, y: -0.07720423}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -219,7 +219,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7353878, y: 2.066278}
+  m_Size: {x: 1.5151185, y: 2.066278}
   m_EdgeRadius: 0
 --- !u!95 &1844562572170493916
 Animator:
@@ -254,15 +254,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772618b6f8c5d624b8226f37f37e3e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isirmaDetectionZone: {fileID: 4466002122943007572}
-  wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  flightSpeed: 2
   waypointReachedDistance: 0.15
-  ucusHizi: 2
+  biteDetectionZone: {fileID: 4466002122943007572}
   healthBar: {fileID: 5818107469161490169}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _hasTarget: 0
 --- !u!114 &6494007164851674279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +279,29 @@ MonoBehaviour:
   damageableHit:
     m_PersistentCalls:
       m_Calls: []
-  maxHealth: 100
-  _health: 100
+  damageableDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1081687088854776688}
+        m_TargetAssemblyTypeName: tekgoz, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  lootTable:
+  - itemPrefab: {fileID: 1199649374772108254, guid: 9c334308983f9b04090057c0d52c3a7b, type: 3}
+    dropChance: 100
+  maxHealth: 30
+  _health: 30
   isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.2
@@ -298,7 +320,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -309,7 +331,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &2598978225000675621
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86b9713ab3fbf4e89412c2dedc2544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 20
-  knockback: {x: 1, y: 0}
+  attackDamage: 10
+  knockback: {x: 0, y: 0}
 --- !u!70 &3746533032213647181
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -364,7 +386,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2598978225000675621}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -389,8 +411,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0445249, y: -0.228683}
-  m_Size: {x: 0.7843089, y: 1.3776484}
+  m_Offset: {x: 1.0634048, y: -0.228683}
+  m_Size: {x: 0.8220688, y: 1.3776484}
   m_Direction: 0
 --- !u!1001 &5369313938771059184
 PrefabInstance:

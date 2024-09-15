@@ -278,8 +278,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 3.9853897, y: 1.2009006}
-      - {x: 2.9065704, y: 1.5588198}
-      - {x: 1.2277498, y: 0.17786863}
+      - {x: 0.8337345, y: 1.6993513}
+      - {x: 0.8061533, y: 0.2481344}
       - {x: 1.0037103, y: -0.9226955}
       - {x: 2.7476707, y: -0.945431}
       - {x: 3.9125175, y: -0.42402124}
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  knockback: {x: 5, y: 3}
+  knockback: {x: 4, y: 1}
 --- !u!1 &8781544902742631903
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd95b6fb98331d4d9cb5a8636528d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ivme: 3
+  ivme: 300
   maxSpeed: 3
   walkStopRate: 0.2
   attackZone: {fileID: 2879065187371204210}
@@ -553,11 +553,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxHealth: 100
-  _health: 100
+  damageableDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  lootTable:
+  - itemPrefab: {fileID: 1199649374772108254, guid: 9c334308983f9b04090057c0d52c3a7b, type: 3}
+    dropChance: 80
+  maxHealth: 30
+  _health: 30
   isAlive: 1
   isInvincible: 0
-  invincibilityTime: 0.1
+  invincibilityTime: 0.05
 --- !u!1001 &6263605435483317389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -653,6 +662,30 @@ PrefabInstance:
     - target: {fileID: 7500141733733854627, guid: b0e8f7f1619b17a40868fbd0c2744e49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189783570986337922, guid: b0e8f7f1619b17a40868fbd0c2744e49, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189783570986337922, guid: b0e8f7f1619b17a40868fbd0c2744e49, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189783570986337922, guid: b0e8f7f1619b17a40868fbd0c2744e49, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189783570986337922, guid: b0e8f7f1619b17a40868fbd0c2744e49, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553622126574206197, guid: b0e8f7f1619b17a40868fbd0c2744e49, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553622126574206197, guid: b0e8f7f1619b17a40868fbd0c2744e49, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
