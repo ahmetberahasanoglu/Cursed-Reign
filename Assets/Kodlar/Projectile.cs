@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] Vector2 speed = new Vector2(3, 0);
+    [SerializeField] Vector2 speed = new Vector2(5, 0);
     public int damage = 10;
     public Vector2 knockback = Vector2.zero;
     Rigidbody2D rb;
