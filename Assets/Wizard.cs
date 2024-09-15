@@ -13,6 +13,7 @@ public class Wizard : MonoBehaviour
     public float moveSpeed;
     public Transform LeftLimit;
     public Transform RightLimit;
+    public float patrolThreshold = 0.1f; 
     #endregion
 
     #region Privates
@@ -22,6 +23,7 @@ public class Wizard : MonoBehaviour
     private Damageable damageable;
     private Rigidbody2D rb;
     private bool inArea = false;
+    private bool isChasing = false; 
     #endregion
 
     private void Awake()
@@ -29,7 +31,7 @@ public class Wizard : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         touchDirection = GetComponent<TouchDirection>();
-        damageable = GetComponent<Damageable>();  // damageable'ý burada baþlatýyoruz.
+        damageable = GetComponent<Damageable>();
         healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
     }
 
@@ -40,11 +42,14 @@ public class Wizard : MonoBehaviour
         if (trackDetection.detectedColliders.Count > 0)
         {
             target = trackDetection.detectedColliders[0].transform;
+            isChasing = true; 
         }
         else
         {
             target = null;
+            isChasing = false; // Hedef olmynca kovalama biter
         }
+
         inArea = target != null;
         if (AttackCooldown > 0)
         {
@@ -78,10 +83,16 @@ public class Wizard : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget") && !InsideOfLimits())
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"))
         {
-            SelectTarget();
-            Debug.Log("Has target="+anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"));
+            if (!isChasing && !InsideOfLimits()) 
+            {
+                SelectTarget();
+            }
+            else if (isChasing) // Hedef varsa kovalama baþlasýn
+            {
+                Move(target);
+            }
         }
 
         if (touchDirection.IsOnWall && touchDirection.IsGrounded)
@@ -89,34 +100,55 @@ public class Wizard : MonoBehaviour
             FlipDirection();
         }
 
-        if (!damageable.IsHit && touchDirection.IsGrounded)
+        if (!damageable.IsHit && touchDirection.IsGrounded && target != null)
         {
-            // Hareket fonksiyonunu çaðýrýyoruz
             Move(target);
         }
+        else if (!damageable.IsHit && touchDirection.IsGrounded && !isChasing)
+        {
+            Move(SelectTarget());
+        }
+  
     }
+
+    public float treshold = 2f; 
+    public float minChaseDistance = 1f; 
 
     private void Move(Transform targetTransform)
     {
         if (targetTransform != null)
         {
             Vector2 targetPosition = targetTransform.position;
+            float distanceToTarget = Mathf.Abs(targetPosition.x - transform.position.x); 
+           // Debug.Log("Hedefe uzaklýk: " + distanceToTarget);
 
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget")) // Saldýrmýyorsak
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("hasTarget"))
             {
                 anim.SetBool("canMove", true);
 
-                // Karakterin saðýnda mý solunda mý olduðunu kontrol et
-                if ((targetPosition.x < transform.position.x && transform.localScale.x > 0) ||
-                    (targetPosition.x > transform.position.x && transform.localScale.x < 0))
+              
+                if (distanceToTarget > minChaseDistance && distanceToTarget > treshold)
                 {
-                    // Karakterin yönünü hedefe doðru döndür
-                    FlipDirection();
+                    // Hedef karakterin solunda mý saðýnda mý onu kontrol et
+                    if ((targetPosition.x < transform.position.x && transform.localScale.x > 0) ||
+                        (targetPosition.x > transform.position.x && transform.localScale.x < 0))
+                    {
+                        FlipDirection();
+                    }
                 }
 
-                // Hedefin konumuna doðru hareket et
-                Vector2 newPosition = new Vector2(targetPosition.x, transform.position.y);
-                transform.position = Vector2.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+            
+                if (distanceToTarget > minChaseDistance)
+                {
+      
+                    Vector2 newPosition = new Vector2(targetPosition.x, transform.position.y);
+                    transform.position = Vector2.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    // Hedef çok yakýn, hareketi durdur
+                    anim.SetBool("canMove", false);
+                }
             }
         }
         else
@@ -124,6 +156,8 @@ public class Wizard : MonoBehaviour
             anim.SetBool("canMove", false);
         }
     }
+
+
 
     public void OnHit(int damage, Vector2 knockback)
     {
@@ -147,23 +181,30 @@ public class Wizard : MonoBehaviour
     private bool InsideOfLimits()
     {
         bool inside = transform.position.x > LeftLimit.position.x && transform.position.x < RightLimit.position.x;
-        Debug.Log("Inside of limits: " + inside);
         return inside;
     }
 
-    private void SelectTarget()
+    private Transform SelectTarget()
     {
+        // Devriye hedefini seç
         float distanceToLeft = Vector2.Distance(transform.position, LeftLimit.position);
         float distanceToRight = Vector2.Distance(transform.position, RightLimit.position);
 
+        // Karakter devriye alanýnýn ortasýnda ise saða mý sola mý gideceðine karar verememesini engellemek için threshold ekliyoruz
+        if (Mathf.Abs(distanceToLeft - distanceToRight) < patrolThreshold)
+        {
+            return null; // Ortada ise hedefe gitme
+        }
+
         if (distanceToLeft > distanceToRight)
         {
-            target = LeftLimit;
+            return LeftLimit;
         }
         else
         {
-            target = RightLimit;
+            return RightLimit;
         }
-        FlipDirection();
     }
+
+
 }
