@@ -34,7 +34,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9855b8cb8c4f1e49805ca72d436c8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8300000, guid: a6c798d83de6c884a98a40222bb8a8cf, type: 3}
+  soundToPlay: {fileID: 8300000, guid: 116789190ce8de34eb8fe370c4cdceb3, type: 3}
   volume: 0.4
   playOnEnter: 0
   playOnExit: 0
@@ -67,12 +67,12 @@ AnimatorStateMachine:
   - {fileID: 7340012069619392829}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 6304587957466180769}
-    second:
-    - {fileID: -943502349608522703}
   - first: {fileID: 749651922901047912}
     second:
     - {fileID: -3832327379810834451}
+  - first: {fileID: 6304587957466180769}
+    second:
+    - {fileID: -943502349608522703}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 570, y: 230, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
