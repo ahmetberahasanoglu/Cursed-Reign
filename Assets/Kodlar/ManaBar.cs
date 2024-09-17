@@ -9,13 +9,14 @@ public class ManaBar : MonoBehaviour
     private string manaFormat = "{0}/{1}";
 
     private int maxMana;
-    private int currentMana;
+    [SerializeField] private int currentMana;
 
     void Start()
     {
         
         maxMana = 3; 
-        currentMana = maxMana;
+        currentMana = 0;
+        slider.value = 0;
         SetMaxMana(maxMana);
     }
 
@@ -23,7 +24,6 @@ public class ManaBar : MonoBehaviour
     {
         this.maxMana = maxMana;
         slider.maxValue = maxMana;
-        slider.value = maxMana;
         UpdateManaText(currentMana, maxMana);
     }
 

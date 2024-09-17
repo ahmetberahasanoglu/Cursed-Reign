@@ -16,7 +16,11 @@ public class DetectionZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        detectedColliders.Add(collision);
+        if (!collision.CompareTag("OneWayPlatform"))
+        {
+            detectedColliders.Add(collision);
+        }
+       
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

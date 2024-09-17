@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6197186972932822062}
   - component: {fileID: 6937371802498599003}
+  - component: {fileID: -8085180913895552547}
   - component: {fileID: 8351252835976423482}
   - component: {fileID: 7999764318649963451}
-  - component: {fileID: 3958426699277538963}
   m_Layer: 12
-  m_Name: Mana
+  m_Name: bigHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.9, y: -2.63, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9cf053e7e5f3a8943b1b5a089fffc3f8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2f56104bcef9ad043b2df99de39d6966, type: 3}
+  m_Color: {r: 1, g: 0.5417062, b: 0.495283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,6 +87,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-8085180913895552547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199649374772108254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091f22ef2dc925542a6dcb97487c50ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthRestore: 20
+  rotationSpeed: {x: 0, y: 180, z: 0}
+  dropForce: 5
+  volume: 0.5
 --- !u!61 &8351252835976423482
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +135,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011458397, y: 0.00000011920929}
+  m_Offset: {x: -0.03587413, y: 0.0081346035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +146,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6175051, y: 1.0130651}
+  m_Size: {x: 0.5571847, y: 1.0222192}
   m_EdgeRadius: 0
 --- !u!50 &7999764318649963451
 Rigidbody2D:
@@ -159,19 +175,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3958426699277538963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199649374772108254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d1a357dc577ea142b1fb4f5aec08369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manaRestore: 1
-  rotationSpeed: {x: 0, y: 180, z: 0}
-  dropForce: 5
-  volume: 2

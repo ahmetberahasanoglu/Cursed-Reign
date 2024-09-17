@@ -21,11 +21,13 @@ public class gameManager : MonoBehaviour
     private void OnEnable()
     {
         ActionsListener.OnHourglassCollected += HourglassCollected;
+        ActionsListener.OnCoinCollected += CoinCollected;
     }
 
     private void OnDisable()
     {
         ActionsListener.OnHourglassCollected -= HourglassCollected;
+        ActionsListener.OnCoinCollected -= CoinCollected;
     }
 
     private void Awake()
@@ -55,6 +57,11 @@ public class gameManager : MonoBehaviour
     }
     void HourglassCollected()
     {
+        Score += 200;
+        ScoreText.text = string.Format(ScoreFormat, Score);
+    }
+    void CoinCollected()
+    {
         Score += 50;
         ScoreText.text = string.Format(ScoreFormat, Score);
     }
@@ -77,31 +84,31 @@ public class gameManager : MonoBehaviour
         return Score;
     }
 
-    // Skoru azaltmak için fonksiyon
+  
     public void DeductScore(int amount)
     {
         Score -= amount;
         ScoreText.text = string.Format(ScoreFormat, Score);
     }
 
-    // Pause butonuna basýldýðýnda
+  
     public void OnPauseButtonPressed()
     {
         if (!isPaused)
         {
-            pauseMenuUI.SetActive(true);   // Pause menüsünü aktif et
-            Time.timeScale = 0;            // Oyunu durdur
+            pauseMenuUI.SetActive(true);   
+            Time.timeScale = 0;            
             isPaused = true;
         }
     }
 
-    // Devam butonuna basýldýðýnda
+  
     public void OnResumeButtonPressed()
     {
         if (isPaused)
         {
-            pauseMenuUI.SetActive(false);  // Pause menüsünü kapat
-            Time.timeScale = 1;            // Oyunu yeniden baþlat
+            pauseMenuUI.SetActive(false);  
+            Time.timeScale = 1;            
             isPaused = false;
         }
     }
