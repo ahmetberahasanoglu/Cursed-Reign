@@ -20,8 +20,8 @@ public class Attack : MonoBehaviour
             // Hit the target
             bool gotHit = damageable.Hit(attackDamage,deliveredKnockback);
 
-         if(gotHit)
-        Debug.Log(collision.name + " hit for " + attackDamage);
+        // if(gotHit)
+        //Debug.Log(collision.name + " hit for " + attackDamage);
         }
     }
 }

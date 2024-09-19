@@ -272,9 +272,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 914726555
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 154635522, guid: bc4c7c518ae5c6b48a10a3b7c1523bef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -343,8 +343,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lootTable: []
-  maxHealth: 100
-  _health: 100
+  maxHealth: 40
+  _health: 40
   isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.2
@@ -449,7 +449,7 @@ MonoBehaviour:
   RightLimit: {fileID: 0}
   patrolThreshold: 0.1
   closeDistance: 1
-  treshold: 2
+  treshold: 0.5
   minChaseDistance: 1
 --- !u!1 &5742197681574091437
 GameObject:

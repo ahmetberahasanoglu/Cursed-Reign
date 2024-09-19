@@ -162,9 +162,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 914726555
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 646882435, guid: f096a743827966144bc9ed56f4556a4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -300,8 +300,8 @@ MonoBehaviour:
   lootTable:
   - itemPrefab: {fileID: 1199649374772108254, guid: 9c334308983f9b04090057c0d52c3a7b, type: 3}
     dropChance: 100
-  maxHealth: 30
-  _health: 30
+  maxHealth: 20
+  _health: 20
   isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.2
@@ -386,7 +386,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2598978225000675621}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -411,8 +411,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0634048, y: -0.228683}
-  m_Size: {x: 0.8220688, y: 1.3776484}
+  m_Offset: {x: 0.3401629, y: -0.14507154}
+  m_Size: {x: 0.8137131, y: 1.2066821}
   m_Direction: 0
 --- !u!1001 &5369313938771059184
 PrefabInstance:

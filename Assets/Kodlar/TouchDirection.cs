@@ -68,7 +68,7 @@ public class TouchDirection : MonoBehaviour
         IsOnTavan = touchCol.Cast(Vector2.up, castFilter, tavanHit, tavanDistance) > 0;
     }
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
         if (touchCol == null) return;
 
@@ -83,7 +83,7 @@ public class TouchDirection : MonoBehaviour
         // Ceiling check ray (tavan)
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(touchCol.bounds.center, touchCol.bounds.center + Vector3.up * tavanDistance);
-    }
+    }*/
     private bool CheckWallCollision()
     {
         int hitCount = touchCol.Cast(wallCheckDirection, castFilter, wallHit, wallDistance);

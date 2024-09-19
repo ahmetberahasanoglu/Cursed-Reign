@@ -37,9 +37,10 @@ public class ManaPickup : MonoBehaviour
                 bool isRestored = manaBar.RestoreMana(manaRestore);
                 if (isRestored)
                 {
-                    manager.PlaySFX(manager.manaPickup, volume);
+                    //sadece mana dolunca calýsacak bir özellik
                 }
-                Destroy(gameObject);  
+                manager.PlaySFX(manager.manaPickup, volume);
+                Destroy(gameObject);
             }
         }
     }

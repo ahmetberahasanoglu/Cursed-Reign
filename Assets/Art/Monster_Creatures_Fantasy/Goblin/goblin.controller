@@ -192,11 +192,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: a6c798d83de6c884a98a40222bb8a8cf, type: 3}
-  volume: 0.4
+  volume: 0.5
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0
-  playDelay: 0.5
+  playDelay: 1
 --- !u!114 &-1209542202293660988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,7 +421,7 @@ MonoBehaviour:
   updateOnStateExit: 1
   updateOnStateMachineEnter: 0
   updateOnStateMachineExit: 0
-  valueOnEnter: 1
+  valueOnEnter: 1.5
   valueOnExit: 2
 --- !u!114 &3873816539177397666
 MonoBehaviour:
@@ -564,12 +564,12 @@ AnimatorStateMachine:
   - {fileID: 5023116335284196014}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -3637176389234647309}
-    second:
-    - {fileID: 4061339965241026143}
   - first: {fileID: 4514575533721931110}
     second:
     - {fileID: -62676993147861087}
+  - first: {fileID: -3637176389234647309}
+    second:
+    - {fileID: 4061339965241026143}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 560, y: 150, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}

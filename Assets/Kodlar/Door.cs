@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
     [SerializeField] float volume = 0.5f;
     audiomanager manager;
     Animator animator;
-    bool isOpen=false;
+   [SerializeField] bool isOpen=false;
     private void Awake()
     {
         animator = GetComponent<Animator>();

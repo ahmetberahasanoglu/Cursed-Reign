@@ -81,7 +81,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.8046474, y: -0.20738411}
+  m_Offset: {x: 3.8046474, y: 1.025912}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -92,7 +92,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30.793736, y: 2.7907486}
+  m_Size: {x: 30.793736, y: 5.2573404}
   m_EdgeRadius: 0
 --- !u!1 &1977888705751761201
 GameObject:
@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 1977888705751761201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.06, y: 0.59, z: 0}
+  m_LocalPosition: {x: 1.53, y: 0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,7 +158,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 89.85, y: -6.14, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: -0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1312474786963634270}
@@ -207,9 +207,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 914726555
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1015504473, guid: 544c1d66010c3a94bb20411222d3d2cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -290,10 +290,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lootTable:
-  - itemPrefab: {fileID: 7889529072351026055, guid: c5637ebb4839f7d4eb0802d65b23648b, type: 3}
-    dropChance: 50
-  maxHealth: 30
-  _health: 30
+  - itemPrefab: {fileID: 6024408246279885085, guid: 8d735fbfc0bfdb6498ec61ff14af76e0, type: 3}
+    dropChance: 100
+  maxHealth: 60
+  _health: 60
   isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.2
@@ -399,8 +399,8 @@ MonoBehaviour:
   patrolThreshold: 0.1
   rangedBaslangic: {fileID: 1977888705751761201}
   projectilePrefab: {fileID: 1063353120155807958, guid: f8ccc6d9566e3b9458ee110942c86eaa, type: 3}
-  attackCooldownTime: 2
-  treshold: 2
+  attackCooldownTime: 0.5
+  treshold: 0.5
   minChaseDistance: 1
 --- !u!1 &4929903545377498779
 GameObject:
@@ -686,7 +686,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 18.354095, y: -0.14512277}
+  m_Offset: {x: 11.250326, y: -0.14512277}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -697,7 +697,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.888786, y: 2.8650403}
+  m_Size: {x: 24.681248, y: 2.8650403}
   m_EdgeRadius: 0
 --- !u!1001 &173656945262310311
 PrefabInstance:

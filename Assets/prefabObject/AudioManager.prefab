@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 2790557382867281377}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3801562265290160473, guid: c1858788604cc05438abcc1a874e16bb, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 8578144245899523619}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,21 +176,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SFXSource: {fileID: 8733284935821307812}
   musicSource: {fileID: 5909641539482402535}
-  introClip: {fileID: 8300000, guid: 7aed73ae644ed4b4293a4d2b2a14e952, type: 3}
-  loopClip: {fileID: 8300000, guid: e0007c77714dc2c408dd83ca09887fb3, type: 3}
+  audioMixer: {fileID: 24100000, guid: c1858788604cc05438abcc1a874e16bb, type: 2}
+  loopClip: {fileID: 8300000, guid: b4d0a3ff92d81ee4e9c858e999f32dde, type: 3}
   death: {fileID: 8300000, guid: 3af29bc57a477af4b9e58b082773ba9b, type: 3}
-  attack: {fileID: 8300000, guid: 1968bd3d79414984a988bf0458c7b024, type: 3}
-  checkPoint: {fileID: 8300000, guid: f82716df1a2d4c74490fa290c4e31d49, type: 3}
-  groundTouch: {fileID: 8300000, guid: 03f7cb9d4854096469bc9e852387c192, type: 3}
+  attack: {fileID: 8300000, guid: b0c8ac0dc476e4444b796803c155b29c, type: 3}
+  checkPoint: {fileID: 8300000, guid: d50c700a3004f864ab857935fabf7f6a, type: 3}
+  groundTouch: {fileID: 8300000, guid: 58ddb5d0f271b024caf855014d9b9092, type: 3}
   portal: {fileID: 8300000, guid: f4d43a91721c7544ca6be110550bda5f, type: 3}
   healthPickup: {fileID: 8300000, guid: b4ec353937de3ce48a4a5152abdb6ca6, type: 3}
+  manaPickup: {fileID: 8300000, guid: bcc2ca0a98138714ba6ebfd3db4612d1, type: 3}
   laser: {fileID: 8300000, guid: 73b6e4a164a72d249bdb6978bb8288ac, type: 3}
-  samdanCrack: {fileID: 8300000, guid: f8be374b6c9f9124f868238d518d2a7c, type: 3}
-  sandikCrack: {fileID: 8300000, guid: f8be374b6c9f9124f868238d518d2a7c, type: 3}
+  samdanCrack: {fileID: 8300000, guid: 1e21f476b96161a479636fadd8968162, type: 3}
+  sandikCrack: {fileID: 8300000, guid: eeaffcd77dd2a1845b1f076dc6822c78, type: 3}
+  barrelCrack: {fileID: 8300000, guid: 7acd30a976da9984f9ed92f1d1506d7d, type: 3}
   skeletonDeath: {fileID: 8300000, guid: 3af29bc57a477af4b9e58b082773ba9b, type: 3}
-  pjump: {fileID: 8300000, guid: 045dc2df60a70154fb4b473a4e8782dc, type: 3}
-  coinPickup: {fileID: 8300000, guid: 1aaaf6fe00f8acd4b80d26dca33d3330, type: 3}
-  pTakeHit: {fileID: 8300000, guid: d1a3e9a4dcce4fc4d949910a1d95eaf2, type: 3}
+  pjump: {fileID: 8300000, guid: 119784766a451c0479bf1fa70fc507a3, type: 3}
+  coinPickup: {fileID: 8300000, guid: cdfd7573679e97446ac7420cedf7e108, type: 3}
+  pTakeHit: {fileID: 8300000, guid: 93f0d3ac8945e3e4a98d13da86a702f0, type: 3}
   enemyTakeHit: {fileID: 8300000, guid: d1a3e9a4dcce4fc4d949910a1d95eaf2, type: 3}
   bite: {fileID: 8300000, guid: 765856d13538ae041b08cdfafd00fd8c, type: 3}
   flee: {fileID: 8300000, guid: 25284269a14303a40bdea575d409a66a, type: 3}
@@ -200,6 +202,10 @@ MonoBehaviour:
   Pause: {fileID: 8300000, guid: e30f390ddce431e4a9ffd46a1d899908, type: 3}
   unPause: {fileID: 8300000, guid: ab5d4f68923a4b44f817e4fd1b95a33d, type: 3}
   denied: {fileID: 8300000, guid: 30d8d8c33b77ebd4da7e8769a7b9ec7c, type: 3}
+  doorOpen: {fileID: 8300000, guid: 7a5dc4d35c09a224daf7ef2da18035a9, type: 3}
+  timesUP: {fileID: 8300000, guid: bcd430b630b2e2749b161f27899f6920, type: 3}
+  musicToggleButton: {fileID: 0}
+  SFXToggleButton: {fileID: 0}
 --- !u!1 &7297373663076778226
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +247,7 @@ AudioSource:
   m_GameObject: {fileID: 7297373663076778226}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5750775041148871463, guid: c1858788604cc05438abcc1a874e16bb, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

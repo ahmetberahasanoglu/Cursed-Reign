@@ -496,7 +496,7 @@ MonoBehaviour:
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0
-  playDelay: 0.6
+  playDelay: 0.5
 --- !u!114 &4417789442257654672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,7 +634,7 @@ MonoBehaviour:
   updateOnStateExit: 1
   updateOnStateMachineEnter: 0
   updateOnStateMachineExit: 0
-  valueOnEnter: 1
+  valueOnEnter: 0
   valueOnExit: 3
 --- !u!1101 &8849208217611068591
 AnimatorStateTransition:

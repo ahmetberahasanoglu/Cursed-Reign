@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 0.1
-  fadeDelay: 0.1
+  fadeDelay: 0.01
 --- !u!1102 &-3911502569671886688
 AnimatorState:
   serializedVersion: 6
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: 1651773f5cb7524429f19fced5892e38, type: 3}
-  volume: 0.4
+  volume: 0.35
   playOnEnter: 0
   playOnExit: 0
   playAfterDelay: 1
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: acea7af3643abbc45acfa8ebe6134c84, type: 3}
-  volume: 0.6
+  volume: 0.5
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0

@@ -171,7 +171,8 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger(AnimStrings.jumpTrigger);
             PlayDust();
-            rb.velocity = new Vector2(rb.velocity.x, Jump);
+            rb.AddForce(Vector2.up * Jump, ForceMode2D.Impulse);
+
             hangTimeCounter = hangTime; // Hang time baþlatýlýyor
             manager.PlaySFX(manager.pjump, 0.8f);
         }
@@ -207,38 +208,42 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
         manager.PlaySFX(manager.pTakeHit, bvolume);
     }
-    private void Update()
+ 
+
+    
+    private void FixedUpdate()
     {
-        // Coyote time sayacýný güncelleme
         if (touchDirection.IsGrounded)
         {
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
-            coyoteTimeCounter -= Time.deltaTime;
+            coyoteTimeCounter -= Time.fixedDeltaTime;
         }
+
         // Hang time süresi boyunca hýz çok düþük tutulur
         if (hangTimeCounter > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.9f);
-            hangTimeCounter -= Time.deltaTime;
+            hangTimeCounter -= Time.fixedDeltaTime;
         }
-    }
 
 
-    
-    private void FixedUpdate()
-    {
-        
-        
-            if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive) // LockVelocity ve diyalog kontrolü
+        if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive)
             {
                 rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             }
             else
             {
                 rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda yatay hýzý sýfýrla
+            }
+
+            // Eðer platformda ise, platformun velocity'si ile oyuncunun pozisyonunu senkronize ederiz
+            if (platformTransform != null)
+            {
+                Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;
+                rb.velocity = new Vector2(rb.velocity.x + platformVelocity.x, rb.velocity.y);
             }
 
             // Yüksek zýplamalarý veya düþüþleri yönetmek için yerçekimi kuvvetini artýrma
@@ -273,6 +278,7 @@ public class PlayerMovement : MonoBehaviour
         
 
 
+
         /* if (Input.GetKey(KeyCode.Space))
          {
              rb.velocity= new Vector2(rb.velocity.x, Jump);
@@ -286,4 +292,24 @@ public class PlayerMovement : MonoBehaviour
         }
         dust.Play();
     }
+    private Transform platformTransform = null;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Platforma temas ettiðinde platformun transform'unu alýyoruz
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            platformTransform = collision.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // Platformdan ayrýldýðýnda platform transform'u null yapýlýr
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            platformTransform = null;
+        }
+    }
+
 }

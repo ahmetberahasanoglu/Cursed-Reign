@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     public Vector2 knockback = Vector2.zero;
     Rigidbody2D rb;
 
+    [SerializeField] private float lifetime = 3f; // Merminin yok olma süresi
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,7 +18,11 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        // Mermiyi hýzla hareket ettir
         rb.velocity = new Vector2(speed.x * transform.localScale.x, speed.y);
+
+        // Belirli bir süre sonra mermiyi yok et
+        Destroy(gameObject, lifetime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

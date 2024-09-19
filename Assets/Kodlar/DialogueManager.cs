@@ -20,6 +20,9 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public GameObject shopCanvas;
 
+    // Shop gösterilip gösterilmeyeceðini belirleyen flag
+    public bool isShopShow = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -76,8 +79,11 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = false;
         animator.Play("hide");
 
-        // Diyalog bittikten sonra shop açýlýr
-        OpenShop();
+        // Diyalog bittikten sonra shop'un gösterilme durumu kontrol edilir
+        if (isShopShow)
+        {
+            OpenShop();
+        }
     }
 
     // ShopCanvas'ý aktif eden fonksiyon
@@ -86,11 +92,16 @@ public class DialogueManager : MonoBehaviour
         if (shopCanvas != null)
         {
             Instantiate(shopCanvas);
-          
         }
         else
         {
             Debug.LogError("ShopCanvas referansý atanmadý.");
         }
+    }
+
+    // Sahneye göre isShopShow'u güncelleyen fonksiyon
+    public void UpdateShopVisibility(bool showShop)
+    {
+        isShopShow = showShop;
     }
 }

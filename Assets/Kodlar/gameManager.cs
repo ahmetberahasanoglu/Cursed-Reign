@@ -22,12 +22,14 @@ public class gameManager : MonoBehaviour
     {
         ActionsListener.OnHourglassCollected += HourglassCollected;
         ActionsListener.OnCoinCollected += CoinCollected;
+        SceneManager.sceneLoaded += OnSceneLoaded;  // Sahne yüklendiðinde çaðýrýlýr
     }
 
     private void OnDisable()
     {
         ActionsListener.OnHourglassCollected -= HourglassCollected;
         ActionsListener.OnCoinCollected -= CoinCollected;
+        SceneManager.sceneLoaded -= OnSceneLoaded;  // Event'ý kaldýr
     }
 
     private void Awake()
@@ -45,21 +47,44 @@ public class gameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-   
         pauseButton.onClick.AddListener(OnPauseButtonPressed);
         resumeButton.onClick.AddListener(OnResumeButtonPressed);
         Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
     }
+
+    // Sahne yüklendiðinde shop'un gösterilip gösterilmeyeceðini kontrol eder
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (DialogueManager.Instance != null)
+        {
+            // Sahne "ShopScene" ise shop gösterimi aktif, deðilse pasif
+            if (scene.name == "Door1")
+            {
+                DialogueManager.Instance.UpdateShopVisibility(true);  // Shop açýlýr
+            }
+            else
+            {
+                DialogueManager.Instance.UpdateShopVisibility(false); // Shop açýlmaz
+            }
+        }
+        else
+        {
+            Debug.LogError("DialogueManager instance bulunamadý.");
+        }
+    }
+
     public ManaBar GetManaBar()
     {
-        return manaBar; 
+        return manaBar;
     }
+
     void HourglassCollected()
     {
         Score += 200;
         ScoreText.text = string.Format(ScoreFormat, Score);
     }
+
     void CoinCollected()
     {
         Score += 50;
@@ -84,38 +109,34 @@ public class gameManager : MonoBehaviour
         return Score;
     }
 
-  
     public void DeductScore(int amount)
     {
         Score -= amount;
         ScoreText.text = string.Format(ScoreFormat, Score);
     }
 
-  
     public void OnPauseButtonPressed()
     {
         if (!isPaused)
         {
-            pauseMenuUI.SetActive(true);   
-            Time.timeScale = 0;            
+            pauseMenuUI.SetActive(true);
+            Time.timeScale = 0;
             isPaused = true;
         }
     }
 
-  
     public void OnResumeButtonPressed()
     {
         if (isPaused)
         {
-            pauseMenuUI.SetActive(false);  
-            Time.timeScale = 1;            
+            pauseMenuUI.SetActive(false);
+            Time.timeScale = 1;
             isPaused = false;
         }
     }
+
     public void OnQuitButtonPressed()
     {
         Application.Quit();
     }
-  
-
 }

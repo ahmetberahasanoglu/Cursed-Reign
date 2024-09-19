@@ -81,7 +81,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 18.354095, y: -0.14512277}
+  m_Offset: {x: 10.977368, y: -0.50143063}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -92,7 +92,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.888786, y: 2.8650403}
+  m_Size: {x: 21.75007, y: 3.577656}
   m_EdgeRadius: 0
 --- !u!1 &1729738336479943885
 GameObject:
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.77369, y: -2.426918}
+  m_Offset: {x: 1.6579529, y: -2.5721197}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -198,7 +198,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1, y: 1.8}
+  m_Size: {x: 1.9091227, y: 1.5095968}
   m_EdgeRadius: 0
 --- !u!1 &2840538577543984719
 GameObject:
@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 2840538577543984719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.06, y: 0.59, z: 0}
+  m_LocalPosition: {x: 3, y: 0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -361,7 +361,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 78.63, y: -6.14, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: -0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4618670284684528669}
@@ -602,9 +602,9 @@ MonoBehaviour:
   patrolThreshold: 0.1
   rangedBaslangic: {fileID: 2840538577543984719}
   projectilePrefab: {fileID: 1063353120155807958, guid: c55e59f85b3448a40afa3545e47cdd40, type: 3}
-  attackCooldownTime: 2
-  treshold: 2
-  minChaseDistance: 1
+  attackCooldownTime: 1
+  treshold: 0.5
+  minChaseDistance: 1.5
 --- !u!1 &5422926877025931427
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.8046474, y: -0.20738411}
+  m_Offset: {x: -0.3714943, y: -0.5408044}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -697,7 +697,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30.793736, y: 2.7907486}
+  m_Size: {x: 9.326904, y: 2.8648415}
   m_EdgeRadius: 0
 --- !u!1001 &1341263264459058375
 PrefabInstance:

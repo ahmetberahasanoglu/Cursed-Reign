@@ -272,7 +272,7 @@ MonoBehaviour:
   dust: {fileID: 5615672872084226852}
   speed: 6
   airWSpeed: 5
-  Jump: 10.6
+  Jump: 9.4
   fallMultiplier: 3
   coyoteTime: 0.15
   hangTime: 0.02
@@ -548,7 +548,7 @@ MonoBehaviour:
   _health: 50
   isAlive: 1
   isInvincible: 0
-  invincibilityTime: 0.5
+  invincibilityTime: 0.8
 --- !u!114 &7062506576233005106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  knockback: {x: 2, y: 1}
+  knockback: {x: 2, y: 0.5}
 --- !u!60 &539731889434677298
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -818,12 +818,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd011521834aa048923998b500da739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchForce: 20
+  launchForce: 16
   groundCheck: {fileID: 6943901682029977121}
   playerRB: {fileID: 454807262382106257}
   jumpPadLayer:
     serializedVersion: 2
     m_Bits: 16384
+  mushroomAnimator: {fileID: 0}
 --- !u!1001 &5927362900965818142
 PrefabInstance:
   m_ObjectHideFlags: 0

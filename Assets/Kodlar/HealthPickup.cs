@@ -33,9 +33,9 @@ public class HealthPickup : MonoBehaviour
             bool isHealed = damageable.Heal(healthRestore);
             if (isHealed)
             {
-                manager.PlaySFX(manager.healthPickup,volume);
-             
-            }//can doldurduysak alýocak silmediysek almayacak
+               //sadece iyilesince yapýlacak bir ozellik
+            }
+            manager.PlaySFX(manager.healthPickup, volume);
             Destroy(gameObject);
         }
     }

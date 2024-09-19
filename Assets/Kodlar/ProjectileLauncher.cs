@@ -14,6 +14,7 @@ public class ProjectileLauncher : MonoBehaviour
     {
         currentMana = manaBar.GetCurrentMana();
         maxMana = manaBar.GetMaxMana();
+        manaBar=FindObjectOfType<ManaBar>();
     }
     private void FixedUpdate()
     {
