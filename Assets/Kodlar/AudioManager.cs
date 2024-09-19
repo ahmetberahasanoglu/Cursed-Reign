@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class audiomanager : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class audiomanager : MonoBehaviour
 
     [Header("---AUDIO Clip---")]
     // public AudioClip introClip;
-    public AudioClip loopClip;
+    public AudioClip defaultLoopClip;  // Varsayýlan müzik
+    public AudioClip doorSceneClip;    // Door sahnesinde çalacak müzik
+    public AudioClip battleSceneClip;  // Savaþ sahnesinde çalacak müzik
+    public AudioClip shopSceneClip;    // Shop sahnesinde çalacak müzik
     public AudioClip death;
     public AudioClip attack;
     public AudioClip checkPoint;
@@ -65,9 +69,7 @@ public class audiomanager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.clip = loopClip;
-        musicSource.loop = true;
-        musicSource.Play();
+        PlayMusicForCurrentScene();
 
         // Butonlara iþlevleri atama
         musicToggleButton.onClick.AddListener(ToggleMusic);
@@ -90,7 +92,50 @@ public class audiomanager : MonoBehaviour
                 audioMixer.SetFloat("MyExposedParam", 0f);     // Orijinal ses seviyesi
         }
     }
+    private void PlayMusicForCurrentScene()
+    {
+        AudioClip selectedClip = defaultLoopClip;  // Varsayýlan müzik
 
+        // Sahneye göre müzik seçimi
+        if (SceneManager.GetActiveScene().name == "Door1")
+        {
+            selectedClip = doorSceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            selectedClip = battleSceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Door0")
+        {
+            selectedClip = shopSceneClip;
+        }
+        // Baþka sahneler için ekle...
+
+        PlayMusic(selectedClip);
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;  // Sahne yüklendiðinde çaðýrýlýr
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;  // Event kaldýrýlýr
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlayMusicForCurrentScene();  // Yeni sahne yüklendiðinde müziði güncelle
+    }
+    private void PlayMusic(AudioClip clip)
+    {
+        if (musicSource.clip != clip)
+        {
+            musicSource.Stop();  // Þu anki müziði durdur
+            musicSource.clip = clip;
+            musicSource.loop = true;
+            musicSource.Play();  // Yeni müziði çal
+        }
+    }
     public void ToggleMusic()
     {
         isMusicMuted = !isMusicMuted;

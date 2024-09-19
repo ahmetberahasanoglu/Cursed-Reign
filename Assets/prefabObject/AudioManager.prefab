@@ -177,7 +177,10 @@ MonoBehaviour:
   SFXSource: {fileID: 8733284935821307812}
   musicSource: {fileID: 5909641539482402535}
   audioMixer: {fileID: 24100000, guid: c1858788604cc05438abcc1a874e16bb, type: 2}
-  loopClip: {fileID: 8300000, guid: b4d0a3ff92d81ee4e9c858e999f32dde, type: 3}
+  defaultLoopClip: {fileID: 8300000, guid: b4d0a3ff92d81ee4e9c858e999f32dde, type: 3}
+  doorSceneClip: {fileID: 8300000, guid: 717691f197c206a40a5f446a50b3a7ca, type: 3}
+  battleSceneClip: {fileID: 8300000, guid: b4d0a3ff92d81ee4e9c858e999f32dde, type: 3}
+  shopSceneClip: {fileID: 8300000, guid: 717691f197c206a40a5f446a50b3a7ca, type: 3}
   death: {fileID: 8300000, guid: 3af29bc57a477af4b9e58b082773ba9b, type: 3}
   attack: {fileID: 8300000, guid: b0c8ac0dc476e4444b796803c155b29c, type: 3}
   checkPoint: {fileID: 8300000, guid: d50c700a3004f864ab857935fabf7f6a, type: 3}
