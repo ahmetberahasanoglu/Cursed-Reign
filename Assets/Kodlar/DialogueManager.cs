@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     public Image characterIcon;
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
-
+    audiomanager manager;
     private Queue<DialogueLine> lines;
 
     public bool isDialogueActive = false;
@@ -22,7 +22,10 @@ public class DialogueManager : MonoBehaviour
 
     // Shop gösterilip gösterilmeyeceðini belirleyen flag
     public bool isShopShow = false;
-
+    private void Start()
+    {
+        manager = audiomanager.Instance;
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -92,6 +95,7 @@ public class DialogueManager : MonoBehaviour
         if (shopCanvas != null)
         {
             Instantiate(shopCanvas);
+            manager.PlaySFX(manager.shopOpen,1f);
         }
         else
         {

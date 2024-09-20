@@ -245,8 +245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -183.86407}
-  m_SizeDelta: {x: -118.3717, y: -437.4594}
+  m_AnchoredPosition: {x: 0.000015258789, y: -185}
+  m_SizeDelta: {x: -194.6103, y: -499.695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8626138217746321042
 CanvasRenderer:
@@ -276,8 +276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hasar\u0131n\u0131 artt\u0131ran bir k\u0131l\u0131\xE7\nDo\u011Fru yerde
-    kullan"
+  m_text: "Max can de\u011Ferini 10 artt\u0131ran bir z\u0131rh"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
   m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
@@ -1049,7 +1048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -183.86407}
+  m_AnchoredPosition: {x: 0.000015258789, y: -185}
   m_SizeDelta: {x: -118.3717, y: -437.4594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &524264950874948812
@@ -1080,8 +1079,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hasar\u0131n\u0131 artt\u0131ran bir k\u0131l\u0131\xE7\nDo\u011Fru yerde
-    kullan"
+  m_text: "Etkisi b\xFCy\xFCk yeni bir b\xFCy\xFC \xF6\u011Freten bir kitap."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
   m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
@@ -1538,8 +1536,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4803608409789821247}
   m_HandleRect: {fileID: 2950117416145654453}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.5
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2471,8 +2469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -183.86407}
-  m_SizeDelta: {x: -118.3717, y: -437.4594}
+  m_AnchoredPosition: {x: 0.000015258789, y: -185}
+  m_SizeDelta: {x: -194.6103, y: -499.695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7690567677796754299
 CanvasRenderer:
@@ -2502,8 +2500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hasar\u0131n\u0131 artt\u0131ran bir k\u0131l\u0131\xE7\nDo\u011Fru yerde
-    kullan"
+  m_text: "Max Mana de\u011Ferini 1 artt\u0131r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
   m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
@@ -2856,6 +2853,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8718543282398544918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5066104114815794326}
+  - component: {fileID: 2887832139949675222}
+  - component: {fileID: 7447592872480949778}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5066104114815794326
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718543282398544918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 607123166514396125}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -24.6484, y: -22.2631}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2887832139949675222
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718543282398544918}
+  m_CullTransparentMesh: 1
+--- !u!114 &7447592872480949778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718543282398544918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7075472, g: 0.6049195, b: 0.57071024, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -146806611, guid: 624119cd5b92c6249835f017cf9f1115, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &9217669828932221252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,13 +2961,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7420967002357312166}
+  - {fileID: 5066104114815794326}
   m_Father: {fileID: 5688462696843516200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 638, y: 392}
-  m_SizeDelta: {x: 72, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 634, y: 338.2}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!222 &83157333475195742
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2917,14 +2990,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9622642, g: 0.6424802, b: 0.37673548, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -146806611, guid: 624119cd5b92c6249835f017cf9f1115, type: 3}
+  m_Sprite: {fileID: 577175744, guid: 624119cd5b92c6249835f017cf9f1115, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

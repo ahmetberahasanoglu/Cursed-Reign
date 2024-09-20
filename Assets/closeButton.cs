@@ -7,10 +7,10 @@ public class closeButton : MonoBehaviour
     public GameObject scrollView;
     public Animator animator; 
     public GameObject shopCanvas;
-
+    audiomanager manager;
     void Start()
     {
-     
+        manager = audiomanager.Instance;
         if (scrollView != null)
         {
             animator = scrollView.GetComponent<Animator>();
@@ -23,7 +23,8 @@ public class closeButton : MonoBehaviour
         if (animator != null)
         {
             animator.Play("shopanim-1"); 
-            StartCoroutine(CloseShopAfterAnimation()); 
+            StartCoroutine(CloseShopAfterAnimation());
+           // manager.PlaySFX(manager.shopClose, 1f);
         }
         else
         {

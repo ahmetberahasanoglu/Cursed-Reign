@@ -119,42 +119,43 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-   
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
 
         if (IsAlive)
         {
-            IsMoving = moveInput != Vector2.zero;//if(moveInput!=vecor2.zero){Ismoving=true; else false;} kodu gibi
+            IsMoving = moveInput != Vector2.zero; // Karakterin hareket edip etmediðini kontrol et
 
-            if (IsMoving && touchDirection.IsGrounded)
-            {
-                // Eðer ses oynatýlmýyorsa veya baþka bir ses çalýnýyorsa
-                if (!manager.SFXSource.isPlaying || manager.SFXSource.clip != manager.groundTouch)
-                {
-                   
-                    manager.SFXSource.clip = manager.groundTouch;
-                    manager.SFXSource.volume = cvolume;
-                    manager.SFXSource.loop = true; 
-                    manager.SFXSource.Play();
-                }
-            }
-            else
-            {
-                // Karakter durduðunda veya havada olduðunda yürüme sesi durduruluyor
-                if (manager.SFXSource.isPlaying && manager.SFXSource.clip == manager.groundTouch)
-                {
-                    manager.SFXSource.loop = false;
-                    manager.SFXSource.Stop();
-                }
-            }
         }
         else
         {
             IsMoving = false;
         }
     }
+
+    [SerializeField] private float footstepInterval = 0.5f; // Ýki adým sesi arasýndaki süre
+    private float footstepTimer;
+
+    private void HandleFootstepSound()
+    {
+        if (IsMoving && touchDirection.IsGrounded)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                manager.PlaySFX(manager.groundTouch, cvolume);
+                footstepTimer = footstepInterval; // Zamanlayýcýyý yeniden baþlat
+            }
+        }
+        else
+        {
+            footstepTimer = 0f; // Hareket etmezse zamanlayýcý sýfýrlanýr
+        }
+    }
+
+
 
 
     public void OnJump(InputAction.CallbackContext context)
@@ -179,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Zýplama iptalini yönetmek (örneðin, düðmeye kýsa süre basarak zýplamayý iptal etme)
         /*
-       if (context.canceled && rb.velocity.y > 0f)
+       if (context.canceled && rb.velocity.y > 0f)z
        {
            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
        }*/
@@ -229,53 +230,54 @@ public class PlayerMovement : MonoBehaviour
             hangTimeCounter -= Time.fixedDeltaTime;
         }
 
-
         if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive)
-            {
-                rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda yatay hýzý sýfýrla
-            }
+        {
+            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda yatay hýzý sýfýrla
+        }
 
-            // Eðer platformda ise, platformun velocity'si ile oyuncunun pozisyonunu senkronize ederiz
-            if (platformTransform != null)
-            {
-                Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;
-                rb.velocity = new Vector2(rb.velocity.x + platformVelocity.x, rb.velocity.y);
-            }
+        // Eðer platformda ise, platformun velocity'si ile oyuncunun pozisyonunu senkronize ederiz
+        if (platformTransform != null)
+        {
+            Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;
+            rb.velocity = new Vector2(rb.velocity.x + platformVelocity.x, rb.velocity.y);
+        }
 
-            // Yüksek zýplamalarý veya düþüþleri yönetmek için yerçekimi kuvvetini artýrma
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-            }
+        // Yüksek zýplamalarý veya düþüþleri yönetmek için yerçekimi kuvvetini artýrma
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
 
-            animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
+        animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
 
-            if (IsAlive)
+        if (IsAlive)
+        {
+            if (moveInput.x > 0)
             {
-                if (moveInput.x > 0)
+                if (lastXDirection <= 0) // Yön deðiþtiriyorsa
                 {
-                    if (lastXDirection <= 0) // Yön deðiþtiriyorsa
-                    {
-                        transform.localScale = new Vector2(3, 3);
-                        PlayDust();
-                    }
-                    lastXDirection = 1;
+                    transform.localScale = new Vector2(3, 3);
+                    PlayDust();
                 }
-                else if (moveInput.x < 0)
-                {
-                    if (lastXDirection >= 0) // Yön deðiþtiriyorsa
-                    {
-                        transform.localScale = new Vector2(-3, 3);
-                        PlayDust();
-                    }
-                    lastXDirection = -1;
-                }
+                lastXDirection = 1;
             }
-        
+            else if (moveInput.x < 0)
+            {
+                if (lastXDirection >= 0) // Yön deðiþtiriyorsa
+                {
+                    transform.localScale = new Vector2(-3, 3);
+                    PlayDust();
+                }
+                lastXDirection = -1;
+            }
+
+            // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
+            HandleFootstepSound();
+        }
 
 
 

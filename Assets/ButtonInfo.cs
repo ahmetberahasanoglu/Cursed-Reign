@@ -9,7 +9,9 @@ public class ButtonInfo : MonoBehaviour
     public TMP_Text descriptionText;
     public TMP_Text durumText;
     public Button purchaseButton;
+    audiomanager manager;
     public int itemPrice;
+    [SerializeField] private float volume = 0.5f;
 
     void Start()
     {
@@ -18,7 +20,9 @@ public class ButtonInfo : MonoBehaviour
 
         // Satýn alma butonuna týklama iþlemi ekle
         purchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
+        manager = audiomanager.Instance;
     }
+
 
    public void OnPurchaseButtonClicked()
     {
@@ -29,10 +33,12 @@ public class ButtonInfo : MonoBehaviour
            
             durumText.text=("Ürün alýndý: " + descriptionText.text);
             purchaseButton.interactable = false; // Ürün alýndýðýnda butonu devre dýþý býrak
+            manager.PlaySFX(manager.BuySell, volume);
         }
         else
         {
             durumText.text = "Yeterli skor yok!";
+            manager.PlaySFX(manager.denied, volume);
         }
     }
 

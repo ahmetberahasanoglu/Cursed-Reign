@@ -199,12 +199,12 @@ MonoBehaviour:
   enemyTakeHit: {fileID: 8300000, guid: d1a3e9a4dcce4fc4d949910a1d95eaf2, type: 3}
   bite: {fileID: 8300000, guid: 765856d13538ae041b08cdfafd00fd8c, type: 3}
   flee: {fileID: 8300000, guid: 25284269a14303a40bdea575d409a66a, type: 3}
-  Hover: {fileID: 8300000, guid: d8ae38d918bd4f84cade4c7684c7cb79, type: 3}
   Confirm: {fileID: 8300000, guid: 483b8e8d77ef1164ea63748c73440f95, type: 3}
   BuySell: {fileID: 8300000, guid: 29e5843194d7675498a6bf6149265036, type: 3}
   Pause: {fileID: 8300000, guid: e30f390ddce431e4a9ffd46a1d899908, type: 3}
   unPause: {fileID: 8300000, guid: ab5d4f68923a4b44f817e4fd1b95a33d, type: 3}
   denied: {fileID: 8300000, guid: 30d8d8c33b77ebd4da7e8769a7b9ec7c, type: 3}
+  shopOpen: {fileID: 8300000, guid: 85ffd555fd3d43541902a6f03315202a, type: 3}
   doorOpen: {fileID: 8300000, guid: 7a5dc4d35c09a224daf7ef2da18035a9, type: 3}
   timesUP: {fileID: 8300000, guid: bcd430b630b2e2749b161f27899f6920, type: 3}
   musicToggleButton: {fileID: 0}

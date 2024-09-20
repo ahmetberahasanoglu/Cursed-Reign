@@ -6,19 +6,23 @@ public class RespawnScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject respawnPoint;
-    public int healthPenalty = 10;  // Yeniden doðma sýrasýnda kaybedilecek can miktarý
-    public float respawnDelay = 1f; // Yeniden doðma gecikmesi (saniye cinsinden)
+    public int healthPenalty = 10;  
+    public float respawnDelay = 1f; 
+audiomanager manager;
+  
+    public float soundVolume = 1f;  
 
-   
-    public AudioClip respawnSound;   // Yeniden doðma sesi
-    public float soundVolume = 1f;   // Sesin yüksekliði
-
-    private Damageable damageable; // Oyuncunun can sistemi
+    private Damageable damageable; 
     private bool isRespawning = false; // Yeniden doðma iþlemi devam ediyor mu?
 
     private void Awake()
     {
         damageable = player.GetComponent<Damageable>();
+    }
+    private void Start()
+    {
+        manager = audiomanager.Instance;
+     
     }
 
     private void FixedUpdate()
@@ -41,7 +45,7 @@ public class RespawnScript : MonoBehaviour
     {
         isRespawning = true;
 
-        // Yeniden doðmadan önce belirli bir süre bekleyin
+  
         yield return new WaitForSeconds(respawnDelay);
 
         // Can azaltma iþlemi
@@ -49,27 +53,21 @@ public class RespawnScript : MonoBehaviour
         {
             if (damageable.IsAlive)
             {
-                // Oyuncu henüz ölmemiþse canýný azalt
+                
                 damageable.Health -= healthPenalty;
             }
             else
             {
-                // Oyuncu ölmüþse canýný tamamen yenile
+                
                 damageable.Health = damageable.MaxHealth;
                 damageable.IsAlive = true;
             }
         }
 
-        // Oyuncunun konumunu yeniden doðma noktasýna taþý
         player.transform.position = respawnPoint.transform.position;
 
-       
 
-        // Ses efekti çal
-        if (respawnSound != null)
-        {
-            AudioSource.PlayClipAtPoint(respawnSound, player.transform.position, soundVolume);
-        }
+        manager.PlaySFX(manager.checkPoint, soundVolume);
 
         isRespawning = false;
     }

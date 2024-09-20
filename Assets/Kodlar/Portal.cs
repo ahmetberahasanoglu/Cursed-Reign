@@ -7,10 +7,11 @@ public class Portal : MonoBehaviour
     private HashSet<GameObject> portalObjects = new HashSet<GameObject>();
     [SerializeField] private Transform destination;
     audiomanager manager;
-    [SerializeField] float volume = 0.5f;
-    [SerializeField] private AudioSource portalAudioSource;
+    [SerializeField] float volume = 0.5f; // SFX volume
+
     private void Start()
     {
+        // AudioManager instance kontrolü
         manager = audiomanager.Instance;
         if (manager == null)
         {
@@ -20,52 +21,56 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Ayný nesne tekrar portaldan geçmemesi için kontrol
         if (portalObjects.Contains(collision.gameObject))
         {
             return;
         }
 
-       
+        // Mermiyi portaldan geçirme
         if (collision.CompareTag("Projectile"))
         {
             TeleportProjectile(collision);
             return;
         }
 
-        // Diðer nesneler için portal 
+        // Diðer nesneler için portal iþlemi
         if (destination.TryGetComponent(out Portal destinationPortal))
         {
             destinationPortal.portalObjects.Add(collision.gameObject);
         }
 
+        // Nesnenin pozisyonunu hedef portala taþýma
         collision.transform.position = destination.position;
-        if (portalAudioSource != null)
+
+        // AudioManager üzerinden portal sesini oynatma
+        if (manager != null)
         {
-            portalAudioSource.PlayOneShot(manager.portal, volume);
+            manager.PlaySFX(manager.portal, volume);
         }
         else
         {
-            Debug.LogWarning("Portal AudioSource eksik, ses çalýnamadý.");
+            Debug.LogWarning("AudioManager instance eksik, ses çalýnamadý.");
         }
     }
 
     private void TeleportProjectile(Collider2D collision)
     {
-        // Projeyi portaldan geçiriyoruz
+        // Mermiyi portaldan geçiriyoruz
         Projectile projectile = collision.GetComponent<Projectile>();
         if (projectile != null)
         {
             Vector2 entryVelocity = projectile.GetComponent<Rigidbody2D>().velocity;
 
-            // Portaldan geçtiði anki pozisyonunu hedef portala taþý
+            // Merminin pozisyonunu hedef portala taþýma
             collision.transform.position = destination.position;
 
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
 
-            // Projeye yönünü ve hýzýný koruyarak yeniden hýz veriyoruz
+            // Merminin hýzýný ve yönünü koruyarak yeniden hýzlandýrma
             rb.velocity = entryVelocity;
 
-            // Çift portaldan geçmesini önlemek için hedef portala ekliyoruz
+            // Çift portaldan geçmesini önlemek için hedef portala ekleme
             if (destination.TryGetComponent(out Portal destinationPortal))
             {
                 destinationPortal.portalObjects.Add(collision.gameObject);

@@ -36,12 +36,12 @@ public class audiomanager : MonoBehaviour
     public AudioClip enemyTakeHit;
     public AudioClip bite;
     public AudioClip flee;
-    public AudioClip Hover;
     public AudioClip Confirm;
     public AudioClip BuySell;
     public AudioClip Pause;
     public AudioClip unPause;
     public AudioClip denied;
+    public AudioClip shopOpen;
     public AudioClip doorOpen;
     public AudioClip timesUP;
 
