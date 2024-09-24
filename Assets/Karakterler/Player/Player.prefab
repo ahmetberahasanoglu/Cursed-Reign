@@ -198,7 +198,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -276,10 +276,11 @@ MonoBehaviour:
   fallMultiplier: 3
   coyoteTime: 0.15
   hangTime: 0.02
-  avolume: 0.13
-  bvolume: 1
-  cvolume: 0.5
+  avolume: 0.06
+  bvolume: 0.5
+  cvolume: 0.4
   isMoving: 0
+  footstepInterval: 0.5
 --- !u!114 &8485705082576621271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +826,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   mushroomAnimator: {fileID: 0}
+  volume: 0
 --- !u!1001 &5927362900965818142
 PrefabInstance:
   m_ObjectHideFlags: 0

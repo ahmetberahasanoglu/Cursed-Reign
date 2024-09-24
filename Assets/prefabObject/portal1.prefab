@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516576067202136395}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -166.61491, y: -806.1126, z: 0.8951742}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,10 +74,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1207755119, guid: e75059cc551ec5d4484de0ea6d967902, type: 3}
+  m_SortingLayerID: 914726555
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 148699296, guid: e02360a4c0ba5074c8c012335a9b49a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,7 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
   volume: 0.5
-  portalAudioSource: {fileID: 3599444204224646040}
 --- !u!95 &3986153998824031943
 Animator:
   serializedVersion: 5
@@ -158,7 +157,7 @@ Animator:
   m_GameObject: {fileID: 516576067202136395}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7dc03043bc4802f4887157ef9f63278c, type: 2}
+  m_Controller: {fileID: 9100000, guid: e225b21cbcb1d24468d0197b0c0a2780, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

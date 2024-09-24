@@ -193,6 +193,8 @@ MonoBehaviour:
   sandikCrack: {fileID: 8300000, guid: eeaffcd77dd2a1845b1f076dc6822c78, type: 3}
   barrelCrack: {fileID: 8300000, guid: 7acd30a976da9984f9ed92f1d1506d7d, type: 3}
   skeletonDeath: {fileID: 8300000, guid: 3af29bc57a477af4b9e58b082773ba9b, type: 3}
+  skeletonWalk: {fileID: 8300000, guid: 58676a5d0d557e74babc882d8584b690, type: 3}
+  bounceSound: {fileID: 8300000, guid: e802ca552331979459cff320e048f7a7, type: 3}
   pjump: {fileID: 8300000, guid: 119784766a451c0479bf1fa70fc507a3, type: 3}
   coinPickup: {fileID: 8300000, guid: cdfd7573679e97446ac7420cedf7e108, type: 3}
   pTakeHit: {fileID: 8300000, guid: 93f0d3ac8945e3e4a98d13da86a702f0, type: 3}

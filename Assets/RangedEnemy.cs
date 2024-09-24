@@ -17,6 +17,8 @@ public class RangedEnemy : MonoBehaviour
     public GameObject rangedBaslangic; // Projectile baþlangýç noktasý
     public GameObject projectilePrefab; // Eklenen projectile prefab'ý
     public float attackCooldownTime = 2f; // Saldýrý için bekleme süresi
+    public float footstepInterval = 0.3f; // Adým aralýðý süresi
+    public float cvolume = 0.5f; // Footstep ses seviyesi
     #endregion
 
     #region Privates
@@ -28,6 +30,8 @@ public class RangedEnemy : MonoBehaviour
     private bool inArea = false;
     private bool isChasing = false;
     private float lastAttackTime; // Son saldýrý zamaný
+    private float footstepTimer; // Adým zamanlayýcýsý
+     audiomanager manager;
     #endregion
 
     private void Awake()
@@ -37,6 +41,12 @@ public class RangedEnemy : MonoBehaviour
         touchDirection = GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
         healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
+
+        
+    }
+    private void Start()
+    {
+        manager = audiomanager.Instance;
     }
 
     private void Update()
@@ -63,14 +73,43 @@ public class RangedEnemy : MonoBehaviour
 
         healthBar.SetHealth(damageable.Health, damageable.MaxHealth);
 
+        HandleFootstepSound(); // Ayak sesi kontrolü
+
         // Hedef varsa ve saldýrý süresi dolmuþsa, saldýr
         if (HasTarget && Time.time - lastAttackTime > attackCooldownTime)
         {
             lastAttackTime = Time.time; // Son saldýrý zamanýný güncelle
-           
         }
     }
 
+    private void HandleFootstepSound()
+    {
+        // Eðer hareket ediyorsa ve yere temas ediyorsa adým sesi çýkar
+        if (CanMove)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                // Ses çalma
+                manager.PlaySFX(manager.skeletonWalk, cvolume);
+                footstepTimer = footstepInterval; // Zamanlayýcýyý sýfýrla
+                Debug.Log("ses calýndi");
+            }
+
+        }
+        else
+        {
+            footstepTimer = footstepInterval; // Hareket etmiyorsa zamanlayýcý sýfýrlanýr
+        }
+    }
+
+        private bool IsMoving()
+    {
+        // Karakterin hareket edip etmediðini kontrol et
+        return Mathf.Abs(rb.velocity.x) > 0.1f;
+    }
+
+  
 
     public void FireProjectile()
     {
@@ -138,7 +177,6 @@ public class RangedEnemy : MonoBehaviour
         {
             Move(SelectTarget());
         }
-
     }
 
     public float treshold = 2f;
@@ -156,7 +194,6 @@ public class RangedEnemy : MonoBehaviour
             {
                 anim.SetBool("canMove", true);
 
-
                 if (distanceToTarget > minChaseDistance && distanceToTarget > treshold)
                 {
                     // Hedef karakterin solunda mý saðýnda mý onu kontrol et
@@ -167,10 +204,8 @@ public class RangedEnemy : MonoBehaviour
                     }
                 }
 
-
                 if (distanceToTarget > minChaseDistance)
                 {
-
                     Vector2 newPosition = new Vector2(targetPosition.x, transform.position.y);
                     transform.position = Vector2.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
                 }
@@ -186,8 +221,6 @@ public class RangedEnemy : MonoBehaviour
             anim.SetBool("canMove", false);
         }
     }
-
-
 
     public void OnHit(int damage, Vector2 knockback)
     {
@@ -235,6 +268,4 @@ public class RangedEnemy : MonoBehaviour
             return RightLimit;
         }
     }
-
-
 }

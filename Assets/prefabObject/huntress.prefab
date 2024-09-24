@@ -189,7 +189,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -400,6 +400,8 @@ MonoBehaviour:
   rangedBaslangic: {fileID: 1977888705751761201}
   projectilePrefab: {fileID: 1063353120155807958, guid: f8ccc6d9566e3b9458ee110942c86eaa, type: 3}
   attackCooldownTime: 0.5
+  footstepInterval: 0.5
+  cvolume: 0.5
   treshold: 0.5
   minChaseDistance: 1
 --- !u!1 &4929903545377498779

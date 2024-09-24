@@ -7,7 +7,12 @@ public class FootCheck : MonoBehaviour
     public Rigidbody2D playerRB;
     public LayerMask jumpPadLayer;
     public Animator mushroomAnimator; // Mantarýn animator bileþeni
-
+    [SerializeField] private float volume;
+    audiomanager manager;
+    private void Start()
+    {
+        manager = audiomanager.Instance;
+    }
     private void FixedUpdate()
     {
         // Eðer mantarýn üzerine basýldýysa zýplama yapýlýr
@@ -22,6 +27,7 @@ public class FootCheck : MonoBehaviour
             if (mushroomAnimator != null)
             {
                 mushroomAnimator.SetTrigger("bounceTrigger");
+                manager.PlaySFX(manager.bounceSound, volume);
             }
         }
     }

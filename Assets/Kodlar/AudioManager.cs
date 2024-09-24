@@ -30,6 +30,8 @@ public class audiomanager : MonoBehaviour
     public AudioClip sandikCrack;
     public AudioClip barrelCrack;
     public AudioClip skeletonDeath;
+    public AudioClip skeletonWalk;
+    public AudioClip bounceSound;
     public AudioClip pjump;
     public AudioClip coinPickup;
     public AudioClip pTakeHit;
