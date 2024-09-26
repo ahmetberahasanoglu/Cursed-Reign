@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float bvolume = 0.5f;
     [SerializeField] float cvolume = 0.5f;
     audiomanager manager;
+
+    public static PlayerMovement instance;
     public float CurrentMoveSpeed
     {
         get
@@ -107,6 +109,15 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         touchDirection= GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
     }
 
@@ -187,14 +198,26 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+    private bool isAttacking = false; //yeni
+    private float attackTimeout = 0.6f; 
+    private float attackTimer;
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !isAttacking) // ztn saldýrma animasyonu oynamýyorsa
         {
+            isAttacking = true;
             animator.SetTrigger(AnimStrings.attackTrigger);
             manager.PlaySFX(manager.attack, avolume);
+            attackTimer = attackTimeout; 
         }
     }
+
+    //yeni
+    public void OnAttackAnimationFinished()
+    {
+        isAttacking = false;
+    }
+
 
     public void OnFire(InputAction.CallbackContext context)
     {
@@ -214,6 +237,14 @@ public class PlayerMovement : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (isAttacking)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0f)
+            {
+                OnAttackAnimationFinished(); // Saldýrý zamanlayýcý süresi doldu
+            }
+        }
         if (touchDirection.IsGrounded)
         {
             coyoteTimeCounter = coyoteTime;
@@ -223,7 +254,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter -= Time.fixedDeltaTime;
         }
 
-        // Hang time süresi boyunca hýz çok düþük tutulur
+      
         if (hangTimeCounter > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.9f);
@@ -236,10 +267,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda yatay hýzý sýfýrla
+            rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda hareket edemiycez. Ýleride animasyonu da kapatabilirim
         }
 
-        // Eðer platformda ise, platformun velocity'si ile oyuncunun pozisyonunu senkronize ederiz
+        
         if (platformTransform != null)
         {
             Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;

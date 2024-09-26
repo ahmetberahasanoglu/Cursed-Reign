@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
@@ -14,26 +13,34 @@ public class gameManager : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] ManaBar manaBar;
     [SerializeField] Button pauseButton;
-    [SerializeField] Button resumeButton; // Devam butonu için
+    [SerializeField] Button resumeButton;
+    Timer timer;
     public GameObject pauseMenuUI;
     public static bool isPaused = false;
+   
+    public float timeElapsed = 0f;
+    public bool timerRunning = true;
+    public TMP_Text timerText;
+    public float timerCurrency = 0f;  // Holds time-based currency
 
     private void OnEnable()
     {
         ActionsListener.OnHourglassCollected += HourglassCollected;
         ActionsListener.OnCoinCollected += CoinCollected;
-        SceneManager.sceneLoaded += OnSceneLoaded;  // Sahne yüklendiðinde çaðýrýlýr
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
         ActionsListener.OnHourglassCollected -= HourglassCollected;
         ActionsListener.OnCoinCollected -= CoinCollected;
-        SceneManager.sceneLoaded -= OnSceneLoaded;  // Event'ý kaldýr
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Awake()
     {
+       
+        timer =GetComponentInChildren<Timer>();
         Score = 0;
         ScoreText.text = string.Format(ScoreFormat, Score);
 
@@ -53,25 +60,49 @@ public class gameManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
-    // Sahne yüklendiðinde shop'un gösterilip gösterilmeyeceðini kontrol eder
+    private void Update()
+    {
+        if (timerRunning)
+        {
+            timeElapsed += Time.deltaTime;
+            DisplayTime(timeElapsed);
+        }
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    // Called when a new scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (DialogueManager.Instance != null)
+        MovePlayerToSpawn();
+        if (scene.name.Contains("Door"))  
         {
-            // Sahne "ShopScene" ise shop gösterimi aktif, deðilse pasif
-            if (scene.name == "Door1")
+            timerRunning = false;
+            timerCurrency = timeElapsed;  // zamaný para olarak aldýk
+            timer.StopTimer();
+            timeElapsed = 0f;  // doora girince timer'I sýfýrla
+                               
+
+            if (DialogueManager.Instance != null)
             {
-                DialogueManager.Instance.UpdateShopVisibility(true);  // Shop açýlýr
-            }
-            else
-            {
-                DialogueManager.Instance.UpdateShopVisibility(false); // Shop açýlmaz
+                DialogueManager.Instance.UpdateShopVisibility(true);  
             }
         }
         else
         {
-            Debug.LogError("DialogueManager instance bulunamadý.");
+            timerRunning = true;
+            if (DialogueManager.Instance != null)
+            {
+                DialogueManager.Instance.UpdateShopVisibility(false); 
+            }
         }
+
+     
     }
 
     public ManaBar GetManaBar()
@@ -95,7 +126,7 @@ public class gameManager : MonoBehaviour
     {
         StartCoroutine(LoadLevel());
     }
-
+    
     IEnumerator LoadLevel()
     {
         animator.SetTrigger("end");
@@ -138,5 +169,20 @@ public class gameManager : MonoBehaviour
     public void OnQuitButtonPressed()
     {
         Application.Quit();
+    }
+    private void MovePlayerToSpawn()
+    {
+
+        string sceneName = SceneManager.GetActiveScene().name;
+
+       if (sceneName == "Door1")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(-8, 1);
+        }
+     
+        else if (sceneName == "Door2")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(5, 3); 
+        }
     }
 }

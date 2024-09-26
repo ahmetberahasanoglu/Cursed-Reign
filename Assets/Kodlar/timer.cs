@@ -1,28 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float timeElapsed = 0; // Geçen zamaný takip eder
+    public float timeElapsed = 0;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
-    public Color normalColor = Color.white; // Normal renk (Beyaz)
-    public Color warningColor = Color.red; // Uyarý rengi (Kýrmýzý)
-    public float warningThreshold = 120f; // Zamanýn kýrmýzýya dönmeye baþladýðý eþik (2 dakika)
+    public Color normalColor = Color.white;
+    public Color warningColor = Color.red;
+    public float warningThreshold = 120f;
     audiomanager manager;
     bool audioRunned = false;
     [SerializeField] float volume = 0.5f;
 
     void Start()
     {
-        timeIsRunning = true;
-        timeText.color = normalColor; // Ýlk baþta beyaz rengiyle baþla
+        ResetTimer();
         manager = audiomanager.Instance;
-        if(manager==null)
+        if (manager == null)
         {
-            Debug.Log("timer hata instance");
+            Debug.Log("Timer: AudioManager instance not found.");
         }
     }
 
@@ -30,11 +28,10 @@ public class Timer : MonoBehaviour
     {
         if (timeIsRunning)
         {
-            timeElapsed += Time.deltaTime; // Geçen zamaný artýr
+            timeElapsed += Time.deltaTime;
             DisplayTime(timeElapsed);
-            UpdateTextColor(timeElapsed); // Zamaný gösterirken rengi güncelle
+            UpdateTextColor(timeElapsed);
         }
-        
     }
 
     void DisplayTime(float timeToDisplay)
@@ -48,7 +45,7 @@ public class Timer : MonoBehaviour
     {
         if (timeToDisplay >= warningThreshold)
         {
-            timeText.color = warningColor; // Kýrmýzý renk
+            timeText.color = warningColor;
             if (!audioRunned)
             {
                 manager.PlaySFX(manager.timesUP, volume);
@@ -57,7 +54,28 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            timeText.color = normalColor; // Normal renk (Beyaz)
+            timeText.color = normalColor;
         }
+    }
+
+   
+    public void StopTimer()
+    {
+        timeIsRunning = false;
+    }
+
+
+    public void ResetTimer()
+    {
+        timeElapsed = 0;
+        timeIsRunning = true;
+        audioRunned = false;
+        timeText.color = normalColor;
+    }
+
+
+    public float GetTimeAsCurrency()
+    {
+        return timeElapsed;
     }
 }

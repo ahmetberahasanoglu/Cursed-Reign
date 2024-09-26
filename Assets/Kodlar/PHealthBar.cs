@@ -76,7 +76,7 @@ public class PHealthBar : MonoBehaviour
         return currentHealth / maxHealth;
     }
 
-    private void UpdateHealthText(int currentHealth, int maxHealth)
+    public void UpdateHealthText(int currentHealth, int maxHealth)
     {
         healthText.text = string.Format(healthFormat, currentHealth, maxHealth);
     }

@@ -60,14 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8039216, g: 0.7607843, b: 0.7607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf5b70cb30bb4214bb42d5e16513fa87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 019f3c5f4c835fb4bbd9f920ee3c4797, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Max can de\u011Ferini 10 artt\u0131ran bir z\u0131rh"
+  m_text: "Max can de\u011Ferini 20 art\u0131ran bir z\u0131rh"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
   m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
@@ -543,19 +543,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 946362074959204453}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3711909995685637908}
-        m_TargetAssemblyTypeName: ButtonInfo, Assembly-CSharp
-        m_MethodName: OnPurchaseButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3711909995685637908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +560,13 @@ MonoBehaviour:
   descriptionText: {fileID: 8310441884780709957}
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 7528656411694676141}
+  skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
   itemPrice: 50
+  volume: 0.3
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  healthIncreaseAmount: 20
+  manaIncreaseAmount: 1
 --- !u!1 &2614911921295846510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a43f2f4d524996d4f8ae8a95c5e14dc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e06e6e993a4460c4ab48a076f75fd1a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1262,7 +1256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000011920929, y: 0}
+  m_AnchoredPosition: {x: -0.00002670288, y: 0}
   m_SizeDelta: {x: 0, y: 1083}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4041390099775200021
@@ -1742,19 +1736,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7886767317738959467}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3675073264690719048}
-        m_TargetAssemblyTypeName: ButtonInfo, Assembly-CSharp
-        m_MethodName: OnPurchaseButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3675073264690719048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1771,7 +1753,13 @@ MonoBehaviour:
   descriptionText: {fileID: 6132053897666485414}
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 3166886403781797327}
+  skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
   itemPrice: 50
+  volume: 0.3
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  healthIncreaseAmount: 20
+  manaIncreaseAmount: 1
 --- !u!1 &5792329530194635400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,19 +2151,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8497906436398515980}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3899996396156207527}
-        m_TargetAssemblyTypeName: ButtonInfo, Assembly-CSharp
-        m_MethodName: OnPurchaseButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3899996396156207527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,7 +2168,13 @@ MonoBehaviour:
   descriptionText: {fileID: 3942187813963013447}
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 3743646165023249816}
-  itemPrice: 50
+  skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
+  itemPrice: 120
+  volume: 0.3
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  healthIncreaseAmount: 20
+  manaIncreaseAmount: 1
 --- !u!1 &6681868358567289903
 GameObject:
   m_ObjectHideFlags: 0
