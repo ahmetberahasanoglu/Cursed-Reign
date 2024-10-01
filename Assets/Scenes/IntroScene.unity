@@ -224,9 +224,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 485.8, y: -208.24}
-  m_SizeDelta: {x: 405, y: 405}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 109, y: -179}
+  m_SizeDelta: {x: 202, y: 202}
+  m_Pivot: {x: 0.49999985, y: 0.5}
 --- !u!114 &219523076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 019f3c5f4c835fb4bbd9f920ee3c4797, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74266b39ba18d454d9960d019002eb2e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a43f2f4d524996d4f8ae8a95c5e14dc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2068eba6afc379445bade3cc28ec4c4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -337,8 +337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.20239, y: -275.74}
-  m_SizeDelta: {x: 405, y: 405}
+  m_AnchoredPosition: {x: 143, y: -154}
+  m_SizeDelta: {x: 270, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &412836902
 GameObject:
@@ -351,14 +351,13 @@ GameObject:
   - component: {fileID: 412836903}
   - component: {fileID: 412836905}
   - component: {fileID: 412836904}
-  - component: {fileID: 412836906}
   m_Layer: 5
   m_Name: ilk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &412836903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -375,8 +374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.9569, y: -63.881622}
-  m_SizeDelta: {x: 1251.9644, y: 768.4682}
+  m_AnchoredPosition: {x: 25.4224, y: -140.6865}
+  m_SizeDelta: {x: 516.9691, y: 715.0952}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412836904
 MonoBehaviour:
@@ -401,20 +400,21 @@ MonoBehaviour:
   m_text: "Sarduk ve Zevaros ad\u0131nda, diyara h\xFCkmetmek i\xE7in m\xFCcadele
     eden 2 krall\u0131k vard\u0131. Y\u0131llar s\xFCren amans\u0131z muharebeler
     sonucunda,  Sarduk Krall\u0131\u011F\u0131'\u0131 t\xFCkenmi\u015F, umutsuzluk
-    \xFClkeye h\xFCkmetmi\u015Fti. Kral ve vezirleri, kadim yasalar taraf\u0131ndan
-    yasaklanm\u0131\u015F olan kara b\xFCy\xFCy\xFC kullanma konusunu hararetle tart\u0131\u015F\u0131yorlard\u0131.
-    Kral, son karar\u0131 verdi: Kara b\xFCy\xFC asla kullan\u0131lmayacakt\u0131;
-    sava\u015F, adil bir \u015Fekilde sonu\xE7lanacakt\u0131.\n"
+    \xFClkeye veba gibi \xE7\xF6km\xFC\u015Ft\xFC. Kral ve lordlar\u0131, kadim yasalar
+    taraf\u0131ndan yasaklanm\u0131\u015F olan kara b\xFCy\xFCy\xFC kullanma konusunu
+    hararetle tart\u0131\u015F\u0131yorlard\u0131. Kral, son karar\u0131 verdi: Kara
+    b\xFCy\xFC asla kullan\u0131lmayacakt\u0131; sava\u015F, adil bir \u015Fekilde
+    sonu\xE7lanacakt\u0131.\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
-  m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a193dcdcffedde246a88661592326a94, type: 2}
+  m_sharedMaterial: {fileID: -3074396740168412939, guid: a193dcdcffedde246a88661592326a94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4281150765
+  m_fontColor: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -431,8 +431,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 25
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -481,27 +481,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412836902}
   m_CullTransparentMesh: 1
---- !u!95 &412836906
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412836902}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 01cf693affba376489f575b3da963de8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &485125540
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &999571272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,22 +564,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ancak vezir, sava\u015F\u0131n art\u0131k geleneksel yollarla kazan\u0131lamayaca\u011F\u0131na
-    inan\u0131yordu. Ona inanan sad\u0131k askerleriyle birlikte krala ihanet etti.
-    Kral taht\u0131ndan indirildi ve kara b\xFCy\xFC uyguland\u0131. Sarduk Krall\u0131\u011F\u0131,
-    sava\u015Fta ezici bir zafer kazand\u0131. Fakat g\xFCnler ge\xE7tik\xE7e, kara
-    b\xFCy\xFCn\xFCn korkun\xE7 bedeli ortaya \xE7\u0131kt\u0131; halk, insanl\u0131\u011F\u0131n\u0131
-    kaybediyordu.\r\n"
+  m_text: "Ancak lejyon kumandan\u0131, sava\u015F\u0131n art\u0131k geleneksel yollarla
+    kazan\u0131lamayaca\u011F\u0131na inan\u0131yordu. Ona inanan sad\u0131k askerleriyle
+    birlikte krala ihanet etti. Kral taht\u0131ndan indirildi ve kara b\xFCy\xFC
+    uyguland\u0131. Sarduk Krall\u0131\u011F\u0131, sava\u015Fta ezici bir zafer
+    kazand\u0131. Fakat g\xFCnler ge\xE7tik\xE7e, kara b\xFCy\xFCn\xFCn korkun\xE7
+    bedeli ortaya \xE7\u0131kt\u0131; halk, insanl\u0131\u011F\u0131n\u0131 kaybediyordu.\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
-  m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a193dcdcffedde246a88661592326a94, type: 2}
+  m_sharedMaterial: {fileID: -3074396740168412939, guid: a193dcdcffedde246a88661592326a94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4281150765
+  m_fontColor: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -617,8 +596,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -629,7 +608,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 25
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -683,8 +662,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.9569, y: -63.881622}
-  m_SizeDelta: {x: 1251.9647, y: 768.4682}
+  m_AnchoredPosition: {x: 25.4224, y: -140.6865}
+  m_SizeDelta: {x: 516.9691, y: 715.0952}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &999571275
 Animator:
@@ -746,24 +725,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Art\u0131k her \u015Fey i\xE7in \xE7ok ge\xE7ti. Yeni kral, son bir umutla
-    zindana giderek eski kraldan bir \xE7\xF6z\xFCm istemeye gitti, ancak eski kral
-    orada de\u011Fildi. Eski kral, sefalet i\xE7inde ge\xE7en g\xFCnlerin ard\u0131ndan
-    i\xE7ini umutla dolduran gizemli bir ses duydu. Lanet, Sarduk krall\u0131\u011F\u0131n\u0131
-    saran da\u011Flar\u0131n yamac\u0131ndayd\u0131. Laneti ancak ay tutulmas\u0131nda
-    yok edilebilirdi. Bu y\xFCzden \xE7ok az vakti vard\u0131. Kral yola \xE7\u0131kt\u0131.
-    Kendi halk\u0131n\u0131n da dahil oldu\u011Fu u\u011Fursuz engelleri a\u015Fmas\u0131
-    gerekecekti.  "
+  m_text: "Art\u0131k her \u015Fey i\xE7in \xE7ok ge\xE7ti. Eski kral, sefalet i\xE7inde
+    ge\xE7en g\xFCnlerin ard\u0131ndan i\xE7ini umutla dolduran gizemli bir f\u0131s\u0131lt\u0131
+    duydu. Ses, lanetin Sarduk krall\u0131\u011F\u0131n\u0131 saran da\u011Flar\u0131n
+    yamac\u0131nda oldugunu s\xF6yl\xFCyordu. Laneti ancak ay tutulmas\u0131nda yok
+    edilebilirdi. Kral yola \xE7\u0131kt\u0131. Kendi halk\u0131n\u0131n da dahil
+    oldu\u011Fu u\u011Fursuz engelleri a\u015Fmas\u0131 gerekecekti..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
-  m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a193dcdcffedde246a88661592326a94, type: 2}
+  m_sharedMaterial: {fileID: -3074396740168412939, guid: a193dcdcffedde246a88661592326a94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4281150765
+  m_fontColor: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -780,8 +757,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -792,7 +769,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 25
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -846,8 +823,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.9569, y: -63.881622}
-  m_SizeDelta: {x: 1251.9647, y: 768.4682}
+  m_AnchoredPosition: {x: 25.4224, y: -140.6865}
+  m_SizeDelta: {x: 516.9691, y: 715.0952}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1828037820
 Animator:
@@ -1060,8 +1037,6 @@ PlayableDirector:
     value: {fileID: 2136427933}
   - key: {fileID: -4571952330767298132, guid: d159ddd52a0767647b5502bda3e11c10, type: 2}
     value: {fileID: 2136427929}
-  - key: {fileID: -2516587941039062029, guid: d159ddd52a0767647b5502bda3e11c10, type: 2}
-    value: {fileID: 412836906}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1897865348
@@ -1191,7 +1166,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf5b70cb30bb4214bb42d5e16513fa87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 136e6e89ffcb02846b77e1856735c027, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1225,8 +1200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -485.39, y: -208.24}
-  m_SizeDelta: {x: 405, y: 405}
+  m_AnchoredPosition: {x: -98.062, y: -179}
+  m_SizeDelta: {x: 270, y: 270}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!1 &2136427929
 GameObject:
@@ -1260,14 +1235,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00e6086ec3c90d743b81ce2ddb957383, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b9a223f1e88de744a62528452e99e5a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1301,8 +1276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -21}
-  m_SizeDelta: {x: 1920, y: 501.1985}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2136427933
 Animator:
