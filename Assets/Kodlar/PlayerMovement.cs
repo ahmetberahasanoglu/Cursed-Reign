@@ -4,6 +4,7 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(TouchDirection), typeof(Damageable) )]
 public class PlayerMovement : MonoBehaviour
@@ -32,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
     audiomanager manager;
 
     public static PlayerMovement instance;
+
+    public Button attackB;
+    public Button JumpB;
+    public Button fireB;
+    public Button leftM;
+    public Button rightM;   
     public float CurrentMoveSpeed
     {
         get
@@ -128,6 +135,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("AudioManager instance bulunamadý player Movement");
         }
+        attackB.onClick.AddListener(OnAttackButtonPressed);
+        JumpB.onClick.AddListener(onJumpButtonPressed);
+        fireB.onClick.AddListener(onFireButtonPressed);
+       // leftM.onClick.AddListener(OnAttackButtonPressed);
+       // rightM.onClick.AddListener(OnAttackButtonPressed);
     }
 
 
@@ -168,7 +180,18 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    public void onJumpButtonPressed()
+    {
+        if ((touchDirection.IsGrounded || coyoteTimeCounter > 0f) && CanMove)
+        {
+            animator.SetTrigger(AnimStrings.jumpTrigger);
+            PlayDust();
+            rb.AddForce(Vector2.up * Jump, ForceMode2D.Impulse);
 
+            hangTimeCounter = hangTime; // Hang time baþlatýlýyor
+            manager.PlaySFX(manager.pjump, 0.8f);
+        }
+    }
     public void OnJump(InputAction.CallbackContext context)
     {
         /* basýp býraktýðýnda daha az zýplama. 
@@ -201,6 +224,17 @@ public class PlayerMovement : MonoBehaviour
     private bool isAttacking = false; //yeni
     private float attackTimeout = 0.6f; 
     private float attackTimer;
+    public void OnAttackButtonPressed()
+    {
+        if (!isAttacking) // ztn saldýrma animasyonu oynamýyorsa
+        {
+            isAttacking = true;
+            animator.SetTrigger(AnimStrings.attackTrigger);
+            manager.PlaySFX(manager.attack, avolume);
+            attackTimer = attackTimeout;
+        }
+    }
+    /*
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.started && !isAttacking) // ztn saldýrma animasyonu oynamýyorsa
@@ -210,7 +244,7 @@ public class PlayerMovement : MonoBehaviour
             manager.PlaySFX(manager.attack, avolume);
             attackTimer = attackTimeout; 
         }
-    }
+    }*/
 
     //yeni
     public void OnAttackAnimationFinished()
@@ -218,7 +252,11 @@ public class PlayerMovement : MonoBehaviour
         isAttacking = false;
     }
 
-
+    public void onFireButtonPressed()
+    {
+        animator.SetTrigger(AnimStrings.rangedAttackTrigger);
+        manager.PlaySFX(manager.laser, cvolume);
+    }
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.started)
