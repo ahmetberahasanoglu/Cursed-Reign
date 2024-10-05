@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -55,13 +56,13 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else
                     {
-                        // Air Move
+                        // havadaki hýz
                         return airWSpeed;
                     }
                 }
                 else
                 {
-                    // Idle speed 0
+                   //duzDururkenHýz
                     return 0;
                 }
             }
@@ -135,13 +136,59 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("AudioManager instance bulunamadý player Movement");
         }
+        
         attackB.onClick.AddListener(OnAttackButtonPressed);
         JumpB.onClick.AddListener(onJumpButtonPressed);
         fireB.onClick.AddListener(onFireButtonPressed);
-       // leftM.onClick.AddListener(OnAttackButtonPressed);
-       // rightM.onClick.AddListener(OnAttackButtonPressed);
+       leftM.onClick.AddListener(onLeftButtonPressed);
+       rightM.onClick.AddListener(onRightButtonPressed);
+
+
+        AddButtonReleaseEvent(leftM, onLeftButtonReleased);
+        AddButtonReleaseEvent(rightM, onRightButtonReleased);
+    }
+    //buttona basmayý býraktýgýmýzda yapýlacaklar
+    private void AddButtonReleaseEvent(Button button, UnityEngine.Events.UnityAction action)
+    {
+        EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerUp; // Buton býrakýldýðýnda çalýþacak olay
+        entry.callback.AddListener((data) => { action.Invoke(); });
+
+        trigger.triggers.Add(entry);
+    }
+    public void onLeftButtonPressed()
+    {
+        moveInput = new Vector2(-1, 0);
+        if (IsAlive)
+        {
+            IsMoving = true;
+        }
+        Debug.Log("Sað tuþ basýldý");
+    }
+    public void onRightButtonPressed()
+    {
+        moveInput = new Vector2(1, 0);
+            if (IsAlive)
+            {
+                IsMoving = true;
+            }
+        Debug.Log("Sað tuþ basýldý.");
+    }
+    public void onLeftButtonReleased()
+    {
+       
+        IsMoving = false;
+        Debug.Log("Sol tuþ býrakýldý, karakter durmalý");
     }
 
+    public void onRightButtonReleased()
+    {
+      
+        IsMoving = false;
+        Debug.Log("Sað tuþ býrakýldý, karakter durmalý");
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -291,7 +338,7 @@ public class PlayerMovement : MonoBehaviour
         {
             coyoteTimeCounter -= Time.fixedDeltaTime;
         }
-
+        
       
         if (hangTimeCounter > 0)
         {
@@ -299,6 +346,8 @@ public class PlayerMovement : MonoBehaviour
             hangTimeCounter -= Time.fixedDeltaTime;
         }
 
+
+        #region hareket
         if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive)
         {
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
@@ -307,8 +356,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda hareket edemiycez. Ýleride animasyonu da kapatabilirim
         }
+        #endregion
 
-        
         if (platformTransform != null)
         {
             Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;

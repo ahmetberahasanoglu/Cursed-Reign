@@ -2,16 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerOneWayPlatform : MonoBehaviour
 {
     // Oyuncunun üzerinde durduðu mevcut tek yönlü platformu tutar
     private GameObject currentOneWayPlatform;
-
+    public Button downButton;
     // Oyuncunun CapsuleCollider2D bileþeni
     [SerializeField] private CapsuleCollider2D playerCollider;
 
-    private void Update()
+    private void Start()
+    {
+        downButton.onClick.AddListener(onDownButtonPressed);
+    }
+    public void onDownButtonPressed()
+    {
+        if (currentOneWayPlatform != null)
+        {
+            // Çarpýþmayý geçici olarak devre dýþý býrakmak için Coroutine baþlatýlýr
+            StartCoroutine(DisableCollisiion());
+        }
+    }
+   /* private void Update()
     {
         // Eðer oyuncu aþaðý ok tuþuna basarsa
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -24,7 +38,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
             }
         }
     }
-
+   */
     // Oyuncu bir nesneyle çarpýþtýðýnda çalýþýr
     private void OnCollisionEnter2D(Collision2D collision)
     {
