@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimeCounter; // Coyote time sayacý
     private float hangTimeCounter;
     private Rigidbody2D rb;
+   
     Animator animator;
     Vector2 moveInput;
     Damageable damageable;
@@ -140,24 +141,9 @@ public class PlayerMovement : MonoBehaviour
         attackB.onClick.AddListener(OnAttackButtonPressed);
         JumpB.onClick.AddListener(onJumpButtonPressed);
         fireB.onClick.AddListener(onFireButtonPressed);
-       leftM.onClick.AddListener(onLeftButtonPressed);
-       rightM.onClick.AddListener(onRightButtonPressed);
-
-
-        AddButtonReleaseEvent(leftM, onLeftButtonReleased);
-        AddButtonReleaseEvent(rightM, onRightButtonReleased);
+     
     }
-    //buttona basmayý býraktýgýmýzda yapýlacaklar
-    private void AddButtonReleaseEvent(Button button, UnityEngine.Events.UnityAction action)
-    {
-        EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
-
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerUp; // Buton býrakýldýðýnda çalýþacak olay
-        entry.callback.AddListener((data) => { action.Invoke(); });
-
-        trigger.triggers.Add(entry);
-    }
+    
     public void onLeftButtonPressed()
     {
         moveInput = new Vector2(-1, 0);
@@ -165,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
         {
             IsMoving = true;
         }
-        Debug.Log("Sað tuþ basýldý");
+        Debug.Log("Sol tuþ basýldý");
     }
     public void onRightButtonPressed()
     {
@@ -178,14 +164,14 @@ public class PlayerMovement : MonoBehaviour
     }
     public void onLeftButtonReleased()
     {
-       
+        moveInput = Vector2.zero;
         IsMoving = false;
         Debug.Log("Sol tuþ býrakýldý, karakter durmalý");
     }
 
     public void onRightButtonReleased()
     {
-      
+        moveInput = Vector2.zero;
         IsMoving = false;
         Debug.Log("Sað tuþ býrakýldý, karakter durmalý");
     }

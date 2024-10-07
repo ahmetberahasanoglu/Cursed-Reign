@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RespawnScript : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public GameObject respawnPoint;
     public int healthPenalty = 10;  
     public float respawnDelay = 1f; 
@@ -17,10 +17,12 @@ audiomanager manager;
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         damageable = player.GetComponent<Damageable>();
     }
     private void Start()
     {
+       
         manager = audiomanager.Instance;
      
     }

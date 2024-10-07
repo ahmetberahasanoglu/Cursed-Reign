@@ -179,10 +179,14 @@ public class gameManager : MonoBehaviour
         {
             PlayerMovement.instance.transform.position = new Vector2(-8, 1);
         }
-     
+    
         else if (sceneName == "Door2")
         {
             PlayerMovement.instance.transform.position = new Vector2(5, 3); 
+        }
+        else if (sceneName == "level1")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(-170, -2);
         }
     }
 }
