@@ -119,7 +119,8 @@ public class Damageable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         trap trap = other.GetComponent<trap>();
-        if (trap && trap.damage > 0)
+        SawMovement sawMovement=other.GetComponent<SawMovement>();
+        if (trap && trap.damage > 0 || sawMovement && sawMovement.damage>0)
         {
             Hit(trap.damage, Vector2.zero); // Zarar görme
         }
