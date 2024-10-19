@@ -24,6 +24,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Door1.unity
     guid: 111c28fd3d1c899428904a3ee9483300
   - enabled: 1
+    path: Assets/Scenes/level2.unity
+    guid: a3dca6f131e533f46b7fa05436ef57a9
+  - enabled: 1
+    path: Assets/Scenes/Door2.unity
+    guid: 621eabf7baecb37499b36b0b29de97c3
+  - enabled: 1
+    path: Assets/Scenes/level3.unity
+    guid: cb2b82c0ae487a145916a6490d6d6d2e
+  - enabled: 1
+    path: Assets/Scenes/Door3.unity
+    guid: 1c7c0dc60994a5e499bd3658c9427038
+  - enabled: 1
     path: Assets/Scenes/quitScene.unity
     guid: f64ce89c041153d438354955020b8559
   m_configObjects:

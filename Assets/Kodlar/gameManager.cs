@@ -184,9 +184,21 @@ public class gameManager : MonoBehaviour
         {
             PlayerMovement.instance.transform.position = new Vector2(5, 3); 
         }
+        else if (sceneName == "Door3")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(5, 3);
+        }
         else if (sceneName == "level1")
         {
             PlayerMovement.instance.transform.position = new Vector2(-170, -2);
+        }
+        else if (sceneName == "level2")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(37, 1);
+        }
+        else if (sceneName == "level3")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(35, 5);
         }
     }
 }
