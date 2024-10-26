@@ -554,9 +554,9 @@ MonoBehaviour:
       m_Calls: []
   lootTable:
   - itemPrefab: {fileID: 1199649374772108254, guid: 9c334308983f9b04090057c0d52c3a7b, type: 3}
-    dropChance: 80
-  maxHealth: 30
-  _health: 30
+    dropChance: 100
+  maxHealth: 20
+  _health: 20
   isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.05
