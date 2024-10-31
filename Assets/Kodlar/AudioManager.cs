@@ -18,6 +18,7 @@ public class audiomanager : MonoBehaviour
     public AudioClip doorSceneClip;    // Door sahnesinde çalacak müzik
     public AudioClip battleSceneClip;  // Savaþ sahnesinde çalacak müzik
     public AudioClip shopSceneClip;    // Shop sahnesinde çalacak müzik
+    public AudioClip menuSceneClip;   
     public AudioClip death;
     public AudioClip attack;
     public AudioClip checkPoint;
@@ -110,6 +111,10 @@ public class audiomanager : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "Door0")
         {
             selectedClip = shopSceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            selectedClip = menuSceneClip;
         }
         // Baþka sahneler için ekle...
 
