@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/quitScene.unity
     guid: f64ce89c041153d438354955020b8559
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 00ade77f84850c14bad43bb5b60b6488
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 948b12dfedb73884cb16586e22dd2774, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 39f00776335c62441875ff4d0702da9b, type: 2}

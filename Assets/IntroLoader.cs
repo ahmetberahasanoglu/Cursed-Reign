@@ -8,6 +8,7 @@ public class IntroLoader : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
+
         SceneManager.LoadScene("FirstScene", LoadSceneMode.Single);
     }
 }
