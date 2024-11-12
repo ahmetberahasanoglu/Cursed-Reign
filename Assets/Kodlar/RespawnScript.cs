@@ -40,6 +40,7 @@ audiomanager manager;
         if (collision.gameObject.CompareTag("Player") && !isRespawning)
         {
             StartCoroutine(Respawn());
+
         }
     }
 

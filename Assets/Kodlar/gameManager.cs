@@ -68,7 +68,11 @@ public class gameManager : MonoBehaviour
             DisplayTime(timeElapsed);
         }
     }
-
+    public void SaveCurrentLevel(string levelName)
+    {
+        PlayerPrefs.SetString("LastSavedLevel", levelName);
+        PlayerPrefs.Save();
+    }
     void DisplayTime(float timeToDisplay)
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
@@ -80,6 +84,10 @@ public class gameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         MovePlayerToSpawn();
+        if (scene.name.StartsWith("level") || scene.name.StartsWith("Door"))
+        {
+            SaveCurrentLevel(scene.name);
+        }
         if (scene.name.Contains("Door"))  
         {
             timerRunning = false;

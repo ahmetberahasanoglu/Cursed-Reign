@@ -1,72 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &761194555036779032
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1617539410835684444}
-  - component: {fileID: 2406545123107614527}
-  m_Layer: 0
-  m_Name: GameObject (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1617539410835684444
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761194555036779032}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2998082212023597800}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2406545123107614527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761194555036779032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 0
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: a76ab3b0e1d1b5cdd5df0f66000000009b9e8536a3c7623d
-  m_ShapePath:
-  - {x: 7.09808, y: 1.0253301, z: 0}
-  - {x: 7.179987, y: 2.0650628, z: 0}
-  - {x: 6.7869334, y: 2.1787167, z: 0}
-  - {x: 7.1231604, y: 2.2402792, z: 0}
-  - {x: 7.2032576, y: 2.480854, z: 0}
-  - {x: 7.313829, y: 2.7677457, z: 0}
-  - {x: 7.6577935, y: 2.669895, z: 0}
-  - {x: 7.842855, y: 2.2160885, z: 0}
-  - {x: 7.948789, y: 1.0287907, z: 0}
-  m_ShapePathHash: -1232160605
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 39310
-  m_LocalBounds:
-    m_Center: {x: 7.3678613, y: 1.8965379, z: 0}
-    m_Extent: {x: 0.58092785, y: 0.87120783, z: 0}
 --- !u!1 &1906684626418543935
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &3116904111686116168
 Transform:
@@ -126,7 +59,7 @@ MonoBehaviour:
   - {x: 15.776838, y: 1.1432306, z: 0}
   m_ShapePathHash: -1527819951
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39420
+  m_InstanceId: -266172
   m_LocalBounds:
     m_Center: {x: 16.70998, y: 2.4349482, z: 0}
     m_Extent: {x: 0.93314266, y: 1.3856735, z: 0}
@@ -145,7 +78,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &5525095341303049381
 Transform:
@@ -188,7 +121,7 @@ MonoBehaviour:
   - {x: 14.116114, y: 10.066489, z: 0}
   m_ShapePathHash: -752769639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39270
+  m_InstanceId: -266160
   m_LocalBounds:
     m_Center: {x: 7.178725, y: 10.322098, z: 0}
     m_Extent: {x: 6.9373884, y: 0.25560856, z: 0}
@@ -206,7 +139,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &2998082212023597800
 Transform:
@@ -223,7 +156,6 @@ Transform:
   m_Children:
   - {fileID: 1280631868022807820}
   - {fileID: 3748546360871850987}
-  - {fileID: 1617539410835684444}
   - {fileID: 3059100719082465091}
   - {fileID: 5525095341303049381}
   - {fileID: 7230810389757083239}
@@ -246,7 +178,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &7230810389757083239
 Transform:
@@ -290,7 +222,7 @@ MonoBehaviour:
   - {x: 16.511267, y: 8.159129, z: 0}
   m_ShapePathHash: 1236573130
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39402
+  m_InstanceId: -266166
   m_LocalBounds:
     m_Center: {x: 16.501402, y: 9.12019, z: 0}
     m_Extent: {x: 0.4247265, y: 0.9610605, z: 0}
@@ -309,7 +241,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &1280631868022807820
 Transform:
@@ -357,7 +289,7 @@ MonoBehaviour:
   - {x: -0.9176636, y: -1.4228606, z: 0}
   m_ShapePathHash: -1276194443
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39560
+  m_InstanceId: -266136
   m_LocalBounds:
     m_Center: {x: 0.2618904, y: 1.298455, z: 0}
     m_Extent: {x: 1.179554, y: 2.7213156, z: 0}
@@ -376,7 +308,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &1742109021734139988
 Transform:
@@ -419,7 +351,7 @@ MonoBehaviour:
   - {x: -7.8966603, y: 2.946834, z: 0}
   m_ShapePathHash: 1590709510
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39354
+  m_InstanceId: -266178
   m_LocalBounds:
     m_Center: {x: -8.474329, y: 3.5282116, z: 0}
     m_Extent: {x: 0.5933912, y: 0.5813775, z: 0}
@@ -438,7 +370,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &3748546360871850987
 Transform:
@@ -483,7 +415,7 @@ MonoBehaviour:
   - {x: -2.307684, y: 0.014083147, z: 0}
   m_ShapePathHash: -791493295
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39464
+  m_InstanceId: -266142
   m_LocalBounds:
     m_Center: {x: -3.5072162, y: 0.5832865, z: 0}
     m_Extent: {x: 1.3642972, y: 0.5692034, z: 0}
@@ -502,7 +434,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &3059100719082465091
 Transform:
@@ -548,7 +480,7 @@ MonoBehaviour:
   - {x: 3.1136072, y: 6.2268267, z: 0}
   m_ShapePathHash: 417687994
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39502
+  m_InstanceId: -266154
   m_LocalBounds:
     m_Center: {x: 2.4533157, y: 8.077467, z: 0}
     m_Extent: {x: 0.66029155, y: 1.8651769, z: 0}

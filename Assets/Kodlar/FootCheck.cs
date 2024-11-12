@@ -6,7 +6,8 @@ public class FootCheck : MonoBehaviour
     public Transform groundCheck;
     public Rigidbody2D playerRB;
     public LayerMask jumpPadLayer;
-    public Animator mushroomAnimator; // Mantarýn animator bileþeni
+    public Animator mushroomAnimator; 
+    public Animator statueAnimator; //Animator'ler bu sahnede deðil baþka sahnede var dolayýsýyla bunu her sahnede aramasý gerekiyor olabilir
     [SerializeField] private float volume;
     audiomanager manager;
     private void Start()
@@ -27,6 +28,11 @@ public class FootCheck : MonoBehaviour
             if (mushroomAnimator != null)
             {
                 mushroomAnimator.SetTrigger("bounceTrigger");
+                manager.PlaySFX(manager.bounceSound, volume);
+            }
+            if (statueAnimator != null)
+            {
+                statueAnimator.SetTrigger("bounceTrigger");
                 manager.PlaySFX(manager.bounceSound, volume);
             }
         }
