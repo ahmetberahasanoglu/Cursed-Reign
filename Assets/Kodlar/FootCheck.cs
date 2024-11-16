@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FootCheck : MonoBehaviour
 {
@@ -13,18 +15,53 @@ public class FootCheck : MonoBehaviour
     private void Start()
     {
         manager = audiomanager.Instance;
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Sahne deðiþtirilince olay baðlantýsýný kaldýrýyoruz
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "level1") 
+        {
+            mushroomAnimator = GameObject.Find("Mushroom").GetComponent<Animator>();
+            
+        }
+        else if (scene.name == "level2")
+        {
+            mushroomAnimator = GameObject.Find("Mushroom").GetComponent<Animator>();
+            
+        }
+        else if (scene.name=="level3")
+        {
+            statueAnimator = GameObject.Find("Statue").GetComponent<Animator>();
+        }
+        else if (scene.name == "level4")
+        {
+            statueAnimator = GameObject.Find("Statue").GetComponent<Animator>();
+            
+        }
+        
+        else
+        {
+          
+            mushroomAnimator = null;
+            statueAnimator = null;
+        }
     }
     private void FixedUpdate()
     {
-        // Eðer mantarýn üzerine basýldýysa zýplama yapýlýr
+   
         Collider2D jumpPadCollider = Physics2D.OverlapCircle(groundCheck.position, 0.1f, jumpPadLayer);
 
         if (jumpPadCollider != null)
         {
-            // Zýplama kuvvetini uygula
+       
             playerRB.velocity = new Vector2(playerRB.velocity.x, launchForce);
 
-            // Eðer mantarýn Animator'u varsa, bounce animasyonunu tetikle
+          
             if (mushroomAnimator != null)
             {
                 mushroomAnimator.SetTrigger("bounceTrigger");
