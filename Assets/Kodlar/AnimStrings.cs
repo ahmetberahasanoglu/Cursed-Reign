@@ -18,4 +18,5 @@ public class AnimStrings : MonoBehaviour
     internal static string lockVelocity= "lockVelocity";
     internal static string attackCooldown= "attackCooldown";
     internal static string rangedAttackTrigger= "rangedAttack";
+  
 }

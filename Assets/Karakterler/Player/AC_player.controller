@@ -517,12 +517,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: jump
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: isOnWall
     m_Type: 4
     m_DefaultFloat: 0
@@ -947,7 +941,7 @@ AnimatorStateMachine:
     m_Position: {x: 100, y: -190, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -1802218680578701845}
-    m_Position: {x: 410, y: 60, z: 0}
+    m_Position: {x: 400, y: 60, z: 0}
   m_AnyStateTransitions:
   - {fileID: -8012322470417786573}
   - {fileID: 3519445180485091990}

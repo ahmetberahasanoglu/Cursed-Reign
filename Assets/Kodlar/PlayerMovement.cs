@@ -19,11 +19,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier = 2.5f; // Düþerken yerçekimi kuvvetini artýrmak için
     [SerializeField] private float coyoteTime = 0.2f; // Coyote time süresi
     [SerializeField] private float hangTime = 0.1f;
+
+    [SerializeField] private int maxJumpCount = 2;
+    [SerializeField] private int currentJumpCount;
+
     private float lastXDirection;
     private float coyoteTimeCounter; // Coyote time sayacý
     private float hangTimeCounter;
     private Rigidbody2D rb;
-    private bool doubleJump;
+
+
+
 
     Animator animator;
     Vector2 moveInput;
@@ -42,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public Button fireB;
     public Button leftM;
     public Button rightM;
+
     public float CurrentMoveSpeed
     {
         get
@@ -52,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (touchDirection.IsGrounded)
                     {
-
+                        coyoteTimeCounter = coyoteTime;
                         return speed;
 
                     }
@@ -82,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
         {
             return animator.GetBool(AnimStrings.canMove);
         }
+        set
+        {
+            animator.SetBool(AnimStrings.canMove, value);
+        }
+
     }
     public bool IsAlive
     {
@@ -99,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
         private set
         {
+
             _isJumping = value;
         }
     }
@@ -115,6 +128,10 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = value;
             animator.SetBool(AnimStrings.isMoving, value);
+          /*  if (animator.GetBool(AnimStrings.isMoving) != value)
+            {
+                animator.SetBool(AnimStrings.isMoving, value);
+            }*/
         }
     }
 
@@ -129,25 +146,36 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         touchDirection = GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        currentJumpCount = maxJumpCount;
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+        /* if (instance == null)
+         {
+             instance = this;
+             DontDestroyOnLoad(gameObject);
+         }
+         else
+         {
+             Destroy(gameObject);
+         }*/
 
     }
 
     private void Start()
     {
+
         manager = audiomanager.Instance;
         if (manager == null)
         {
-            Debug.LogError("AudioManager instance bulunamadý player Movement");
+            //Debug.LogError("AudioManager instance bulunamadý player Movement");
         }
+        attackB.onClick.RemoveAllListeners();
+        attackB.onClick.AddListener(OnAttackButtonPressed);
 
         attackB.onClick.AddListener(OnAttackButtonPressed);
         JumpB.onClick.AddListener(onJumpButtonPressed);
@@ -162,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
         {
             IsMoving = true;
         }
-        Debug.Log("Sol tuþ basýldý");
+        // Debug.Log("Sol tuþ basýldý");
     }
     public void onRightButtonPressed()
     {
@@ -171,20 +199,20 @@ public class PlayerMovement : MonoBehaviour
         {
             IsMoving = true;
         }
-        Debug.Log("Sað tuþ basýldý.");
+        //Debug.Log("Sað tuþ basýldý.");
     }
     public void onLeftButtonReleased()
     {
         moveInput = Vector2.zero;
         IsMoving = false;
-        Debug.Log("Sol tuþ býrakýldý, karakter durmalý");
+        //Debug.Log("Sol tuþ býrakýldý, karakter durmalý");
     }
 
     public void onRightButtonReleased()
     {
         moveInput = Vector2.zero;
         IsMoving = false;
-        Debug.Log("Sað tuþ býrakýldý, karakter durmalý");
+        //  Debug.Log("Sað tuþ býrakýldý, karakter durmalý");
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -224,36 +252,26 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+
+
     public void onJumpButtonPressed()
     {
-
-        if ((touchDirection.IsGrounded || coyoteTimeCounter > 0f || doubleJump) && CanMove)
+        if ((touchDirection.IsGrounded || coyoteTimeCounter > 0f || currentJumpCount > 0) && CanMove)
         {
-
-            float jumpForce = doubleJump ? Jump: Jump*2;
-            
-
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-
+            rb.velocity = new Vector2(rb.velocity.x, Jump);
             manager.PlaySFX(manager.pjump, 0.6f);
-            animator.SetTrigger(AnimStrings.jumpTrigger);
             PlayDust();
-
-         
-            if (doubleJump)
-            {
-                doubleJump = false; 
-            }
-            else
-            {
-                doubleJump = true;
-            }
-
-            
             hangTimeCounter = hangTime;
+
+            if (!touchDirection.IsGrounded)
+            {
+                
+                currentJumpCount--;
+            }
         }
     }
+
+
 
     /*public void OnJump(InputAction.CallbackContext context)
     {
@@ -267,7 +285,7 @@ public class PlayerMovement : MonoBehaviour
         // Zýplamayý baþlatma
         if (context.started && (touchDirection.IsGrounded || coyoteTimeCounter > 0f) && CanMove)
         {
-          //  animator.SetTrigger(AnimStrings.jumpTrigger);
+   
           //  PlayDust();
           //  rb.AddForce(Vector2.up * Jump, ForceMode2D.Impulse);
           //
@@ -284,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     }*/
-    private bool isAttacking = false; //yeni
+    private bool isAttacking = false; 
     private float attackTimeout = 0.6f;
     private float attackTimer;
     public void OnAttackButtonPressed()
@@ -309,7 +327,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }*/
 
-    //yeni
+   
     public void OnAttackAnimationFinished()
     {
         isAttacking = false;
@@ -334,70 +352,9 @@ public class PlayerMovement : MonoBehaviour
         manager.PlaySFX(manager.pTakeHit, bvolume);
     }
 
-
-
-    private void FixedUpdate()
+    private void Update()
     {
-  
-        if (isAttacking)
-        {
-            attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0f)
-            {
-                OnAttackAnimationFinished(); // Saldýrý zamanlayýcý süresi doldu
-            }
-        }
-        if (touchDirection.IsGrounded)
-        {
-            coyoteTimeCounter = coyoteTime;
-            doubleJump = true;//zemine carapýnca doublejump tekrar aktif
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.fixedDeltaTime;
-        }
-
-
-        if (hangTimeCounter > 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.9f);
-            hangTimeCounter -= Time.fixedDeltaTime;
-        }
-
-
-        #region hareket
-        if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive)
-        {
-            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda hareket edemiycez. Ýleride animasyonu da kapatabilirim
-        }
-        #endregion
-
-        if (platformTransform != null)
-        {
-            Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;
-            rb.velocity = new Vector2(rb.velocity.x + platformVelocity.x, rb.velocity.y);
-        }
-
-        if (rb.velocity.y < 0) // Karakter düþüþteyken
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-        }
-        else if (doubleJump && rb.velocity.y > 0) // Double jump yaparken daha hafif bir yerçekimi
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 0.75f - 1) * Time.fixedDeltaTime;
-        }
-        else if (rb.velocity.y > 0) // Normal zýplama sýrasýnda
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 0.5f - 1) * Time.fixedDeltaTime;
-        }
-
-
         animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
-
         if (IsAlive)
         {
             if (moveInput.x > 0)
@@ -418,10 +375,84 @@ public class PlayerMovement : MonoBehaviour
                 }
                 lastXDirection = -1;
             }
-
-            // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
             HandleFootstepSound();
+            // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
+
         }
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (isAttacking)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0f)
+            {
+                OnAttackAnimationFinished(); // Saldýrý zamanlayýcý süresi doldu
+            }
+            CanMove = false;
+        }
+        if (touchDirection.IsGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+            IsJumping = false;
+            currentJumpCount = maxJumpCount;
+            //     doubleJump = true;//zemine carapýnca doublejump tekrar aktif
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.fixedDeltaTime;
+        }
+
+
+        if (hangTimeCounter > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.9f);
+            hangTimeCounter -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            hangTimeCounter = 0;
+        }
+
+
+        #region hareket
+        if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive)
+        {
+            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+            CanMove = true;
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda hareket edemiycez. Ýleride animasyonu da kapatabilirim
+            CanMove = false;
+        }
+        #endregion
+
+        if (platformTransform != null)
+        {
+            Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;
+            rb.velocity = new Vector2(rb.velocity.x + platformVelocity.x, rb.velocity.y);
+        }
+
+
+
+
+
+        if (rb.velocity.y < 0) // Karakter düþüþteyken
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (rb.velocity.y > 0) // Karakter yükseliyorken
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 0.5f - 1) * Time.fixedDeltaTime;
+        }
+
+
+
+
+
 
 
 
@@ -432,11 +463,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void PlayDust()
     {
-        if (dust.isPlaying)
+        if (!dust.isPlaying)
         {
-            dust.Stop();
+            dust.Play();
         }
-        dust.Play();
     }
     private Transform platformTransform = null;
 
@@ -446,7 +476,13 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             platformTransform = collision.transform;
+
         }
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            _isJumping = false; // Zýplama durumu sýfýrlanýyor
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -456,6 +492,8 @@ public class PlayerMovement : MonoBehaviour
         {
             platformTransform = null;
         }
+
+
     }
 
 }

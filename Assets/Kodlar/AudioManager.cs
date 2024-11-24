@@ -14,11 +14,11 @@ public class audiomanager : MonoBehaviour
 
     [Header("---AUDIO Clip---")]
     // public AudioClip introClip;
-    public AudioClip defaultLoopClip;  // Varsayýlan müzik
-    public AudioClip doorSceneClip;    // Door sahnesinde çalacak müzik
-    public AudioClip battleSceneClip;  // Savaþ sahnesinde çalacak müzik
-    public AudioClip shopSceneClip;    // Shop sahnesinde çalacak müzik
-    public AudioClip menuSceneClip;   
+    public AudioClip defaultLoopClip;  
+    public AudioClip doorSceneClip;    
+    public AudioClip battleSceneClip;  
+    public AudioClip shopSceneClip;    
+    public AudioClip menuSceneClip;
     public AudioClip death;
     public AudioClip attack;
     public AudioClip checkPoint;
@@ -54,8 +54,8 @@ public class audiomanager : MonoBehaviour
     public Button musicToggleButton;
     public Button SFXToggleButton;
 
-    private bool isMusicMuted = false;  // Müzik durumu
-    private bool isSFXMuted = false;    // SFX durumu
+    private bool isMusicMuted = false;  
+    private bool isSFXMuted = false;    
 
     private void Awake()
     {
@@ -75,8 +75,16 @@ public class audiomanager : MonoBehaviour
         PlayMusicForCurrentScene();
 
         // Butonlara iþlevleri atama
-        musicToggleButton.onClick.AddListener(ToggleMusic);
-        SFXToggleButton.onClick.AddListener(ToggleSFX);
+        if (musicToggleButton != null)
+        {
+            musicToggleButton.onClick.AddListener(ToggleMusic);
+            SFXToggleButton.onClick.AddListener(ToggleSFX);
+        }
+        else
+        {
+            Debug.Log("sfx ve music baglanmadi");
+        }
+
     }
 
     private void Update()
@@ -90,9 +98,9 @@ public class audiomanager : MonoBehaviour
         else
         {
             if (!isMusicMuted)
-                audioMixer.SetFloat("MyExposedParam 1", -18f); // Orijinal ses seviyesi
+                audioMixer.SetFloat("MyExposedParam 1", -18f); 
             if (!isSFXMuted)
-                audioMixer.SetFloat("MyExposedParam", 0f);     // Orijinal ses seviyesi
+                audioMixer.SetFloat("MyExposedParam", 0f);     
         }
     }
     private void PlayMusicForCurrentScene()
@@ -104,7 +112,23 @@ public class audiomanager : MonoBehaviour
         {
             selectedClip = doorSceneClip;
         }
+        else if (SceneManager.GetActiveScene().name == "FirstScene")
+        {
+            selectedClip = doorSceneClip;
+        }
         else if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            selectedClip = battleSceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            selectedClip = battleSceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            selectedClip = battleSceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Level4")
         {
             selectedClip = battleSceneClip;
         }
@@ -137,10 +161,10 @@ public class audiomanager : MonoBehaviour
     {
         if (musicSource.clip != clip)
         {
-            musicSource.Stop();  // Þu anki müziði durdur
+            musicSource.Stop();  
             musicSource.clip = clip;
             musicSource.loop = true;
-            musicSource.Play();  // Yeni müziði çal
+            musicSource.Play();  
         }
     }
     public void ToggleMusic()
