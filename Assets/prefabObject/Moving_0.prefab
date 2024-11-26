@@ -156,6 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 25, y: 0}
-  damage: 10
-  knockback: {x: 1, y: 0}
+  damage: 20
+  knockback: {x: 5, y: 0}
   lifetime: 3
