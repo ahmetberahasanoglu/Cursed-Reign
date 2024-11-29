@@ -11,6 +11,11 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         confiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
+       // GameObject player = GameObject.Find("Player");
+      //  if (player != null)
+    //   {
+      //      virtualCamera.Follow = player.transform;
+      //  }
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (instance == null)
         {
@@ -29,6 +34,7 @@ public class CameraManager : MonoBehaviour
         {
             virtualCamera.Follow = PlayerMovement.instance.transform;
         }
+    
 
         // Sahne yüklendiðinde confiner'ý sahnede bul ve güncelle
         UpdateConfinerForScene(scene.name);

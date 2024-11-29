@@ -121,23 +121,23 @@ public class audiomanager : MonoBehaviour
         {
            selectedClip = firstSceneClip;
         }
-        else if (SceneManager.GetActiveScene().name == "Level1")
+        else if (SceneManager.GetActiveScene().name == "level1")
         {
             selectedClip = battleSceneClip;
         }
-        else if (SceneManager.GetActiveScene().name == "Level2")
+        else if (SceneManager.GetActiveScene().name == "level2")
         {
             selectedClip = level2SceneClip;
         }
-        else if (SceneManager.GetActiveScene().name == "Level3")
+        else if (SceneManager.GetActiveScene().name == "level3")
         {
             selectedClip = level3SceneClip;
         }
-        else if (SceneManager.GetActiveScene().name == "Level4")
+        else if (SceneManager.GetActiveScene().name == "level4")
         {
             selectedClip = level4SceneClip;
         }
-        else if (SceneManager.GetActiveScene().name == "Level4")
+        else if (SceneManager.GetActiveScene().name == "level5")
         {
             selectedClip = bossSceneClip;
         }

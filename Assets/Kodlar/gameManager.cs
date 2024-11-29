@@ -195,7 +195,7 @@ public class gameManager : MonoBehaviour
 
     public void OnQuitButtonPressed()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Main Menu");
     }
     private void MovePlayerToSpawn()
     {

@@ -59,10 +59,7 @@ public class PHealthBar : MonoBehaviour
                 Debug.LogError("Player is missing a Damageable component!");
             }
         }
-        else
-        {
-            Debug.LogError("Player not found in scene!");
-        }
+        
     }
 
     private void OnPlayerHealthChanged(int newHealth, int maxHealth)

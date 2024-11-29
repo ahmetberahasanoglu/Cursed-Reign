@@ -34,6 +34,11 @@ public class FootCheck : MonoBehaviour
             mushroomAnimator = GameObject.Find("Mushroom").GetComponent<Animator>();
             
         }
+        else if (scene.name == "FirstScene")
+        {
+            mushroomAnimator = GameObject.Find("Statue").GetComponent<Animator>();
+
+        }
         else if (scene.name=="level3")
         {
             statueAnimator = GameObject.Find("Statue").GetComponent<Animator>();
