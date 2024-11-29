@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5063673295370973094}
   - component: {fileID: 3282724778985225137}
   - component: {fileID: 5955150038161976901}
+  - component: {fileID: 2555305679455573368}
   m_Layer: 0
   m_Name: Fire Trap - Level 1_0
   m_TagString: Untagged
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6657047662893631200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -152,3 +153,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5646057, y: 2.1597433}
   m_EdgeRadius: 0
+--- !u!114 &2555305679455573368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657047662893631200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fa5eb11d5d9c8459d79d20fd4feb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounce: 10
+  damage: 10

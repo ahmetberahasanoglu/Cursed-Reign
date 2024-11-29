@@ -168,7 +168,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-
+        attackB = GameObject.Find("AtckButton").GetComponent<Button>();
+        JumpB = GameObject.Find("JumpButton").GetComponent<Button>();
+        fireB = GameObject.Find("FireButton").GetComponent<Button>();
+        leftM = GameObject.Find("LButton").GetComponent<Button>();
+        rightM = GameObject.Find("LButton").GetComponent<Button>();
         manager = audiomanager.Instance;
         if (manager == null)
         {

@@ -21,7 +21,7 @@ public class gameManager : MonoBehaviour
     public float timeElapsed = 0f;
     public bool timerRunning = true;
     public TMP_Text timerText;
-    public float timerCurrency = 0f;  // Holds time-based currency
+    public float timerCurrency = 0f;  // vakit nakittir
 
     private void OnEnable()
     {
@@ -80,10 +80,17 @@ public class gameManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    // Called when a new scene is loaded
+ 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        MovePlayerToSpawn();
+        if (PlayerMovement.instance == null)
+        {
+            SpawnPlayer();
+        }
+        else
+        {
+            MovePlayerToSpawn();
+        }
         if (scene.name.StartsWith("level") || scene.name.StartsWith("Door"))
         {
             SaveCurrentLevel(scene.name);
@@ -111,6 +118,18 @@ public class gameManager : MonoBehaviour
         }
 
      
+    }
+    [SerializeField] private GameObject playerPrefab;
+
+    private void SpawnPlayer()
+    {
+        if (playerPrefab != null)
+        {
+          
+            GameObject player = Instantiate(playerPrefab);
+            MovePlayerToSpawn(); //
+        }
+       
     }
 
     public ManaBar GetManaBar()

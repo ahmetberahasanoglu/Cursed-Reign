@@ -5089,7 +5089,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Sarduk ve Zevaros ad\u0131nda, diyara h\xFCkmetmek i\xE7in m\xFCcadele
-    eden 2 krall\u0131k vard\u0131. Y\u0131llar s\xFCren amans\u0131z muharebeler
+    eden 2 krall\u0131k vard\u0131. Y\u0131llar s\xFCren amans\u0131z <gradient=\"war\">muharebeler</gradient>
     sonucunda,  Sarduk Krall\u0131\u011F\u0131'\u0131 t\xFCkenmi\u015F, umutsuzluk
     \xFClkeye veba gibi \xE7\xF6km\xFC\u015Ft\xFC. Kral ve lordlar\u0131, kadim yasalar
     taraf\u0131ndan yasaklanm\u0131\u015F olan kara b\xFCy\xFCy\xFC kullanma konusunu
@@ -5161,7 +5161,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &412836905
@@ -5185,7 +5185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 412836904}
-  typingSpeed: 0.037
+  typingSpeed: 0.025
 --- !u!1 &485125540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,10 +5272,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Ancak lejyon kumandan\u0131, sava\u015F\u0131n art\u0131k geleneksel yollarla
     kazan\u0131lamayaca\u011F\u0131na inan\u0131yordu. Ona inanan sad\u0131k askerleriyle
-    birlikte krala ihanet etti. Kral taht\u0131ndan indirildi ve kara b\xFCy\xFC
-    uyguland\u0131. Sarduk Krall\u0131\u011F\u0131, sava\u015Fta ezici bir zafer
-    kazand\u0131. Fakat g\xFCnler ge\xE7tik\xE7e, kara b\xFCy\xFCn\xFCn korkun\xE7
-    bedeli ortaya \xE7\u0131kt\u0131; halk, insanl\u0131\u011F\u0131n\u0131 kaybediyordu.\r\n"
+    birlikte krala ihanet etti. Kral taht\u0131ndan indirildi ve <style=\"EffectGradient\">kara
+    b\xFCy\xFC</style> uyguland\u0131. Sarduk Krall\u0131\u011F\u0131, sava\u015Fta
+    ezici bir zafer kazand\u0131. Fakat g\xFCnler ge\xE7tik\xE7e, kara b\xFCy\xFCn\xFCn
+    korkun\xE7 bedeli ortaya \xE7\u0131kt\u0131; halk, insanl\u0131\u011F\u0131n\u0131
+    kaybediyordu.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a193dcdcffedde246a88661592326a94, type: 2}
   m_sharedMaterial: {fileID: -3074396740168412939, guid: a193dcdcffedde246a88661592326a94, type: 2}
@@ -5405,7 +5406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 999571272}
-  typingSpeed: 0.034
+  typingSpeed: 0.025
 --- !u!1 &1101475321
 GameObject:
   m_ObjectHideFlags: 0
@@ -5601,11 +5602,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Art\u0131k her \u015Fey i\xE7in \xE7ok ge\xE7ti. Eski kral, sefalet i\xE7inde
-    ge\xE7en g\xFCnlerin ard\u0131ndan i\xE7ini umutla dolduran gizemli bir f\u0131s\u0131lt\u0131
-    duydu. Ses, lanetin Sarduk krall\u0131\u011F\u0131n\u0131 saran da\u011Flar\u0131n
-    yamac\u0131nda oldugunu s\xF6yl\xFCyordu. Laneti ancak ay tutulmas\u0131nda yok
-    edilebilirdi. Kral yola \xE7\u0131kt\u0131. Kendi halk\u0131n\u0131n da dahil
-    oldu\u011Fu u\u011Fursuz engelleri a\u015Fmas\u0131 gerekecekti..."
+    ge\xE7en g\xFCnlerin ard\u0131ndan i\xE7ini umutla dolduran <style=\"EffectGradient\">gizemli
+    </style>bir f\u0131s\u0131lt\u0131 duydu. F\u0131s\u0131ldayan, laneti nas\u0131l
+    yok edece\u011Fini bildi\u011Fini ve onu bekledi\u011Fini s\xF6yledi ve zindan\u0131n
+    kilidi k\u0131r\u0131ld\u0131. Kral, muhaf\u0131zlar\u0131 atlatt\u0131 ve yola
+    \xE7\u0131kt\u0131. Kendi halk\u0131n\u0131n da dahil oldu\u011Fu u\u011Fursuz
+    engelleri a\u015Fmas\u0131 gerekecekti..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a193dcdcffedde246a88661592326a94, type: 2}
   m_sharedMaterial: {fileID: -3074396740168412939, guid: a193dcdcffedde246a88661592326a94, type: 2}
@@ -5616,7 +5618,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4281150765
   m_fontColor: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -5735,7 +5737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1828037817}
-  typingSpeed: 0.037
+  typingSpeed: 0.025
 --- !u!1 &1854096121
 GameObject:
   m_ObjectHideFlags: 0

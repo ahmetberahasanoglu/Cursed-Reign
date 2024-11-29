@@ -271,14 +271,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dust: {fileID: 5615672872084226852}
   speed: 6
-  airWSpeed: 5
-  Jump: 9.4
+  airWSpeed: 4.5
+  Jump: 7.5
   fallMultiplier: 3
-  coyoteTime: 0.15
-  hangTime: 0.02
+  coyoteTime: 0.1
+  hangTime: 0
+  maxJumpCount: 1
+  currentJumpCount: 0
   avolume: 0.06
   bvolume: 0.5
   cvolume: 0.4
+  attackB: {fileID: 0}
+  JumpB: {fileID: 0}
+  fireB: {fileID: 0}
+  leftM: {fileID: 0}
+  rightM: {fileID: 0}
   isMoving: 0
   footstepInterval: 0.5
 --- !u!114 &8485705082576621271
@@ -578,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e222ad532af1a74bafb38481dff03dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downButton: {fileID: 0}
   playerCollider: {fileID: 8945047924046015798}
 --- !u!1 &4302299383401845750
 GameObject:
@@ -826,6 +834,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   mushroomAnimator: {fileID: 0}
+  statueAnimator: {fileID: 0}
   volume: 0
 --- !u!1001 &5927362900965818142
 PrefabInstance:

@@ -16,12 +16,14 @@ public class RespawnScript : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        damageable = player.GetComponent<Damageable>();
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //damageable = player.GetComponent<Damageable>();
     }
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        damageable = player.GetComponent<Damageable>();
         manager = audiomanager.Instance;
     }
 

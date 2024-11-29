@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3906430117853997038}
   - component: {fileID: 8014854991059939730}
   - component: {fileID: 6466108027496028787}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Lightning Trap - Level 2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5282450100906828529}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

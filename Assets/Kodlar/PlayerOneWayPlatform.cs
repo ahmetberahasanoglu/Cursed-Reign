@@ -15,6 +15,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
 
     private void Start()
     {
+        downButton= GameObject.Find("DownButton").GetComponent<Button>();
         downButton.onClick.AddListener(onDownButtonPressed);
     }
     public void onDownButtonPressed()

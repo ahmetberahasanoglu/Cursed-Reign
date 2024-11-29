@@ -561,7 +561,7 @@ MonoBehaviour:
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 7528656411694676141}
   skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
-  itemPrice: 50
+  itemPrice: 300
   volume: 0.3
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Etkisi b\xFCy\xFCk yeni bir b\xFCy\xFC \xF6\u011Freten bir kitap."
+  m_text: "B\xFCy\xFCn\xFC g\xFC\xE7lendiren bir kitap."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
   m_sharedMaterial: {fileID: -8212787404553345123, guid: ec1796050a9cf0a45bd2f1be00b73e11, type: 2}
@@ -1754,7 +1754,7 @@ MonoBehaviour:
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 3166886403781797327}
   skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
-  itemPrice: 50
+  itemPrice: 300
   volume: 0.3
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}

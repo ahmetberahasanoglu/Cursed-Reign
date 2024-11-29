@@ -16,7 +16,12 @@ public class audiomanager : MonoBehaviour
     // public AudioClip introClip;
     public AudioClip defaultLoopClip;  
     public AudioClip doorSceneClip;    
+    public AudioClip firstSceneClip;    
     public AudioClip battleSceneClip;  
+    public AudioClip level2SceneClip;  
+    public AudioClip level3SceneClip;  
+    public AudioClip level4SceneClip;  
+    public AudioClip bossSceneClip;  
     public AudioClip shopSceneClip;    
     public AudioClip menuSceneClip;
     public AudioClip death;
@@ -114,7 +119,7 @@ public class audiomanager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "FirstScene")
         {
-            selectedClip = doorSceneClip;
+           selectedClip = firstSceneClip;
         }
         else if (SceneManager.GetActiveScene().name == "Level1")
         {
@@ -122,15 +127,19 @@ public class audiomanager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Level2")
         {
-            selectedClip = battleSceneClip;
+            selectedClip = level2SceneClip;
         }
         else if (SceneManager.GetActiveScene().name == "Level3")
         {
-            selectedClip = battleSceneClip;
+            selectedClip = level3SceneClip;
         }
         else if (SceneManager.GetActiveScene().name == "Level4")
         {
-            selectedClip = battleSceneClip;
+            selectedClip = level4SceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Level4")
+        {
+            selectedClip = bossSceneClip;
         }
         else if (SceneManager.GetActiveScene().name == "Door0")
         {
