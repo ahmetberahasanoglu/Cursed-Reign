@@ -1,12 +1,15 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ButtonInfo : MonoBehaviour
 {
     public TMP_Text priceText;
     public TMP_Text descriptionText;
+   
+  
     public TMP_Text durumText;
     public Button purchaseButton;
     [SerializeField] GameObject skill;
@@ -29,7 +32,32 @@ public class ButtonInfo : MonoBehaviour
 
     void Start()
     {
-       
+
+         if ((SceneManager.GetActiveScene().name == "Door2")&&itemPrice==300){
+            descriptionText.text = "Yeni bir kýlýc teknigi kitabý";
+        }
+
+        else if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 1)
+        {
+            descriptionText.text = "Kýlýc týlsýmý";
+        }
+        else if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 180)
+        {
+            descriptionText.text = "Combo gorunumu";
+        }
+        else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 300)
+        {
+            descriptionText.text = "Yeni bir kýlýc teknigi kitabý";
+        }
+
+        else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 1)
+        {
+            descriptionText.text = "Kýlýc týlsýmý";
+        }
+        else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 180)
+        {
+            descriptionText.text = "Tembel geliþtiricci baska özellik bulamadý";
+        }
         priceText.text = itemPrice.ToString();
         purchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
         manager = audiomanager.Instance;
@@ -98,7 +126,14 @@ public class ButtonInfo : MonoBehaviour
                 {
                     IncreaseMaxMana();
                 }
-              
+                else if (descriptionText.text.Contains("Yeni"))
+                {
+                    Debug.Log("Kýlýc tekngi degis");
+
+                }
+             
+
+
             }
 
             else

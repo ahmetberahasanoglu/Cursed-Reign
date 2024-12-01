@@ -1754,7 +1754,7 @@ MonoBehaviour:
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 3166886403781797327}
   skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
-  itemPrice: 300
+  itemPrice: 1
   volume: 0.3
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 3743646165023249816}
   skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
-  itemPrice: 120
+  itemPrice: 180
   volume: 0.3
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
