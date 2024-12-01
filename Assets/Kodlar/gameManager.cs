@@ -127,7 +127,9 @@ public class gameManager : MonoBehaviour
         {
           
             GameObject player = Instantiate(playerPrefab);
-            MovePlayerToSpawn(); //
+           // PlayerMovement playerMovement = PlayerMovement.instance.GetComponent<PlayerMovement>();
+           // playerMovement.InitializeComponents();
+            MovePlayerToSpawn(); 
         }
        
     }
@@ -195,7 +197,7 @@ public class gameManager : MonoBehaviour
 
     public void OnQuitButtonPressed()
     {
-        SceneManager.LoadScene("Main Menu");
+        Application.Quit();
     }
     private void MovePlayerToSpawn()
     {

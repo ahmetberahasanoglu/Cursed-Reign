@@ -13,29 +13,32 @@ public class PHealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        // Rebind player reference after scene changes
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // Find and initialize the player's health component
+        
         BindDamageable();
     }
 
     private void OnDisable()
     {
-        // Unbind from the sceneLoaded event
+      
         SceneManager.sceneLoaded -= OnSceneLoaded;
 
-        // Unsubscribe from healthChanged event
+        
         if (damageable != null)
         {
             damageable.healthChanged.RemoveListener(OnPlayerHealthChanged);
         }
     }
+    private void Start()
+    {
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
 
-    // Called when the scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        BindDamageable(); // Ensure the health bar is bound to the new scene's player
+        BindDamageable(); 
     }
 
     private void BindDamageable()

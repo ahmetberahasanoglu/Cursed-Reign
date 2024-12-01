@@ -11,11 +11,12 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         confiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
-       // GameObject player = GameObject.Find("Player");
-      //  if (player != null)
-    //   {
-      //      virtualCamera.Follow = player.transform;
-      //  }
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        // GameObject player = GameObject.Find("Player");
+        //  if (player != null)
+        //   {
+        //      virtualCamera.Follow = player.transform;
+        //  }
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (instance == null)
         {
@@ -30,13 +31,12 @@ public class CameraManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (PlayerMovement.instance != null)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            virtualCamera.Follow = PlayerMovement.instance.transform;
-        }
-    
 
-        // Sahne yüklendiðinde confiner'ý sahnede bul ve güncelle
+            virtualCamera.Follow = player.transform;
+        }
         UpdateConfinerForScene(scene.name);
     }
 
@@ -56,7 +56,7 @@ public class CameraManager : MonoBehaviour
             confiner.m_BoundingShape2D = level2Collider;
             confiner.enabled = true;
         }
-       else if (sceneName == "level3")
+        else if (sceneName == "level3")
         {
             PolygonCollider2D level3Collider = GameObject.Find("level1CameraLimit").GetComponent<PolygonCollider2D>();
             confiner.m_BoundingShape2D = level3Collider;
@@ -74,7 +74,7 @@ public class CameraManager : MonoBehaviour
             confiner.m_BoundingShape2D = door1Collider;
             confiner.enabled = true;
         }
-       else if (sceneName == "Door2")
+        else if (sceneName == "Door2")
         {
             PolygonCollider2D door2Collider = GameObject.Find("CameraLimit").GetComponent<PolygonCollider2D>();
             confiner.m_BoundingShape2D = door2Collider;
@@ -86,7 +86,7 @@ public class CameraManager : MonoBehaviour
             confiner.m_BoundingShape2D = door3Collider;
             confiner.enabled = true;
         }
-        else if (sceneName=="FirstScene")
+        else if (sceneName == "FirstScene")
         {
             PolygonCollider2D door2Collider = GameObject.Find("CameraLimit1").GetComponent<PolygonCollider2D>();
             confiner.m_BoundingShape2D = door2Collider;

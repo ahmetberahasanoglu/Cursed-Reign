@@ -12,6 +12,7 @@ TagManager:
   - Audio
   - MovingPlatform
   - Ground
+  - Mushroom
   layers:
   - Default
   - TransparentFX

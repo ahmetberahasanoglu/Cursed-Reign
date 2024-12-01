@@ -172,12 +172,14 @@ public class PlayerMovement : MonoBehaviour
         JumpB = GameObject.Find("JumpButton").GetComponent<Button>();
         fireB = GameObject.Find("FireButton").GetComponent<Button>();
         leftM = GameObject.Find("LButton").GetComponent<Button>();
-        rightM = GameObject.Find("LButton").GetComponent<Button>();
+        rightM = GameObject.Find("RButton").GetComponent<Button>();
         manager = audiomanager.Instance;
         if (manager == null)
         {
             //Debug.LogError("AudioManager instance bulunamadý player Movement");
         }
+       
+
         attackB.onClick.RemoveAllListeners();
         attackB.onClick.AddListener(OnAttackButtonPressed);
 
@@ -185,24 +187,51 @@ public class PlayerMovement : MonoBehaviour
         JumpB.onClick.AddListener(onJumpButtonPressed);
         fireB.onClick.AddListener(onFireButtonPressed);
 
+        AddEventTrigger(leftM, (data) => onLeftButtonPressed(), EventTriggerType.PointerDown);
+        AddEventTrigger(leftM, (data) => onLeftButtonReleased(), EventTriggerType.PointerUp);
+
+
+        AddEventTrigger(rightM, (data) => onRightButtonPressed(), EventTriggerType.PointerDown);
+        AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
+
     }
 
+    void AddEventTrigger(Button button, UnityEngine.Events.UnityAction<BaseEventData> action, EventTriggerType triggerType)
+    {
+       
+        EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+        {
+            trigger = button.gameObject.AddComponent<EventTrigger>();
+        }
+
+        EventTrigger.Entry entry = new EventTrigger.Entry
+        {
+            eventID = triggerType
+        };
+
+        // Olayý baðla
+        entry.callback.AddListener(action);
+
+        // Entry'yi EventTrigger'a ekle
+        trigger.triggers.Add(entry);
+    }
     public void onLeftButtonPressed()
     {
         moveInput = new Vector2(-1, 0);
-        if (IsAlive)
-        {
+       // if (IsAlive)
+       // {
             IsMoving = true;
-        }
+      //  }
         // Debug.Log("Sol tuþ basýldý");
     }
     public void onRightButtonPressed()
     {
         moveInput = new Vector2(1, 0);
-        if (IsAlive)
-        {
+       // if (IsAlive)
+   //     {
             IsMoving = true;
-        }
+     //   }
         //Debug.Log("Sað tuþ basýldý.");
     }
     public void onLeftButtonReleased()

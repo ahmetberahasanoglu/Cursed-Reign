@@ -17,6 +17,7 @@ public class FootCheck : MonoBehaviour
         manager = audiomanager.Instance;
         
         SceneManager.sceneLoaded += OnSceneLoaded;
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
     private void OnDestroy()
     {
@@ -24,24 +25,18 @@ public class FootCheck : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "level1") 
+        if (scene.name == "level1"|| scene.name=="level2") 
         {
-            mushroomAnimator = GameObject.Find("Mushroom").GetComponent<Animator>();
+            GameObject mushroom = GameObject.FindWithTag("Mushroom");
+            mushroomAnimator = mushroom.GetComponent<Animator>();
             
         }
-        else if (scene.name == "level2")
-        {
-            mushroomAnimator = GameObject.Find("Mushroom").GetComponent<Animator>();
-            
-        }
-        else if (scene.name == "FirstScene")
-        {
-            mushroomAnimator = GameObject.Find("Statue").GetComponent<Animator>();
-
-        }
+     
+      
         else if (scene.name=="level3")
         {
-            statueAnimator = GameObject.Find("Statue").GetComponent<Animator>();
+            GameObject mushroom = GameObject.FindWithTag("Mushroom");
+            mushroomAnimator = mushroom.GetComponent<Animator>();
         }
         else if (scene.name == "level4")
         {

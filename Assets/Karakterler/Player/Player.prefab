@@ -278,6 +278,7 @@ MonoBehaviour:
   hangTime: 0
   maxJumpCount: 1
   currentJumpCount: 0
+  animator: {fileID: 0}
   avolume: 0.06
   bvolume: 0.5
   cvolume: 0.4

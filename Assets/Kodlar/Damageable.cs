@@ -129,10 +129,7 @@ public class Damageable : MonoBehaviour
         {
             Hit(sawMovement.damage, Vector2.zero); // Zarar görme
         }
-        else
-        {
-            Debug.Log("Hata var. trap veya SawMovement bileþeni bulunamadý veya damage sýfýr.");
-        }
+        
     }
 
     void InstantiateLoot(GameObject loot)

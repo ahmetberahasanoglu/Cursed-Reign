@@ -93,7 +93,7 @@ public class RangedEnemy : MonoBehaviour
                 // Ses çalma
                 manager.PlaySFX(manager.skeletonWalk, cvolume);
                 footstepTimer = footstepInterval; // Zamanlayýcýyý sýfýrla
-                Debug.Log("ses calýndi");
+               
             }
 
         }
@@ -123,7 +123,7 @@ public class RangedEnemy : MonoBehaviour
             projectileScale.x *= transform.localScale.x > 0 ? 1 : -1; // Düþmanýn yönüne göre yön deðiþtir
             projectile.transform.localScale = projectileScale;
 
-            Debug.Log("Projectile fýrlatýldý!");
+          
         }
     }
 
