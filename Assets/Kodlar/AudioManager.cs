@@ -141,7 +141,11 @@ public class audiomanager : MonoBehaviour
         {
             selectedClip = bossSceneClip;
         }
-        else if (SceneManager.GetActiveScene().name == "Door0")
+        else if (SceneManager.GetActiveScene().name == "Door2")
+        {
+            selectedClip = shopSceneClip;
+        }
+        else if (SceneManager.GetActiveScene().name == "Door3")
         {
             selectedClip = shopSceneClip;
         }

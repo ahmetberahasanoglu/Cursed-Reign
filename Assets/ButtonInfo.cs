@@ -8,8 +8,8 @@ public class ButtonInfo : MonoBehaviour
 {
     public TMP_Text priceText;
     public TMP_Text descriptionText;
-   
-  
+
+
     public TMP_Text durumText;
     public Button purchaseButton;
     [SerializeField] GameObject skill;
@@ -19,11 +19,11 @@ public class ButtonInfo : MonoBehaviour
     public int itemPrice;
     [SerializeField] private float volume = 0.5f;
 
-   
+
     public PHealthBar healthBar;
     public ManaBar manaBar;
 
- 
+
     public int healthIncreaseAmount = 20;
     public int manaIncreaseAmount = 1;
 
@@ -33,7 +33,8 @@ public class ButtonInfo : MonoBehaviour
     void Start()
     {
 
-         if ((SceneManager.GetActiveScene().name == "Door2")&&itemPrice==300){
+        if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 300)
+        {
             descriptionText.text = "Yeni bir kýlýc teknigi kitabý";
         }
 
@@ -62,18 +63,18 @@ public class ButtonInfo : MonoBehaviour
         purchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
         manager = audiomanager.Instance;
 
-       
+
         projectileLauncher = FindObjectOfType<ProjectileLauncher>();
 
-       
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             damageable = player.GetComponent<Damageable>();
         }
 
-        healthBar=FindObjectOfType<PHealthBar>();
-        manaBar=FindObjectOfType<ManaBar>();
+        healthBar = FindObjectOfType<PHealthBar>();
+        manaBar = FindObjectOfType<ManaBar>();
     }
 
     public void OnPurchaseButtonClicked()
@@ -81,7 +82,7 @@ public class ButtonInfo : MonoBehaviour
 
         if (descriptionText.text.Contains("kitap"))
         {
-           if(gameManager.instance.timerCurrency <=itemPrice)
+            if (gameManager.instance.timerCurrency <= itemPrice)
             {
                 durumText.text = ("Ürün alýndý: " + descriptionText.text);
                 purchaseButton.interactable = false;
@@ -106,6 +107,26 @@ public class ButtonInfo : MonoBehaviour
             }
 
         }
+        else if (itemPrice == 1)
+        {
+            if (gameManager.instance.crownTaken == true)
+            {
+                durumText.text = ("Ürün alýndý: " + descriptionText.text);
+                purchaseButton.interactable = false;
+                manager.PlaySFX(manager.BuySell, volume);
+                gameManager.instance.EmptyCrown();
+                if (descriptionText.text.Contains("Mana"))
+                {
+                    IncreaseMaxMana();
+                }
+            }
+            else
+            {
+                durumText.text = "Tacý bulamadýn!";
+                manager.PlaySFX(manager.denied, volume);
+            }
+           
+        }
         else
         {
             if (gameManager.instance.GetScore() >= itemPrice)
@@ -122,18 +143,12 @@ public class ButtonInfo : MonoBehaviour
                 {
                     IncreaseMaxHealth();
                 }
-                else if (descriptionText.text.Contains("Mana"))
-                {
-                    IncreaseMaxMana();
-                }
+
                 else if (descriptionText.text.Contains("Yeni"))
                 {
                     Debug.Log("Kýlýc tekngi degis");
 
                 }
-             
-
-
             }
 
             else
@@ -142,7 +157,7 @@ public class ButtonInfo : MonoBehaviour
                 manager.PlaySFX(manager.denied, volume);
             }
         }
-      
+
     }
 
 
@@ -150,10 +165,10 @@ public class ButtonInfo : MonoBehaviour
     {
         if (damageable != null)
         {
-        
+
             damageable.MaxHealth += healthIncreaseAmount;
 
-          
+
             damageable.Health = Mathf.Min(damageable.Health, damageable.MaxHealth);
 
             healthBar.healthSlider.value = damageable.Health / (float)damageable.MaxHealth;

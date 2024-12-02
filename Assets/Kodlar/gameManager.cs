@@ -14,6 +14,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] ManaBar manaBar;
     [SerializeField] Button pauseButton;
     [SerializeField] Button resumeButton;
+    [SerializeField] Image crownImage;
+    [SerializeField] Sprite fillCrown;
+    [SerializeField] Sprite emptyCrown;
+
     Timer timer;
     public GameObject pauseMenuUI;
     public static bool isPaused = false;
@@ -22,11 +26,13 @@ public class gameManager : MonoBehaviour
     public bool timerRunning = true;
     public TMP_Text timerText;
     public float timerCurrency = 0f;  // vakit nakittir
+    public bool crownTaken = false;
 
     private void OnEnable()
     {
         ActionsListener.OnHourglassCollected += HourglassCollected;
         ActionsListener.OnCoinCollected += CoinCollected;
+        ActionsListener.OnCrownCollected += CrownCollected;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -34,6 +40,7 @@ public class gameManager : MonoBehaviour
     {
         ActionsListener.OnHourglassCollected -= HourglassCollected;
         ActionsListener.OnCoinCollected -= CoinCollected;
+        ActionsListener.OnCrownCollected -= CrownCollected;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -150,7 +157,11 @@ public class gameManager : MonoBehaviour
         Score += 50;
         ScoreText.text = string.Format(ScoreFormat, Score);
     }
-
+    void CrownCollected()
+    {
+        crownImage.sprite=fillCrown;
+        crownTaken = true;
+    }
     public void NextLevel()
     {
         StartCoroutine(LoadLevel());
@@ -173,6 +184,11 @@ public class gameManager : MonoBehaviour
     {
         Score -= amount;
         ScoreText.text = string.Format(ScoreFormat, Score);
+    }
+    public void EmptyCrown()
+    {
+        crownImage.sprite = emptyCrown;
+        crownTaken = false;
     }
 
     public void OnPauseButtonPressed()
@@ -220,12 +236,19 @@ public class gameManager : MonoBehaviour
         else if (sceneName == "level1")
         {
             PlayerMovement.instance.transform.position = new Vector2(-170, -2);
+            EmptyCrown();
         }
         else if (sceneName == "level2")
         {
             PlayerMovement.instance.transform.position = new Vector2(37, 1);
+            EmptyCrown();
         }
         else if (sceneName == "level3")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(35, 5);
+            EmptyCrown();
+        }
+       else if(sceneName == "level4")
         {
             PlayerMovement.instance.transform.position = new Vector2(35, 5);
         }
