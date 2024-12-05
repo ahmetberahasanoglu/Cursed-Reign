@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Door3.unity
     guid: 1c7c0dc60994a5e499bd3658c9427038
   - enabled: 1
+    path: Assets/Scenes/level4.unity
+    guid: f90a6fd46a9d1754384b491ec6001c25
+  - enabled: 1
     path: Assets/Scenes/quitScene.unity
     guid: f64ce89c041153d438354955020b8559
   - enabled: 1

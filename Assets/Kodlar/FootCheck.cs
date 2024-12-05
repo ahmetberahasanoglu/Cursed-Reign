@@ -29,6 +29,7 @@ public class FootCheck : MonoBehaviour
         {
             GameObject mushroom = GameObject.FindWithTag("Mushroom");
             mushroomAnimator = mushroom.GetComponent<Animator>();
+            launchForce = 19f;
             
         }
      
@@ -37,6 +38,7 @@ public class FootCheck : MonoBehaviour
         {
             GameObject mushroom = GameObject.FindWithTag("Mushroom");
             mushroomAnimator = mushroom.GetComponent<Animator>();
+            launchForce = 15f;
         }
         else if (scene.name == "level4")
         {

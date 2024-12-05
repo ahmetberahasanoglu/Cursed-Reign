@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
+
 [RequireComponent(typeof(TouchDirection), typeof(Damageable))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier = 2.5f; // Düþerken yerçekimi kuvvetini artýrmak için
     [SerializeField] private float coyoteTime = 0.2f; // Coyote time süresi
     [SerializeField] private float hangTime = 0.1f;
-
+  
     [SerializeField] private int maxJumpCount = 2;
     [SerializeField] private int currentJumpCount;
 
@@ -28,6 +29,14 @@ public class PlayerMovement : MonoBehaviour
     private float hangTimeCounter;
     private Rigidbody2D rb;
 
+    [Header("Dash Degiskenleri")]
+    private bool canDash = true;
+    private bool isDashing;
+    [SerializeField] private float dashPower = 20f;
+    public int dashCooldown = 5;//Bunu gamemanager'daki dashBar'da Kullanacaðýz
+    [SerializeField] private int maxdDashCount = 1;
+    private float dashingTime=0.2f;
+    [SerializeField] private TrailRenderer tr;
 
 
 
@@ -48,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
     public Button fireB;
     public Button leftM;
     public Button rightM;
+    public Button dashB;
+
 
     public float CurrentMoveSpeed
     {
@@ -173,12 +184,13 @@ public class PlayerMovement : MonoBehaviour
         fireB = GameObject.Find("FireButton").GetComponent<Button>();
         leftM = GameObject.Find("LButton").GetComponent<Button>();
         rightM = GameObject.Find("RButton").GetComponent<Button>();
+        dashB = GameObject.Find("dashButton").GetComponent<Button>();
         manager = audiomanager.Instance;
         if (manager == null)
         {
             //Debug.LogError("AudioManager instance bulunamadý player Movement");
         }
-       
+        dashBar = FindObjectOfType<DashBar>();
 
         attackB.onClick.RemoveAllListeners();
         attackB.onClick.AddListener(OnAttackButtonPressed);
@@ -186,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
         attackB.onClick.AddListener(OnAttackButtonPressed);
         JumpB.onClick.AddListener(onJumpButtonPressed);
         fireB.onClick.AddListener(onFireButtonPressed);
+        dashB.onClick.AddListener(OnDashButtonPressed);
 
         AddEventTrigger(leftM, (data) => onLeftButtonPressed(), EventTriggerType.PointerDown);
         AddEventTrigger(leftM, (data) => onLeftButtonReleased(), EventTriggerType.PointerUp);
@@ -216,6 +229,14 @@ public class PlayerMovement : MonoBehaviour
         // Entry'yi EventTrigger'a ekle
         trigger.triggers.Add(entry);
     }
+    public void OnDashButtonPressed()
+    {
+        if (canDash) {
+            manager.PlaySFX(manager.pjump, 0.1f);
+            StartCoroutine(Dash());
+        }
+       
+    }
     public void onLeftButtonPressed()
     {
         moveInput = new Vector2(-1, 0);
@@ -225,6 +246,7 @@ public class PlayerMovement : MonoBehaviour
       //  }
         // Debug.Log("Sol tuþ basýldý");
     }
+
     public void onRightButtonPressed()
     {
         moveInput = new Vector2(1, 0);
@@ -371,6 +393,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger(AnimStrings.rangedAttackTrigger);
         manager.PlaySFX(manager.laser, cvolume);
     }
+    
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -385,8 +408,33 @@ public class PlayerMovement : MonoBehaviour
         manager.PlaySFX(manager.pTakeHit, bvolume);
     }
 
+    private DashBar dashBar;
+    private IEnumerator Dash()
+    {
+       // Instantiate(dashEffectPrefab, transform.position, Quaternion.identity);
+        canDash = false;
+        isDashing = true;
+        float originalGravity=rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashPower, 0f);
+        tr.emitting = true;
+        dashBar.TriggerDashCooldown();
+
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+
+    }
     private void Update()
     {
+        if (isDashing)
+        {
+            return;
+        }
         animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
         if (IsAlive)
         {
@@ -417,7 +465,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (isAttacking)
+        if (isDashing)
+        {
+            return;
+        }
+        if (isAttacking) 
         {
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0f)
