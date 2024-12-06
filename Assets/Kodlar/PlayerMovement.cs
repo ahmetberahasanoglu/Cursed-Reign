@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     [SerializeField] private float dashPower = 20f;
-    public int dashCooldown = 2;//Bunu gamemanager'daki dashBar'da Kullanacaðýz
+    public int dashCooldown = 3;//Bunu gamemanager'daki dashBar'da Kullanacaðýz
     [SerializeField] private int maxdDashCount = 1;
     private float dashingTime=0.2f;
     [SerializeField] private TrailRenderer tr;

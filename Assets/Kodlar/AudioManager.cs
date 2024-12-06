@@ -53,6 +53,7 @@ public class audiomanager : MonoBehaviour
     public AudioClip doorOpen;
     public AudioClip timesUP;
     public AudioClip swordHit;
+    public AudioClip crownTaken;
 
     public static audiomanager Instance { get; private set; }
 

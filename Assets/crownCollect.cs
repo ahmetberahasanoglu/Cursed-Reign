@@ -21,7 +21,7 @@ public class crownCollect : Collectable
     public override void OnCollect()
     {
         ActionsListener.OnCrownCollected();
-        manager.PlaySFX(manager.coinPickup, volume);
+        manager.PlaySFX(manager.crownTaken, volume);
     }
 
 }
