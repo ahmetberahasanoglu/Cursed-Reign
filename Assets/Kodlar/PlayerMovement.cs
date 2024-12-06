@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     [SerializeField] private float dashPower = 20f;
-    public int dashCooldown = 5;//Bunu gamemanager'daki dashBar'da Kullanacaðýz
+    public int dashCooldown = 2;//Bunu gamemanager'daki dashBar'da Kullanacaðýz
     [SerializeField] private int maxdDashCount = 1;
     private float dashingTime=0.2f;
     [SerializeField] private TrailRenderer tr;
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     Vector2 moveInput;
     Damageable damageable;
-
+    
     [Header("Sesler")]
     [SerializeField] float avolume = 0.5f;
     [SerializeField] float bvolume = 0.5f;
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     public Button rightM;
     public Button dashB;
 
-
+    Attack attack;
     public float CurrentMoveSpeed
     {
         get
@@ -186,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
         rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
         manager = audiomanager.Instance;
+        attack=GetComponentInChildren<Attack>();
         if (manager == null)
         {
             //Debug.LogError("AudioManager instance bulunamadý player Movement");
@@ -366,8 +367,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isAttacking = true;
             animator.SetTrigger(AnimStrings.attackTrigger);
-            manager.PlaySFX(manager.attack, avolume);
+         
             attackTimer = attackTimeout;
+            if (attack.dusmanaVurdu == true)
+            {
+                manager.PlaySFX(manager.swordHit, 0.25f);  
+            } 
+            else
+            {
+                manager.PlaySFX(manager.attack, avolume);
+            }
         }
     }
     /*
@@ -414,6 +423,7 @@ public class PlayerMovement : MonoBehaviour
        // Instantiate(dashEffectPrefab, transform.position, Quaternion.identity);
         canDash = false;
         isDashing = true;
+        damageable.isInvincible = true;
         float originalGravity=rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashPower, 0f);
@@ -424,6 +434,7 @@ public class PlayerMovement : MonoBehaviour
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+        damageable.isInvincible = false;
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;

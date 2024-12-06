@@ -9,7 +9,7 @@ public class DashBar : MonoBehaviour
    // [SerializeField] private TMP_Text dashText;
    // private string dashFormat = "{0}/{1}";
 
-    private float maxDashCooldown;
+    public float maxDashCooldown;
     private float currentDashCooldown;
     private bool isCooldownActive = false;
 

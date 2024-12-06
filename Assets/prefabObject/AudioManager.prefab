@@ -215,6 +215,7 @@ MonoBehaviour:
   shopOpen: {fileID: 8300000, guid: 85ffd555fd3d43541902a6f03315202a, type: 3}
   doorOpen: {fileID: 8300000, guid: 7a5dc4d35c09a224daf7ef2da18035a9, type: 3}
   timesUP: {fileID: 8300000, guid: bcd430b630b2e2749b161f27899f6920, type: 3}
+  swordHit: {fileID: 8300000, guid: d34f0fad3a6d08542adcfada5457b0ca, type: 3}
   musicToggleButton: {fileID: 0}
   SFXToggleButton: {fileID: 0}
 --- !u!1 &7297373663076778226

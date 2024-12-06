@@ -8,7 +8,8 @@ public class ButtonInfo : MonoBehaviour
 {
     public TMP_Text priceText;
     public TMP_Text descriptionText;
-
+    PlayerMovement playerMovement;
+    DashBar dashBar;
 
     public TMP_Text durumText;
     public Button purchaseButton;
@@ -40,7 +41,7 @@ public class ButtonInfo : MonoBehaviour
 
         else if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 1)
         {
-            descriptionText.text = "Kýlýc týlsýmý";
+            descriptionText.text = "Atýlma yetenegini daha sýk kullanabilirsin";
         }
         else if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 180)
         {
@@ -57,7 +58,7 @@ public class ButtonInfo : MonoBehaviour
         }
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 180)
         {
-            descriptionText.text = "Tembel geliþtiricci baska özellik bulamadý";
+            descriptionText.text = "Tembel gelistirici baska özellik bulamadý";
         }
         priceText.text = itemPrice.ToString();
         purchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
@@ -118,6 +119,11 @@ public class ButtonInfo : MonoBehaviour
                 if (descriptionText.text.Contains("Mana"))
                 {
                     IncreaseMaxMana();
+                }
+                else if (descriptionText.text.Contains("Atýlma"))
+                {
+                    playerMovement.dashCooldown = 1;
+                    dashBar.maxDashCooldown = 1;
                 }
             }
             else

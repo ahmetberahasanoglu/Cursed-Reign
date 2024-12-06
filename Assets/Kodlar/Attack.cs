@@ -6,22 +6,33 @@ public class Attack : MonoBehaviour
 {
     public int attackDamage = 10;
     public Vector2 knockback = Vector2.zero;
-
+    audiomanager manager;
+    public bool dusmanaVurdu = false;
+    private void Start()
+    {
+        manager = audiomanager.Instance;
+       
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      
+       
         Damageable damageable = collision.GetComponent<Damageable>();
 
         if (damageable != null)
         {
-            // If parent is facing the left by localscale, our knockback x flips its value to face the left as well
+            dusmanaVurdu = true;
             Vector2 deliveredKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
-
-            // Hit the target
+          
+            
             bool gotHit = damageable.Hit(attackDamage,deliveredKnockback);
 
         // if(gotHit)
-        //Debug.Log(collision.name + " hit for " + attackDamage);
+        //Debug.Log(collision.name +  + attackDamage);
+        }
+        else
+        {
+            dusmanaVurdu = false;
+       
         }
     }
 }
