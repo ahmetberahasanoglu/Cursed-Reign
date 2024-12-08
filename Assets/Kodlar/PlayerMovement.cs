@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     public Button rightM;
     public Button dashB;
 
-    Attack attack;
+    playerAttack attack;
     public float CurrentMoveSpeed
     {
         get
@@ -186,7 +186,8 @@ public class PlayerMovement : MonoBehaviour
         rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
         manager = audiomanager.Instance;
-        attack=GetComponentInChildren<Attack>();
+        attack=GetComponentInChildren<playerAttack>();
+      
         if (manager == null)
         {
             //Debug.LogError("AudioManager instance bulunamadý player Movement");
@@ -358,6 +359,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     }*/
+   
     private bool isAttacking = false; 
     private float attackTimeout = 0.6f;
     private float attackTimer;
@@ -369,16 +371,13 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger(AnimStrings.attackTrigger);
          
             attackTimer = attackTimeout;
-            if (attack.dusmanaVurdu == true)
-            {
-                manager.PlaySFX(manager.swordHit, 0.25f);  
-            } 
-            else
+            if (attack.triggerTetiklendi==false)//attack.dusmanaVurdu == false
             {
                 manager.PlaySFX(manager.attack, avolume);
             }
         }
     }
+   
     /*
     public void OnAttack(InputAction.CallbackContext context)
     {
@@ -391,7 +390,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }*/
 
-   
+
     public void OnAttackAnimationFinished()
     {
         isAttacking = false;

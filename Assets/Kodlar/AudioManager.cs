@@ -54,6 +54,7 @@ public class audiomanager : MonoBehaviour
     public AudioClip timesUP;
     public AudioClip swordHit;
     public AudioClip crownTaken;
+    public AudioClip punch;
 
     public static audiomanager Instance { get; private set; }
 

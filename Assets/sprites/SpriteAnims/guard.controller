@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4dffc917aecd94193ac4429f16efe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.6
-  fadeDelay: 0.1
+  fadeTime: 0.7
+  fadeDelay: 0.3
 --- !u!1107 &-6450599666283917434
 AnimatorStateMachine:
   serializedVersion: 6
@@ -75,7 +75,7 @@ AnimatorStateMachine:
     m_Position: {x: 760, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 887417314796999079}
-    m_Position: {x: 300, y: 200, z: 0}
+    m_Position: {x: 300, y: 250, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 892381993801280193}
@@ -88,12 +88,12 @@ AnimatorStateMachine:
   - {fileID: -4015815572750029264}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -5566213966598584531}
-    second:
-    - {fileID: -4687297597659307013}
   - first: {fileID: 892381993801280193}
     second:
     - {fileID: -4506813383519382967}
+  - first: {fileID: -5566213966598584531}
+    second:
+    - {fileID: -4687297597659307013}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 680, y: 230, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -256,7 +256,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAlive
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isHit
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4561293419003186446}
   m_Solo: 0
@@ -278,7 +284,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAlive
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 887417314796999079}
   m_Solo: 0
@@ -289,10 +298,10 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
-  m_HasFixedDuration: 1
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!114 &-3368516726713161632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,7 +344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9855b8cb8c4f1e49805ca72d436c8e8, type: 3}
   m_Name: 

@@ -714,5 +714,5 @@ MonoBehaviour:
   updateOnStateExit: 1
   updateOnStateMachineEnter: 0
   updateOnStateMachineExit: 0
-  valueOnEnter: 0
+  valueOnEnter: 0.5
   valueOnExit: 3

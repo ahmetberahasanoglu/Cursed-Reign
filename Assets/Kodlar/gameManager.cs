@@ -250,7 +250,7 @@ public class gameManager : MonoBehaviour
         }
        else if(sceneName == "level4")
         {
-            PlayerMovement.instance.transform.position = new Vector2(35, 5);
+            PlayerMovement.instance.transform.position = new Vector2(240, -23);
         }
     }
 }

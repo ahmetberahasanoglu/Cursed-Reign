@@ -216,6 +216,8 @@ MonoBehaviour:
   doorOpen: {fileID: 8300000, guid: 7a5dc4d35c09a224daf7ef2da18035a9, type: 3}
   timesUP: {fileID: 8300000, guid: bcd430b630b2e2749b161f27899f6920, type: 3}
   swordHit: {fileID: 8300000, guid: d34f0fad3a6d08542adcfada5457b0ca, type: 3}
+  crownTaken: {fileID: 8300000, guid: cb62759a34345754b9c16bd9e3856e90, type: 3}
+  punch: {fileID: 8300000, guid: 2b0d4036a47e80d4bafb5cd61ff23bc2, type: 3}
   musicToggleButton: {fileID: 0}
   SFXToggleButton: {fileID: 0}
 --- !u!1 &7297373663076778226

@@ -13,6 +13,9 @@ TagManager:
   - MovingPlatform
   - Ground
   - Mushroom
+  - punch
+  - mami
+  - yumruk
   layers:
   - Default
   - TransparentFX

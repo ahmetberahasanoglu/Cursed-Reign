@@ -5,12 +5,23 @@ using UnityEngine;
 public class ladderScript : MonoBehaviour
 {
     Animator animator;
+    PunchTrap trap;
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
-    private void OnEnable()
+    private void Start()
     {
-        animator.SetTrigger("tapped"); 
+        trap = FindObjectOfType<PunchTrap>();
     }
+    private void Update()
+    {
+        if(trap.punched==true)
+        {
+            animator.SetTrigger("tapped");
+
+        }
+        
+    }
+   
 }

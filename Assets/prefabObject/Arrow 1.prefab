@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17c3531b07d5a94286a8942d2e923ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 10}
+  speed: {x: 0, y: -10}
   damage: 10
   knockback: {x: 0, y: 0}
-  lifetime: 4
+  lifetime: 1.6
 --- !u!61 &-4359000560568993682
 BoxCollider2D:
   m_ObjectHideFlags: 0

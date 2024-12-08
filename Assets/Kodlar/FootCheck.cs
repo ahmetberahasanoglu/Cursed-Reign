@@ -42,8 +42,10 @@ public class FootCheck : MonoBehaviour
         }
         else if (scene.name == "level4")
         {
-            statueAnimator = GameObject.Find("Statue").GetComponent<Animator>();
-            
+            GameObject mushroom = GameObject.FindWithTag("Mushroom");
+            mushroomAnimator = mushroom.GetComponent<Animator>();
+            launchForce = 16f;
+
         }
         
         else

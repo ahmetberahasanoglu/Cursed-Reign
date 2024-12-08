@@ -6,19 +6,22 @@ public class PunchTrap : MonoBehaviour
 {
    Animator animator;
     public GameObject ladder;
+    public bool punched = false;
+    public int ladder_2 = 1;    
+    audiomanager manager;
     void Awake()
     {
         animator = GetComponent<Animator>();
+        manager = audiomanager.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         animator.SetTrigger("punched");
-        ladder.SetActive(true);   
+        manager.PlaySFX(manager.punch, 0.5F);
+        ladder.SetActive(true);
+        punched = true;
+        ladder_2 ++;
     }
 }
