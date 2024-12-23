@@ -184,7 +184,11 @@ public class Wizard : MonoBehaviour
     private void FlipDirection()
     {
         // Karakterin yönünü deðiþtir
-        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        if (anim.GetBool("isAttacking")==false)
+        {
+            transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        }
+      
     }
 
     private bool InsideOfLimits()
