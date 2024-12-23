@@ -486,7 +486,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 OnAttackAnimationFinished(); // Saldýrý zamanlayýcý süresi doldu
             }
-            CanMove = false;
+            //CanMove = false;
         }
         if (touchDirection.IsGrounded)
         {

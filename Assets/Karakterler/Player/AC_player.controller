@@ -308,7 +308,7 @@ MonoBehaviour:
   updateOnState: 0
   updateOnStateMachine: 1
   valueOnEnter: 0
-  valueOnExit: 1
+  valueOnExit: 0
 --- !u!1109 &-2444782895288910900
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -472,6 +472,23 @@ AnimatorTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 1
+--- !u!114 &-858899629639823352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71ef066539da8747a8690e0ec1445fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolName: canMove
+  updateOnState: 1
+  updateOnStateMachine: 0
+  valueOnEnter: 0
+  valueOnExit: 1
 --- !u!114 &-160780713282919222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,6 +914,7 @@ AnimatorState:
   - {fileID: 2961902871266539143}
   m_StateMachineBehaviours:
   - {fileID: 5493810335408863276}
+  - {fileID: -858899629639823352}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
