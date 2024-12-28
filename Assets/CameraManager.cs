@@ -68,6 +68,12 @@ public class CameraManager : MonoBehaviour
             confiner.m_BoundingShape2D = level4Collider;
             confiner.enabled = true;
         }
+        else if (sceneName == "level5")
+        {
+            PolygonCollider2D level5Collider = GameObject.Find("level1CameraLimit").GetComponent<PolygonCollider2D>();
+            confiner.m_BoundingShape2D = level5Collider;
+            confiner.enabled = true;
+        }
         else if (sceneName == "Door1")
         {
             PolygonCollider2D door1Collider = GameObject.Find("CameraLimit").GetComponent<PolygonCollider2D>();

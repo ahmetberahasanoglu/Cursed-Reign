@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class audiomanager : MonoBehaviour
 {
@@ -14,15 +15,15 @@ public class audiomanager : MonoBehaviour
 
     [Header("---AUDIO Clip---")]
     // public AudioClip introClip;
-    public AudioClip defaultLoopClip;  
-    public AudioClip doorSceneClip;    
-    public AudioClip firstSceneClip;    
-    public AudioClip battleSceneClip;  
-    public AudioClip level2SceneClip;  
-    public AudioClip level3SceneClip;  
-    public AudioClip level4SceneClip;  
-    public AudioClip bossSceneClip;  
-    public AudioClip shopSceneClip;    
+    public AudioClip defaultLoopClip;
+    public AudioClip doorSceneClip;
+    public AudioClip firstSceneClip;
+    public AudioClip battleSceneClip;
+    public AudioClip level2SceneClip;
+    public AudioClip level3SceneClip;
+    public AudioClip level4SceneClip;
+   // public AudioClip bossSceneClip;
+    public AudioClip shopSceneClip;
     public AudioClip menuSceneClip;
     public AudioClip death;
     public AudioClip attack;
@@ -55,15 +56,16 @@ public class audiomanager : MonoBehaviour
     public AudioClip swordHit;
     public AudioClip crownTaken;
     public AudioClip punch;
-
+    //public bool bossReach = false;
+    public AudioClip bossMusic;
     public static audiomanager Instance { get; private set; }
 
     [Header("Pause Menu Buttonlari")]
     public Button musicToggleButton;
     public Button SFXToggleButton;
 
-    private bool isMusicMuted = false;  
-    private bool isSFXMuted = false;    
+    private bool isMusicMuted = false;
+    private bool isSFXMuted = false;
 
     private void Awake()
     {
@@ -81,7 +83,7 @@ public class audiomanager : MonoBehaviour
     private void Start()
     {
         PlayMusicForCurrentScene();
-
+       // bossMusic = Resources.Load<AudioClip>("Sounds/bossMusic.ogg");
         // Butonlara iþlevleri atama
         if (musicToggleButton != null)
         {
@@ -106,12 +108,12 @@ public class audiomanager : MonoBehaviour
         else
         {
             if (!isMusicMuted)
-                audioMixer.SetFloat("MyExposedParam 1", -18f); 
+                audioMixer.SetFloat("MyExposedParam 1", -18f);
             if (!isSFXMuted)
-                audioMixer.SetFloat("MyExposedParam", 0f);     
+                audioMixer.SetFloat("MyExposedParam", 0f);
         }
     }
-    private void PlayMusicForCurrentScene()
+    public void PlayMusicForCurrentScene()
     {
         AudioClip selectedClip = defaultLoopClip;  // Varsayýlan müzik
 
@@ -122,7 +124,7 @@ public class audiomanager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "FirstScene")
         {
-           selectedClip = firstSceneClip;
+            selectedClip = firstSceneClip;
         }
         else if (SceneManager.GetActiveScene().name == "level1")
         {
@@ -142,7 +144,9 @@ public class audiomanager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "level5")
         {
-            selectedClip = bossSceneClip;
+            //  selectedClip = bossReach ? bossSceneClip : firstSceneClip;
+            selectedClip = firstSceneClip;
+
         }
         else if (SceneManager.GetActiveScene().name == "Door2")
         {
@@ -156,31 +160,60 @@ public class audiomanager : MonoBehaviour
         {
             selectedClip = menuSceneClip;
         }
-        // Baþka sahneler için ekle...
+        
 
         PlayMusic(selectedClip);
     }
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;  // Sahne yüklendiðinde çaðýrýlýr
+        SceneManager.sceneLoaded += OnSceneLoaded;  
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;  // Event kaldýrýlýr
+        SceneManager.sceneLoaded -= OnSceneLoaded;  
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        PlayMusicForCurrentScene();  // Yeni sahne yüklendiðinde müziði güncelle
+        PlayMusicForCurrentScene();  
     }
     private void PlayMusic(AudioClip clip)
     {
         if (musicSource.clip != clip)
         {
-            musicSource.Stop();  
+            musicSource.Stop();
             musicSource.clip = clip;
             musicSource.loop = true;
-            musicSource.Play();  
+            musicSource.Play();
+        }
+    }
+    public void PlayEventMusic(AudioClip eventMusic)
+    {
+        if (musicSource.clip != eventMusic)
+        {
+            // Halen çalýnan müzik varsa yavaþça azalt
+            StartCoroutine(FadeOutAndChangeMusic(eventMusic));
+        }
+    }
+ 
+    private IEnumerator FadeOutAndChangeMusic(AudioClip newClip)
+    {
+        // Ses yavaþça azalýr
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= Time.deltaTime * 0.5f; 
+            yield return null;
+        }
+
+    
+        musicSource.Stop();
+        musicSource.clip = newClip;
+        musicSource.Play();
+
+        while (musicSource.volume < 1)
+        {
+            musicSource.volume += Time.deltaTime * 0.5f;
+            yield return null;
         }
     }
     public void ToggleMusic()

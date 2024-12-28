@@ -252,5 +252,9 @@ public class gameManager : MonoBehaviour
         {
             PlayerMovement.instance.transform.position = new Vector2(240, -23);
         }
+        else if (sceneName == "level5")
+        {
+            PlayerMovement.instance.transform.position = new Vector2(73 , 1);
+        }   
     }
 }

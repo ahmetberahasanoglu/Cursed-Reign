@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/Scenes/level4.unity
     guid: f90a6fd46a9d1754384b491ec6001c25
   - enabled: 1
+    path: Assets/Scenes/level5.unity
+    guid: 34d34c24c74645e4a8ca20313c2b1190
+  - enabled: 1
     path: Assets/Scenes/quitScene.unity
     guid: f64ce89c041153d438354955020b8559
   - enabled: 1
