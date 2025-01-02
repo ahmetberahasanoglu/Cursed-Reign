@@ -23,7 +23,7 @@ public class ButtonInfo : MonoBehaviour
 
     public PHealthBar healthBar;
     public ManaBar manaBar;
-
+   
 
     public int healthIncreaseAmount = 20;
     public int manaIncreaseAmount = 1;
@@ -36,7 +36,7 @@ public class ButtonInfo : MonoBehaviour
 
         if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 300)
         {
-            descriptionText.text = "Yeni bir kýlýc teknigi kitabý";
+            descriptionText.text = "Yeni bir kýlýç teknigi kitabý";
         }
 
         else if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 1)
@@ -45,7 +45,7 @@ public class ButtonInfo : MonoBehaviour
         }
         else if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 180)
         {
-            descriptionText.text = "Combo gorunumu";
+            descriptionText.text = "Saldýrý enerjisini arttýran kitap ";
         }
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 300)
         {
@@ -54,17 +54,17 @@ public class ButtonInfo : MonoBehaviour
 
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 1)
         {
-            descriptionText.text = "Hasarýný arttýran bir kýlýc týlsýmý";
+            descriptionText.text = "Hasarýný arttýran bir kýlýç týlsýmý";
         }
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 180)
         {
-            descriptionText.text = "Tembel gelistirici baska özellik bulamadý";
+            descriptionText.text = "Enerjin daha hýzlý yenilenir";
         }
         priceText.text = itemPrice.ToString();
         purchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
         manager = audiomanager.Instance;
 
-
+        
         projectileLauncher = FindObjectOfType<ProjectileLauncher>();
 
 
@@ -76,6 +76,7 @@ public class ButtonInfo : MonoBehaviour
 
         healthBar = FindObjectOfType<PHealthBar>();
         manaBar = FindObjectOfType<ManaBar>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     public void OnPurchaseButtonClicked()
@@ -89,16 +90,21 @@ public class ButtonInfo : MonoBehaviour
                 purchaseButton.interactable = false;
                 manager.PlaySFX(manager.BuySell, volume);
 
-                if (descriptionText.text.Contains("kitap"))
+                if (descriptionText.text.Contains("Büyünü"))
                 {
                     if (projectileLauncher != null)
                     {
                         projectileLauncher.projectilePrefab = skill;
                     }
-                    else
-                    {
-                        Debug.LogError("ProjectileLauncher bulunamadý.");
-                    }
+                  
+                }
+                if (descriptionText.text.Contains("enerjisini"))
+                {
+                    //stamina arttýr
+                }
+                if (descriptionText.text.Contains("yenilenir"))
+                {
+                    //Stamina yenilenme hizi arttýr
                 }
             }
             else
@@ -108,6 +114,7 @@ public class ButtonInfo : MonoBehaviour
             }
 
         }
+       
         else if (itemPrice == 1)
         {
             if (gameManager.instance.crownTaken == true)
@@ -124,6 +131,10 @@ public class ButtonInfo : MonoBehaviour
                 {
                     playerMovement.dashCooldown = 1;
                     dashBar.maxDashCooldown = 1;
+                }
+                else if (descriptionText.text.Contains("týlsým"))
+                {
+                    playerMovement.OnTilsimPurchased();
                 }
             }
             else
@@ -152,9 +163,10 @@ public class ButtonInfo : MonoBehaviour
 
                 else if (descriptionText.text.Contains("Yeni"))
                 {
-                    Debug.Log("Kýlýc tekngi degis");
-
+                    playerMovement.OnTeknikPurchased();
+                  
                 }
+
             }
 
             else
@@ -180,10 +192,7 @@ public class ButtonInfo : MonoBehaviour
             healthBar.healthSlider.value = damageable.Health / (float)damageable.MaxHealth;
             healthBar.UpdateHealthText(damageable.Health, damageable.MaxHealth);
         }
-        else
-        {
-            Debug.LogError("Damageable component is missing on the player.");
-        }
+       
     }
 
 

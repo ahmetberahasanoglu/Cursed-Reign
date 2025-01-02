@@ -179,7 +179,18 @@ public class PlayerMovement : MonoBehaviour
         
 
     }
-
+    public void OnTeknikPurchased()
+    {
+        animator.SetBool("Upgraded", true);
+    }
+    public void OnTilsimPurchased()
+    {
+        attack.attackDamage = 20;
+    }
+    public void OnDashPowerPurchased()
+    {
+        dashPower = 9f;
+    }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "CreditsScene"&& instance !=null)
