@@ -51,10 +51,14 @@ public class gameManager : MonoBehaviour
         Score = 0;
         ScoreText.text = string.Format(ScoreFormat, Score);
 
-        if (instance == null)
+        if (instance == null )
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+        else if(SceneManager.GetActiveScene().name == "CreditsScene")
+        {
+            Destroy(gameObject);
         }
         else
         {
@@ -90,6 +94,10 @@ public class gameManager : MonoBehaviour
  
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "CreditsScene")
+        {
+            Destroy(gameObject);
+        }
         if (PlayerMovement.instance == null)
         {
             SpawnPlayer();
@@ -98,11 +106,18 @@ public class gameManager : MonoBehaviour
         {
             MovePlayerToSpawn();
         }
-        if (scene.name.StartsWith("level") || scene.name.StartsWith("Door"))
+        if (scene.name.StartsWith("level") || scene.name.StartsWith("Door")||scene.name.StartsWith("First"))
         {
             SaveCurrentLevel(scene.name);
         }
-        if (scene.name.Contains("Door"))  
+        if(scene.name == "FirstScene")
+        {
+            timeElapsed = 1f;
+            timerRunning = false;
+            timer.StopTimer();//burasý calýsmýyor coz
+
+        }
+        if (scene.name.Contains("Door") ) 
         {
             timerRunning = false;
             timerCurrency = timeElapsed;  // zamaný para olarak aldýk

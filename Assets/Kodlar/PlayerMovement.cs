@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -163,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+      
         instance = this;
         DontDestroyOnLoad(gameObject);
         /* if (instance == null)
@@ -178,7 +180,15 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void Start()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "CreditsScene"&& instance !=null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+        private void Start()
     {
         attackB = GameObject.Find("AtckButton").GetComponent<Button>();
         JumpB = GameObject.Find("JumpButton").GetComponent<Button>();
@@ -188,7 +198,8 @@ public class PlayerMovement : MonoBehaviour
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
         manager = audiomanager.Instance;
         attack=GetComponentInChildren<playerAttack>();
-      
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
         if (manager == null)
         {
             //Debug.LogError("AudioManager instance bulunamadý player Movement");
@@ -232,7 +243,8 @@ public class PlayerMovement : MonoBehaviour
         // Entry'yi EventTrigger'a ekle
         trigger.triggers.Add(entry);
     }
-    public void OnDashButtonPressed()
+   
+        public void OnDashButtonPressed()
     {
         if (canDash) {
             manager.PlaySFX(manager.pjump, 0.1f);
@@ -400,17 +412,17 @@ public class PlayerMovement : MonoBehaviour
     public void onFireButtonPressed()
     {
         animator.SetTrigger(AnimStrings.rangedAttackTrigger);
-        manager.PlaySFX(manager.laser, cvolume);
+        
     }
     
-    public void OnFire(InputAction.CallbackContext context)
+    /*public void OnFire(InputAction.CallbackContext context) pcde denerken
     {
         if (context.started)
         {
             animator.SetTrigger(AnimStrings.rangedAttackTrigger);
             manager.PlaySFX(manager.laser, cvolume);
         }
-    }
+    }*/
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
@@ -518,11 +530,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             CanMove = true;
+            canDash = true;
         }
         else
         {
             rb.velocity = new Vector2(0, rb.velocity.y); // Diyalog sýrasýnda hareket edemiycez. Ýleride animasyonu da kapatabilirim
             CanMove = false;
+            canDash = false;
         }
         #endregion
 

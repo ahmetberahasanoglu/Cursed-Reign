@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   followTarget: {fileID: 0}
---- !u!43 &53697622
+--- !u!43 &34925060
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9274,8 +9274,8 @@ MonoBehaviour:
   - {x: 0.3697548, y: 0.61598814, z: 0}
   - {x: -0.6312256, y: 0.65197194, z: 0}
   m_ShapePathHash: -1591809103
-  m_Mesh: {fileID: 53697622}
-  m_InstanceId: 60148
+  m_Mesh: {fileID: 34925060}
+  m_InstanceId: 84452
   m_LocalBounds:
     m_Center: {x: -0.1307354, y: 1.4788737, z: 0}
     m_Extent: {x: 0.5004902, y: 0.86288553, z: 0}
@@ -9427,6 +9427,96 @@ MonoBehaviour:
   isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.2
+--- !u!1 &601974708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601974711}
+  - component: {fileID: 601974710}
+  - component: {fileID: 601974709}
+  m_Layer: 0
+  m_Name: GameObject (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &601974709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601974708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1c595e734c9bd41940184575d9309b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &601974710
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601974708}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6784363, y: 0.30800962}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3568726, y: 2.5742712}
+  m_EdgeRadius: 0
+--- !u!4 &601974711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601974708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 52.77145, y: -2.5, z: -0.032139126}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &677407372
 GameObject:
   m_ObjectHideFlags: 0
@@ -13849,13 +13939,31 @@ MonoBehaviour:
   dialogue:
     dialogueLines:
     - character:
-        name: General
+        name: General Sarduk
         icon: {fileID: 21300000, guid: bdbee83246a77c54492751be6142d99c, type: 3}
-      line: Tahmin etmeliydim...
+      line: "Eninde sonunda buraya gelece\u011Fini biliyordum."
     - character:
         name: Isildan
         icon: {fileID: 21300000, guid: ddfe3e35552536b47b3e7ada8f17f3cd, type: 3}
-      line: asdasdasdas123
+      line: "Yapt\u0131klar\u0131n\u0131n bir bedeli oldu\u011Funu biliyordun yine
+        de kara b\xFCy\xFC kulland\u0131n. Haz\u0131rlan! hakk\u0131m olan taht\u0131m
+        ve kellen i\xE7in geldim sarduk. "
+    - character:
+        name: Isildan
+        icon: {fileID: 21300000, guid: bdbee83246a77c54492751be6142d99c, type: 3}
+      line: "\xC7ocuk\xE7a fikirlerinle krall\u0131\u011F\u0131 yoksullu\u011Fa ve
+        kayba s\xFCr\xFCkl\xFCyordun ben yap\u0131lmas\u0131 gerekeni yapt\u0131m.
+        Buras\u0131 eski Legarios de\u011Fil ama en az\u0131ndan memleketimiz hala
+        ayakta. "
+    - character:
+        name: General Sarduk
+        icon: {fileID: 21300000, guid: bdbee83246a77c54492751be6142d99c, type: 3}
+      line: "Yeterince konu\u015Ftuk. Konu\u015Fma s\u0131ras\u0131 k\u0131l\u0131\xE7lar\u0131m\u0131zda."
+    - character:
+        name: Quacktales
+        icon: {fileID: 21300000, guid: de26a60d7de6ba14297295f33d7c686f, type: 3}
+      line: "Hen\xFCz boss sava\u015F\u0131n\u0131 bitiremedim.  En yak\u0131n g\xFCncellemede
+        gelecek.  Oynad\u0131\u011F\u0131n i\xE7in \xC7OK TE\u015EEKK\xDCRLER."
 --- !u!61 &824138200
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17442,3 +17550,4 @@ SceneRoots:
   - {fileID: 1001677816}
   - {fileID: 1921379653}
   - {fileID: 700774442}
+  - {fileID: 601974711}

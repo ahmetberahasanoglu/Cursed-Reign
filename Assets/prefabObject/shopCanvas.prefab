@@ -2168,7 +2168,7 @@ MonoBehaviour:
   descriptionText: {fileID: 3942187813963013447}
   durumText: {fileID: 8832659269049323267}
   purchaseButton: {fileID: 3743646165023249816}
-  skill: {fileID: 1063353120155807958, guid: 652c487c015c1574d93e7d0d4f8e2378, type: 3}
+  skill: {fileID: 2669939366986505700, guid: 9ac1aa07e52363444b0066943fdca89b, type: 3}
   itemPrice: 180
   volume: 0.3
   healthBar: {fileID: 0}

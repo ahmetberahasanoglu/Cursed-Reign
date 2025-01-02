@@ -74,6 +74,7 @@ public class audiomanager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+      
         else
         {
             Destroy(gameObject);
@@ -175,6 +176,10 @@ public class audiomanager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "CreditsScene")
+        {
+            Destroy(gameObject);
+        }
         PlayMusicForCurrentScene();  
     }
     private void PlayMusic(AudioClip clip)

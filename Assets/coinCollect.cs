@@ -6,8 +6,10 @@ public class coinCollect : Collectable
 {
     [SerializeField] float volume = 0.5f;
     audiomanager manager;
+    Animator animator;
     private void Start()
     {
+        animator = GetComponent<Animator>();
         manager = audiomanager.Instance;
         if (manager == null)
         {
@@ -18,5 +20,7 @@ public class coinCollect : Collectable
     {
         ActionsListener.OnCoinCollected();
         manager.PlaySFX(manager.coinPickup, volume);
+        animator.SetTrigger("Collected");
     }
+    
 }

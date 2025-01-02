@@ -49,12 +49,12 @@ public class ButtonInfo : MonoBehaviour
         }
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 300)
         {
-            descriptionText.text = "Yeni bir kýlýc teknigi kitabý";
+            descriptionText.text = "Daha uzaga atýlabilirsin";
         }
 
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 1)
         {
-            descriptionText.text = "Kýlýc týlsýmý";
+            descriptionText.text = "Hasarýný arttýran bir kýlýc týlsýmý";
         }
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 180)
         {

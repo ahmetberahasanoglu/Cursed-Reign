@@ -31,6 +31,10 @@ public class CameraManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "CreditsScene")
+        {
+            Destroy(gameObject);
+        }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
