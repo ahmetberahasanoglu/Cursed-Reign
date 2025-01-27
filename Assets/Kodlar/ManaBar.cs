@@ -7,13 +7,13 @@ public class ManaBar : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private TMP_Text manaText;
     private string manaFormat = "{0}/{1}";
-
+    Animator animator;
     private int maxMana;
     [SerializeField] private int currentMana;
 
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
         maxMana = 3; 
         currentMana = 0;
         slider.value = 0;
@@ -44,7 +44,10 @@ public class ManaBar : MonoBehaviour
         }
         return false;
     }
-
+    public void noMana()
+    {
+        animator.SetTrigger("noMana");
+    }
     public int GetCurrentMana()
     {
         return currentMana;

@@ -13,6 +13,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     TouchDirection touchDirection;
+    StaminaBar staminaBar;
     public ParticleSystem dust;
     [SerializeField] private float speed;
     [Header("Ziplama Ozellikleri")]
@@ -209,6 +210,7 @@ public class PlayerMovement : MonoBehaviour
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
         manager = audiomanager.Instance;
         attack=GetComponentInChildren<playerAttack>();
+        staminaBar = GameObject.Find("Stamina Bar").GetComponent<StaminaBar>();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (manager == null)
@@ -391,6 +393,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAttacking) // ztn saldýrma animasyonu oynamýyorsa
         {
+            if (staminaBar.UseStamina())
+            {
+                staminaBar.use();
+                Debug.Log("stamina azalmalý");
+          
+
             isAttacking = true;
             animator.SetTrigger(AnimStrings.attackTrigger);
          
@@ -398,6 +406,7 @@ public class PlayerMovement : MonoBehaviour
             if (attack.triggerTetiklendi==false)//attack.dusmanaVurdu == false
             {
                 manager.PlaySFX(manager.attack, avolume);
+            }
             }
         }
     }
@@ -423,6 +432,7 @@ public class PlayerMovement : MonoBehaviour
     public void onFireButtonPressed()
     {
         animator.SetTrigger(AnimStrings.rangedAttackTrigger);
+
         
     }
     

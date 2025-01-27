@@ -23,7 +23,7 @@ public class ButtonInfo : MonoBehaviour
 
     public PHealthBar healthBar;
     public ManaBar manaBar;
-   
+    public StaminaBar staminaBar;
 
     public int healthIncreaseAmount = 20;
     public int manaIncreaseAmount = 1;
@@ -76,6 +76,7 @@ public class ButtonInfo : MonoBehaviour
 
         healthBar = FindObjectOfType<PHealthBar>();
         manaBar = FindObjectOfType<ManaBar>();
+        staminaBar = FindObjectOfType<StaminaBar>();
         playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
@@ -100,11 +101,11 @@ public class ButtonInfo : MonoBehaviour
                 }
                 if (descriptionText.text.Contains("enerjisini"))
                 {
-                    //stamina arttýr
+                    staminaBar.maxStamina = 5f;
                 }
                 if (descriptionText.text.Contains("yenilenir"))
                 {
-                    //Stamina yenilenme hizi arttýr
+                    staminaBar.regenRate = 1F;
                 }
             }
             else

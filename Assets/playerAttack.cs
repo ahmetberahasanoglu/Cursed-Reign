@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerAttack : MonoBehaviour
 {
+
     public int attackDamage = 10;
     public Vector2 knockback = Vector2.zero;
     audiomanager manager;
@@ -22,19 +23,22 @@ public class playerAttack : MonoBehaviour
     {
         if (col.enabled && !sesCaldi && triggerTetiklendi)
         {
+
             onAttack();
             sesCaldi = true;
-            triggerTetiklendi = false; 
+            triggerTetiklendi = false;
+
         }
 
         if (!col.enabled)
         {
+          
             dusmanaVurdu = false;
             sesCaldi = false;
             triggerTetiklendi = false;
         }
     }
-  
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -50,15 +54,18 @@ public class playerAttack : MonoBehaviour
     }
     private void onAttack()
     {
+       
         if (dusmanaVurdu)
         {
-            manager.PlaySFX(manager.swordHit, 0.19f); 
+            manager.PlaySFX(manager.swordHit, 0.19f);
+            
         }
         else
         {
             manager.PlaySFX(manager.attack, 0.2f);
+
         }
     }
 
-  
+
 }

@@ -42,7 +42,7 @@ public class ProjectileLauncher : MonoBehaviour
         }
         else
         {
-            Debug.Log("Yetersiz mana!");
+            manaBar.noMana();
         }
     }
 

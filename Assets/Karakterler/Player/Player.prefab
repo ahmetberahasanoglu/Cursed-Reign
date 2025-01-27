@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3257548427255221645}
-  - component: {fileID: 3453348693447931781}
   - component: {fileID: 733154593769490074}
+  - component: {fileID: 1378455665625655072}
   m_Layer: 9
   m_Name: attackArea2
   m_TagString: Untagged
@@ -33,20 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6660010246155529486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3453348693447931781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393343817420034247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb86b9713ab3fbf4e89412c2dedc2544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 15
-  knockback: {x: 6, y: 1.4}
 --- !u!60 &733154593769490074
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -100,6 +86,22 @@ PolygonCollider2D:
       - {x: -0.2823997, y: -0.4288883}
       - {x: -0.20921172, y: -0.23959523}
   m_UseDelaunayMesh: 0
+--- !u!114 &1378455665625655072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393343817420034247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3fb958ab979dc48ba9089f426ccb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 15
+  knockback: {x: 3, y: 1}
+  dusmanaVurdu: 0
+  triggerTetiklendi: 0
 --- !u!1 &2480872486557025978
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,15 +816,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8106016519079736528}
-  - component: {fileID: 426246949000196740}
   - component: {fileID: 9179559713102788452}
+  - component: {fileID: 6152007135908239228}
   m_Layer: 9
   m_Name: attackArea3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8106016519079736528
 Transform:
   m_ObjectHideFlags: 0
@@ -838,20 +840,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6660010246155529486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &426246949000196740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4477735081435004363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb86b9713ab3fbf4e89412c2dedc2544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 20
-  knockback: {x: 7, y: 1.4}
 --- !u!60 &9179559713102788452
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -904,6 +892,22 @@ PolygonCollider2D:
       - {x: -0.527284, y: -0.4940144}
       - {x: -0.318684, y: -0.24372217}
   m_UseDelaunayMesh: 0
+--- !u!114 &6152007135908239228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477735081435004363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3fb958ab979dc48ba9089f426ccb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 10
+  knockback: {x: 0, y: 0}
+  dusmanaVurdu: 0
+  triggerTetiklendi: 0
 --- !u!1 &4597814401177951282
 GameObject:
   m_ObjectHideFlags: 0
