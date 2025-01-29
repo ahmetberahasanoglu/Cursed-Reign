@@ -47,24 +47,22 @@ public class gameManager : MonoBehaviour
     private void Awake()
     {
        
-        timer =GetComponentInChildren<Timer>();
-        Score = 0;
-        ScoreText.text = string.Format(ScoreFormat, Score);
+      
 
         if (instance == null )
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if(SceneManager.GetActiveScene().name == "CreditsScene")
-        {
-            Destroy(gameObject);
-        }
+      
         else
         {
             Destroy(gameObject);
+            return;
         }
-
+        timer = GetComponentInChildren<Timer>();
+        Score = 0;
+        ScoreText.text = string.Format(ScoreFormat, Score);
         pauseButton.onClick.AddListener(OnPauseButtonPressed);
         resumeButton.onClick.AddListener(OnResumeButtonPressed);
         Time.timeScale = 1;
@@ -91,13 +89,15 @@ public class gameManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
- 
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "CreditsScene")
         {
             Destroy(gameObject);
+            return;
         }
+
         if (PlayerMovement.instance == null)
         {
             SpawnPlayer();
@@ -106,28 +106,35 @@ public class gameManager : MonoBehaviour
         {
             MovePlayerToSpawn();
         }
-        if (scene.name.StartsWith("level") || scene.name.StartsWith("Door")||scene.name.StartsWith("First"))
+
+        if (scene.name.StartsWith("level") || scene.name.StartsWith("Door") || scene.name.StartsWith("First"))
         {
             SaveCurrentLevel(scene.name);
         }
-        if(scene.name == "FirstScene")
+
+        if (scene.name == "FirstScene")
         {
             timeElapsed = 1f;
             timerRunning = false;
-            timer.StopTimer();//burasý calýsmýyor coz
-
+            if (timer != null)
+            {
+                timer.StopTimer();
+            }
         }
-        if (scene.name.Contains("Door") ) 
+
+        if (scene.name.Contains("Door"))
         {
             timerRunning = false;
-            timerCurrency = timeElapsed;  // zamaný para olarak aldýk
-            timer.StopTimer();
-            timeElapsed = 0f;  // doora girince timer'I sýfýrla
-                               
+            timerCurrency = timeElapsed;
+            if (timer != null)
+            {
+                timer.StopTimer();
+            }
+            timeElapsed = 0f;
 
             if (DialogueManager.Instance != null)
             {
-                DialogueManager.Instance.UpdateShopVisibility(true);  
+                DialogueManager.Instance.UpdateShopVisibility(true);
             }
         }
         else
@@ -135,11 +142,9 @@ public class gameManager : MonoBehaviour
             timerRunning = true;
             if (DialogueManager.Instance != null)
             {
-                DialogueManager.Instance.UpdateShopVisibility(false); 
+                DialogueManager.Instance.UpdateShopVisibility(false);
             }
         }
-
-     
     }
     [SerializeField] private GameObject playerPrefab;
 
@@ -185,7 +190,7 @@ public class gameManager : MonoBehaviour
     IEnumerator LoadLevel()
     {
         animator.SetTrigger("end");
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         animator.SetTrigger("start");
     }
@@ -228,6 +233,7 @@ public class gameManager : MonoBehaviour
     public void OnRestartButtonPressed()
     {
         pauseMenuUI.SetActive(false);
+        Time.timeScale = 1;
         isPaused = false;
     var  a=  SceneManager.GetActiveScene();
         SceneManager.LoadScene(a.buildIndex);

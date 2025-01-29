@@ -259,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
    
         public void OnDashButtonPressed()
     {
-        if (canDash) {
+        if (canDash && !isDashing) {
             manager.PlaySFX(manager.pjump, 0.1f);
             StartCoroutine(Dash());
         }
@@ -453,25 +453,30 @@ public class PlayerMovement : MonoBehaviour
     private DashBar dashBar;
     private IEnumerator Dash()
     {
-       // Instantiate(dashEffectPrefab, transform.position, Quaternion.identity);
+        if (!canDash || isDashing)
+        {
+            yield break; // Eðer dash yapýlamýyorsa veya zaten dash yapýlýyorsa çýk
+        }
+
         canDash = false;
         isDashing = true;
         damageable.isInvincible = true;
-        float originalGravity=rb.gravityScale;
+        float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashPower, 0f);
         tr.emitting = true;
         dashBar.TriggerDashCooldown();
 
         yield return new WaitForSeconds(dashingTime);
+
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         damageable.isInvincible = false;
 
         yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
 
+        canDash = true; // Cooldown süresi doldu, dash tekrar kullanýlabilir
     }
     private void Update()
     {

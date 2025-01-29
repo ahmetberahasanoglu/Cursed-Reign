@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9003898554542438335}
   - component: {fileID: 6765265464156131633}
   - component: {fileID: 6675525484234339691}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Veba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -38.522, y: -5.0715876, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8562516180484159749}
@@ -246,8 +246,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lootTable: []
-  maxHealth: 30
-  _health: 30
+  maxHealth: 50
+  _health: 50
   isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.2
@@ -555,7 +555,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.77369, y: -2.426918}
+  m_Offset: {x: 0.60201424, y: -2.426918}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -566,7 +566,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1, y: 1.8}
+  m_Size: {x: 1.71655, y: 1.8000002}
   m_EdgeRadius: 0
 --- !u!1 &9049056174394377535
 GameObject:
@@ -579,7 +579,6 @@ GameObject:
   - component: {fileID: 8562516180484159749}
   - component: {fileID: 4693673395969908467}
   - component: {fileID: 3830220528479369270}
-  - component: {fileID: 2353996813048273409}
   m_Layer: 10
   m_Name: HitdetectionZone
   m_TagString: Untagged
@@ -650,7 +649,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.547924, y: -0.14512277}
+  m_Offset: {x: 1.2141523, y: -0.26960826}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -661,35 +660,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.276436, y: 2.8650403}
+  m_Size: {x: 4.6088915, y: 3.1140113}
   m_EdgeRadius: 0
---- !u!114 &2353996813048273409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9049056174394377535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5bc5a59187d814b9992dd2b55a1c84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageableHit:
-    m_PersistentCalls:
-      m_Calls: []
-  damageableDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  healthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  lootTable: []
-  maxHealth: 100
-  _health: 100
-  isAlive: 1
-  isInvincible: 0
-  invincibilityTime: 0.2
 --- !u!1001 &7159721713458748888
 PrefabInstance:
   m_ObjectHideFlags: 0
