@@ -225,6 +225,13 @@ public class gameManager : MonoBehaviour
             isPaused = false;
         }
     }
+    public void OnRestartButtonPressed()
+    {
+        pauseMenuUI.SetActive(false);
+        isPaused = false;
+    var  a=  SceneManager.GetActiveScene();
+        SceneManager.LoadScene(a.buildIndex);
+    }
 
     public void OnQuitButtonPressed()
     {
