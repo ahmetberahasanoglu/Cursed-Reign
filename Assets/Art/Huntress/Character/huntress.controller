@@ -100,7 +100,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: h_attack
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6969441404347606808}
@@ -160,7 +160,7 @@ MonoBehaviour:
   updateOnStateExit: 1
   updateOnStateMachineEnter: 0
   updateOnStateMachineExit: 0
-  valueOnEnter: 0.5
+  valueOnEnter: 1
   valueOnExit: 0.5
 --- !u!1101 &-3922705029072092960
 AnimatorStateTransition:
@@ -443,12 +443,12 @@ AnimatorStateMachine:
   - {fileID: -8810561163401539167}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -8998504940532870023}
-    second:
-    - {fileID: -632600033618623915}
   - first: {fileID: 8934940415690781222}
     second:
     - {fileID: 3079073012101211196}
+  - first: {fileID: -8998504940532870023}
+    second:
+    - {fileID: -632600033618623915}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 570, y: 230, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -492,13 +492,7 @@ AnimatorTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isOnWall
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: isOnWall
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: -8998504940532870023}
   m_DstState: {fileID: 0}
   m_Solo: 0
@@ -696,6 +690,6 @@ AnimatorStateMachine:
   - {fileID: 510812030636972630}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ExitPosition: {x: 780, y: 130, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -5992445666785604965}

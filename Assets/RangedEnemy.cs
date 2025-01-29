@@ -109,7 +109,7 @@ public class RangedEnemy : MonoBehaviour
         return Mathf.Abs(rb.velocity.x) > 0.1f;
     }
 
-  
+
 
     public void FireProjectile()
     {
@@ -122,8 +122,6 @@ public class RangedEnemy : MonoBehaviour
             Vector3 projectileScale = projectile.transform.localScale;
             projectileScale.x *= transform.localScale.x > 0 ? 1 : -1; // Düþmanýn yönüne göre yön deðiþtir
             projectile.transform.localScale = projectileScale;
-
-          
         }
     }
 

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 547664590657011663}
   - component: {fileID: 5002527563575801591}
   - component: {fileID: 1415664585096309327}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Moving_0
-  m_TagString: Untagged
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,10 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17c3531b07d5a94286a8942d2e923ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 25, y: 0}
+  speed: {x: 20, y: 0}
   damage: 20
   knockback: {x: 5, y: 0}
-  lifetime: 3
+  lifetime: 5
 --- !u!50 &1415664585096309327
 Rigidbody2D:
   serializedVersion: 4
