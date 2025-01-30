@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier = 2.5f; // Düþerken yerçekimi kuvvetini artýrmak için
     [SerializeField] private float coyoteTime = 0.2f; // Coyote time süresi
     [SerializeField] private float hangTime = 0.1f;
-  
+
     [SerializeField] private int maxJumpCount = 2;
     [SerializeField] private int currentJumpCount;
 
@@ -32,8 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Dash Degiskenleri")]
-    private bool canDash = true;
-    private bool isDashing;
+    [SerializeField] private bool canDash = true;
+    [SerializeField] private bool isDashing;
     [SerializeField] private float dashPower = 20f;
     public int dashCooldown = 3;//Bunu gamemanager'daki dashBar'da Kullanacaðýz
     [SerializeField] private int maxdDashCount = 1;
@@ -473,10 +473,10 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = originalGravity;
         isDashing = false;
         damageable.isInvincible = false;
-
+       
         yield return new WaitForSeconds(dashCooldown);
 
-        canDash = true; // Cooldown süresi doldu, dash tekrar kullanýlabilir
+       canDash = true; // Cooldown süresi doldu, dash tekrar kullanýlabilir
     }
     private void Update()
     {
@@ -556,7 +556,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             CanMove = true;
-            canDash = true;
+            if (!dashBar.IsCooldownActive())
+            {
+                canDash = true;
+            }
         }
         else
         {

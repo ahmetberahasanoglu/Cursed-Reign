@@ -182,7 +182,7 @@ MonoBehaviour:
   firstSceneClip: {fileID: 8300000, guid: 407977d65b63da34b8f8121ec9423cba, type: 3}
   battleSceneClip: {fileID: 8300000, guid: b4d0a3ff92d81ee4e9c858e999f32dde, type: 3}
   level2SceneClip: {fileID: 8300000, guid: ae3d079cbc57776438b65d5d76b15851, type: 3}
-  level3SceneClip: {fileID: 8300000, guid: 9f64f4e575f374248bba0fc0eacb530e, type: 3}
+  level3SceneClip: {fileID: 8300000, guid: b83bda459398c2e4f8a87f8c5ca6f9bd, type: 3}
   level4SceneClip: {fileID: 8300000, guid: dd2a86358b864914180aa784548f6532, type: 3}
   shopSceneClip: {fileID: 8300000, guid: 717691f197c206a40a5f446a50b3a7ca, type: 3}
   menuSceneClip: {fileID: 0}

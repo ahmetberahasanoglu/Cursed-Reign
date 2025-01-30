@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 60174213470516420}
   - component: {fileID: 9101923388200543435}
   - component: {fileID: 6393183974925685620}
+  - component: {fileID: 2305336208258424792}
   m_Layer: 5
   m_Name: JumpButton
   m_TagString: Untagged
@@ -266,6 +267,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2305336208258424792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245355294748391361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bdddce73278d4fb72beff76daad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 4550556212504671326}
+  maxAlpha: 1
 --- !u!1 &681380614791393224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,7 +3353,7 @@ MonoBehaviour:
   characterName: {fileID: 3615218439500824463}
   dialogueArea: {fileID: 1751889951270514074}
   isDialogueActive: 0
-  typingSpeed: 0.015
+  typingSpeed: 0.01
   animator: {fileID: 2049772863568953671}
   shopCanvas: {fileID: 3437666712373629894, guid: 8c7af7dbedf55124ca03badc7760f35e, type: 3}
   isShopShow: 0
@@ -3491,6 +3506,7 @@ GameObject:
   - component: {fileID: 7852641764215181077}
   - component: {fileID: 8184755870103115447}
   - component: {fileID: 8139988679813992711}
+  - component: {fileID: 931842081064946798}
   m_Layer: 5
   m_Name: LButton
   m_TagString: Untagged
@@ -3613,6 +3629,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
+--- !u!114 &931842081064946798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3616025794757066109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bdddce73278d4fb72beff76daad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 7285142669796876486}
+  maxAlpha: 1
 --- !u!1 &4159468844909537182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3984,6 +4014,7 @@ GameObject:
   - component: {fileID: 6182913597633646414}
   - component: {fileID: 6684357927364353553}
   - component: {fileID: 111502459877524773}
+  - component: {fileID: 4917767402403275846}
   m_Layer: 5
   m_Name: AtckButton
   m_TagString: Untagged
@@ -4093,6 +4124,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4917767402403275846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477789713592056955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bdddce73278d4fb72beff76daad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 7440829105558480876}
+  maxAlpha: 1
 --- !u!1 &4681028117619178140
 GameObject:
   m_ObjectHideFlags: 0
@@ -4105,6 +4150,7 @@ GameObject:
   - component: {fileID: 3204095180848770591}
   - component: {fileID: 1164592467365769370}
   - component: {fileID: 5823295209636639984}
+  - component: {fileID: 5818372167878763915}
   m_Layer: 5
   m_Name: FireButton
   m_TagString: Untagged
@@ -4214,6 +4260,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5818372167878763915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681028117619178140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bdddce73278d4fb72beff76daad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 4156430549120752092}
+  maxAlpha: 1
 --- !u!1 &4799485538670770716
 GameObject:
   m_ObjectHideFlags: 0
@@ -4248,7 +4308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -205.2, y: -100}
+  m_AnchoredPosition: {x: -205.2002, y: -100}
   m_SizeDelta: {x: 49, y: 42}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3567077068722575623
@@ -4585,6 +4645,7 @@ GameObject:
   - component: {fileID: 7863643253452711239}
   - component: {fileID: 3097474584425099406}
   - component: {fileID: 6240930277149860492}
+  - component: {fileID: 7112829781464112388}
   m_Layer: 5
   m_Name: dashButton
   m_TagString: Untagged
@@ -4694,6 +4755,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7112829781464112388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420871012920834538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bdddce73278d4fb72beff76daad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 3597510708981799014}
+  maxAlpha: 1
 --- !u!1 &5521894031183190585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,6 +5958,7 @@ GameObject:
   - component: {fileID: 8521289532100363291}
   - component: {fileID: 9114005162451556512}
   - component: {fileID: 3276340497174362618}
+  - component: {fileID: 1570691040913955205}
   m_Layer: 5
   m_Name: DownButton
   m_TagString: Untagged
@@ -5992,6 +6068,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1570691040913955205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524760117877125950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bdddce73278d4fb72beff76daad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 768626512079725558}
+  maxAlpha: 1
 --- !u!1 &6608378226006662911
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,6 +6454,7 @@ GameObject:
   - component: {fileID: 3738937411865346865}
   - component: {fileID: 8507320784779226716}
   - component: {fileID: 2171517020436664220}
+  - component: {fileID: 3291016162658334210}
   m_Layer: 5
   m_Name: RButton
   m_TagString: Untagged
@@ -6518,6 +6609,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 0
+--- !u!114 &3291016162658334210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885423745747785065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302bdddce73278d4fb72beff76daad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 1320832624693519781}
+  maxAlpha: 1
 --- !u!1 &6890624912013494994
 GameObject:
   m_ObjectHideFlags: 0

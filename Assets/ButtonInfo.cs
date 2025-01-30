@@ -78,6 +78,7 @@ public class ButtonInfo : MonoBehaviour
         manaBar = FindObjectOfType<ManaBar>();
         staminaBar = FindObjectOfType<StaminaBar>();
         playerMovement = FindObjectOfType<PlayerMovement>();
+        dashBar = FindObjectOfType<DashBar>();
     }
 
     public void OnPurchaseButtonClicked()
@@ -131,7 +132,7 @@ public class ButtonInfo : MonoBehaviour
                 else if (descriptionText.text.Contains("Atýlma"))
                 {
                     playerMovement.dashCooldown = 1;
-                    dashBar.maxDashCooldown = 1;
+                    dashBar.UpdateDashCooldown(1);
                 }
                 else if (descriptionText.text.Contains("týlsým"))
                 {

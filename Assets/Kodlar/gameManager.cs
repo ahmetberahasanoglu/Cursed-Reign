@@ -94,6 +94,7 @@ public class gameManager : MonoBehaviour
     {
         if (scene.name == "CreditsScene")
         {
+            
             Destroy(gameObject);
             return;
         }

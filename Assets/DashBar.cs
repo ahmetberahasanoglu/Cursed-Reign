@@ -1,13 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class DashBar : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     [SerializeField] private Slider slider;
-   // [SerializeField] private TMP_Text dashText;
-   // private string dashFormat = "{0}/{1}";
 
     public float maxDashCooldown;
     private float currentDashCooldown;
@@ -34,34 +31,40 @@ public class DashBar : MonoBehaviour
         {
             // Dash cooldown barýný doldur
             currentDashCooldown += Time.deltaTime;
+            slider.value = currentDashCooldown;
+
             if (currentDashCooldown >= maxDashCooldown)
             {
-                currentDashCooldown = maxDashCooldown;
                 isCooldownActive = false; // Dolduktan sonra tekrar dash kullanýlabilir
             }
-            slider.value = currentDashCooldown;
-           // UpdatedashText();
         }
+    }
+
+    public bool IsCooldownActive()
+    {
+        return isCooldownActive;
     }
 
     public void TriggerDashCooldown()
     {
-    
         currentDashCooldown = 0;
-        isCooldownActive = true; 
+        isCooldownActive = true;
         slider.value = currentDashCooldown;
-     //   UpdatedashText();
     }
 
     private void ResetCooldown()
     {
         currentDashCooldown = maxDashCooldown;
         slider.value = maxDashCooldown;
-        //UpdatedashText();
     }
 
-   /* private void UpdatedashText() dash üstünde Yazý yazmasýn grk yok
+    public void UpdateDashCooldown(float newMaxCooldown)
     {
-        dashText.text = string.Format(dashFormat, Mathf.Ceil(currentDashCooldown), maxDashCooldown);
-    }*/
+        maxDashCooldown = newMaxCooldown;
+        slider.maxValue = maxDashCooldown;
+        if (!isCooldownActive)
+        {
+            ResetCooldown();
+        }
+    }
 }
