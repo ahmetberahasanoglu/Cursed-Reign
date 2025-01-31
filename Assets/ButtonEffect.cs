@@ -26,7 +26,7 @@ public class ButtonEffect : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             targetImage.color = color;
         }
     }
-
+    
     public void OnPointerUp(PointerEventData eventData)
     {
         // Buton býrakýldýðýnda eski alpha'ya dön

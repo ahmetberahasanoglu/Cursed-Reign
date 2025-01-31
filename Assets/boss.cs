@@ -17,5 +17,6 @@ public class boss : MonoBehaviour
     {
 
         animator.SetBool("BossReach", value);
+        
     }
 }

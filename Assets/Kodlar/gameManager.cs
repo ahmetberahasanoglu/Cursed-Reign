@@ -28,6 +28,7 @@ public class gameManager : MonoBehaviour
     public float timerCurrency = 0f;  // vakit nakittir
     public bool crownTaken = false;
 
+    public bool isRewarded = false;
     private void OnEnable()
     {
         ActionsListener.OnHourglassCollected += HourglassCollected;
@@ -172,7 +173,19 @@ public class gameManager : MonoBehaviour
         Score += 200;
         ScoreText.text = string.Format(ScoreFormat, Score);
     }
+    public void AdWatched()
+    {
+        if (isRewarded == true)
+        {
+            Score += 300;
+            ScoreText.text = string.Format(ScoreFormat, Score);
+        }
+        else
+        {
+            Score += 0;
+        }
 
+    }
     void CoinCollected()
     {
         Score += 50;
@@ -191,7 +204,7 @@ public class gameManager : MonoBehaviour
     IEnumerator LoadLevel()
     {
         animator.SetTrigger("end");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         animator.SetTrigger("start");
     }
