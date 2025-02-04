@@ -182,7 +182,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
-            Score += 0;
+            Score += 300;
         }
 
     }

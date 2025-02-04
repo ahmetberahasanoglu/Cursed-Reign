@@ -35,8 +35,7 @@ public class Projectile : MonoBehaviour
             // Hedefi vur
             bool gotHit = damageable.Hit(damage, deliveredKnockback);
 
-            if (gotHit)
-                Debug.Log(collision.collider.name + " hit for " + damage);
+            
         }
 
         // Çarptýðý her durumda mermiyi yok et

@@ -396,7 +396,7 @@ public class PlayerMovement : MonoBehaviour
             if (staminaBar.UseStamina())
             {
                 staminaBar.use();
-                Debug.Log("stamina azalmalý");
+                
           
 
             isAttacking = true;
