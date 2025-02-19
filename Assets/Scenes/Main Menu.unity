@@ -446,7 +446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Early build by @QuackTales  V1.0.1
+  m_text: Early build by @QuackTales  V0.9.1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 413764907a62a2d4cb6a2e3074e15419, type: 2}
   m_sharedMaterial: {fileID: -5442829859575181468, guid: 413764907a62a2d4cb6a2e3074e15419, type: 2}
