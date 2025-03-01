@@ -57,9 +57,14 @@ public class PlayerMovement : MonoBehaviour
     public Button attackB;
     public Button JumpB;
     public Button fireB;
-    public Button leftM;
-    public Button rightM;
+    //public Button leftM;
+   // public Button rightM; joystick dolayýsýyla kapadýk
     public Button dashB;
+
+    public FixedJoystick fixedJoystick;
+
+    private bool isJoystickUp = false; // Joystick yukarý kaldýrýldý mý?
+
 
     playerAttack attack;
     public float CurrentMoveSpeed
@@ -205,8 +210,8 @@ public class PlayerMovement : MonoBehaviour
         attackB = GameObject.Find("AtckButton").GetComponent<Button>();
         JumpB = GameObject.Find("JumpButton").GetComponent<Button>();
         fireB = GameObject.Find("FireButton").GetComponent<Button>();
-        leftM = GameObject.Find("LButton").GetComponent<Button>();
-        rightM = GameObject.Find("RButton").GetComponent<Button>();
+       // leftM = GameObject.Find("LButton").GetComponent<Button>();
+       // rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
         manager = audiomanager.Instance;
         attack=GetComponentInChildren<playerAttack>();
@@ -227,12 +232,15 @@ public class PlayerMovement : MonoBehaviour
         fireB.onClick.AddListener(onFireButtonPressed);
         dashB.onClick.AddListener(OnDashButtonPressed);
 
-        AddEventTrigger(leftM, (data) => onLeftButtonPressed(), EventTriggerType.PointerDown);
-        AddEventTrigger(leftM, (data) => onLeftButtonReleased(), EventTriggerType.PointerUp);
+      //  AddEventTrigger(leftM, (data) => onLeftButtonPressed(), EventTriggerType.PointerDown);
+       // AddEventTrigger(leftM, (data) => onLeftButtonReleased(), EventTriggerType.PointerUp);
 
 
-        AddEventTrigger(rightM, (data) => onRightButtonPressed(), EventTriggerType.PointerDown);
-        AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
+      //  AddEventTrigger(rightM, (data) => onRightButtonPressed(), EventTriggerType.PointerDown);
+       // AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
+
+        fixedJoystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
+        //joystick
 
     }
 
@@ -509,11 +517,31 @@ public class PlayerMovement : MonoBehaviour
             // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
 
         }
+       
+    }
+    private void MoveCharacter(Vector2 direction)
+    {
+        // Hareket vektörü oluþtur
+        Vector3 movement = new Vector3(direction.x, 0, 0) * speed;
+
+        // Rigidbody'nin hýzýný ayarla
+        rb.velocity = movement;
     }
 
     private void FixedUpdate()
     {
+        if (fixedJoystick != null)
+        {
+            moveInput = new Vector2(fixedJoystick.Horizontal, 0);
+            IsMoving = (Mathf.Abs(moveInput.x) > 0); ;
+        }
 
+
+        if (IsMoving)
+        {
+
+            MoveCharacter(moveInput);
+        }
         if (isDashing)
         {
             return;
