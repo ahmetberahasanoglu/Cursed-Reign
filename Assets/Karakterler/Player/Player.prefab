@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dust: {fileID: 5615672872084226852}
-  speed: 6
+  speed: 7
   airWSpeed: 4.5
   Jump: 7.5
   fallMultiplier: 3
@@ -281,6 +281,8 @@ MonoBehaviour:
   hangTime: 0
   maxJumpCount: 1
   currentJumpCount: 0
+  canDash: 1
+  isDashing: 0
   dashPower: 5
   dashCooldown: 3
   maxdDashCount: 1
@@ -291,9 +293,8 @@ MonoBehaviour:
   attackB: {fileID: 0}
   JumpB: {fileID: 0}
   fireB: {fileID: 0}
-  leftM: {fileID: 0}
-  rightM: {fileID: 0}
   dashB: {fileID: 0}
+  fixedJoystick: {fileID: 0}
   isMoving: 0
   footstepInterval: 0.5
 --- !u!114 &8485705082576621271
@@ -593,7 +594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e222ad532af1a74bafb38481dff03dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downButton: {fileID: 0}
   playerCollider: {fileID: 8945047924046015798}
 --- !u!96 &6979885008171012710
 TrailRenderer:
@@ -786,8 +786,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.43448925, y: -0.12035413}
-      - {x: -0.8789273, y: -0.12056853}
-      - {x: -0.87512213, y: -0.40051955}
+      - {x: -1.1446815, y: -0.10949546}
+      - {x: -1.1519495, y: -0.38944644}
       - {x: -0.39117184, y: -0.37752417}
       - {x: -0.3028959, y: -0.23718154}
   m_UseDelaunayMesh: 0

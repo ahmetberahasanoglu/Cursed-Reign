@@ -342,24 +342,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-
+    private bool isJumpButtonPressed = false;
 
 
     public void onJumpButtonPressed()
     {
-        if ((touchDirection.IsGrounded || coyoteTimeCounter > 0f || currentJumpCount > 0) && CanMove)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, Jump);
-            manager.PlaySFX(manager.pjump, 0.6f);
-            PlayDust();
-            hangTimeCounter = hangTime;
-
-            if (!touchDirection.IsGrounded)
-            {
-                
-                currentJumpCount--;
-            }
-        }
+        isJumpButtonPressed = true;
+       
     }
 
 
@@ -488,6 +477,23 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (isJumpButtonPressed)
+        {
+            if ((touchDirection.IsGrounded || coyoteTimeCounter > 0f || currentJumpCount > 0) && CanMove)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, Jump);
+                manager.PlaySFX(manager.pjump, 0.6f);
+                PlayDust();
+                hangTimeCounter = hangTime;
+
+                if (!touchDirection.IsGrounded)
+                {
+                    currentJumpCount--;
+                }
+            }
+            isJumpButtonPressed = false; // Zýplama iþlemi tamamlandýktan sonra flag'i sýfýrla
+        }
+
         if (isDashing)
         {
             return;
@@ -513,18 +519,18 @@ public class PlayerMovement : MonoBehaviour
                 }
                 lastXDirection = -1;
             }
-            HandleFootstepSound();
-            // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
+            HandleFootstepSound(); // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
+
 
         }
        
     }
     private void MoveCharacter(Vector2 direction)
     {
-        // Hareket vektörü oluþtur
-        Vector3 movement = new Vector3(direction.x, 0, 0) * speed;
+      
+        Vector3 movement = new Vector3(direction.x, 0, 0) * speed;  
 
-        // Rigidbody'nin hýzýný ayarla
+
         rb.velocity = movement;
     }
 
@@ -533,15 +539,14 @@ public class PlayerMovement : MonoBehaviour
         if (fixedJoystick != null)
         {
             moveInput = new Vector2(fixedJoystick.Horizontal, 0);
-            IsMoving = (Mathf.Abs(moveInput.x) > 0); ;
+            IsMoving = (Mathf.Abs(moveInput.x) > 0);
+
+            if (IsMoving)
+            {
+                rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+            }
         }
 
-
-        if (IsMoving)
-        {
-
-            MoveCharacter(moveInput);
-        }
         if (isDashing)
         {
             return;
@@ -551,16 +556,16 @@ public class PlayerMovement : MonoBehaviour
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0f)
             {
-                OnAttackAnimationFinished(); // Saldýrý zamanlayýcý süresi doldu
+                OnAttackAnimationFinished(); // Saldýrý zamanlayýcý süresi doldu //CanMove = false;
             }
-            //CanMove = false;
+           
         }
         if (touchDirection.IsGrounded)
         {
             coyoteTimeCounter = coyoteTime;
             IsJumping = false;
-            currentJumpCount = maxJumpCount;
-            //     doubleJump = true;//zemine carapýnca doublejump tekrar aktif
+            currentJumpCount = maxJumpCount; //     doubleJump = true;//zemine carapýnca doublejump tekrar aktif
+
         }
         else
         {
@@ -623,11 +628,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        /* if (Input.GetKey(KeyCode.Space))
-         {
-             rb.velocity= new Vector2(rb.velocity.x, Jump);
-         } */
-    }
+         }
     private void PlayDust()
     {
         if (!dust.isPlaying)
@@ -639,7 +640,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Platforma temas ettiðinde platformun transform'unu alýyoruz
+        
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             platformTransform = collision.transform;
@@ -654,8 +655,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // Platformdan ayrýldýðýnda platform transform'u null yapýlýr
-        if (collision.gameObject.CompareTag("MovingPlatform"))
+    
+        if (collision.gameObject.CompareTag("MovingPlatform"))    // Platformdan ayrýldýðýnda platform transform'u null yapýlýr
         {
             platformTransform = null;
         }
