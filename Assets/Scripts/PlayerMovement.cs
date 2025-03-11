@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashingTime=0.2f;
     [SerializeField] private TrailRenderer tr;
 
-
+    PlayerOneWayPlatform PlayerOneWayPlatform;
 
     Animator animator;
     Vector2 moveInput;
@@ -57,16 +57,45 @@ public class PlayerMovement : MonoBehaviour
     public Button attackB;
     public Button JumpB;
     public Button fireB;
-    //public Button leftM;
-   // public Button rightM; joystick dolayýsýyla kapadýk
+    public Button leftM;
+    public Button rightM; // joystick dolayýsýyla kapadýk
     public Button dashB;
 
     public FixedJoystick fixedJoystick;
 
-    private bool isJoystickUp = false; // Joystick yukarý kaldýrýldý mý?
+    private bool isJoystickUp = false; 
 
 
     playerAttack attack;
+    private bool useJoystick = true;
+    public void SwitchControlJoystick()
+    {
+        useJoystick = true;
+        UpdateControlUI();
+
+    }
+    public void SwitchControlButton()
+    {
+        useJoystick = false;
+        UpdateControlUI();
+    }
+    private void UpdateControlUI()
+    {
+        if (useJoystick)
+        {
+            fixedJoystick.gameObject.SetActive(true);
+             leftM.gameObject.SetActive(false);
+             rightM.gameObject.SetActive(false);
+            PlayerOneWayPlatform.downButton.gameObject.SetActive(false); 
+        }
+        else
+        {
+            fixedJoystick.gameObject.SetActive(false);
+            leftM.gameObject.SetActive(true);
+            rightM.gameObject.SetActive(true);
+            PlayerOneWayPlatform.downButton.gameObject.SetActive(true);
+        }
+    }
     public float CurrentMoveSpeed
     {
         get
@@ -164,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         touchDirection = GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
+        PlayerOneWayPlatform=GetComponent<PlayerOneWayPlatform>();
         currentJumpCount = maxJumpCount;
         if (instance != null && instance != this)
         {
@@ -210,8 +240,8 @@ public class PlayerMovement : MonoBehaviour
         attackB = GameObject.Find("AtckButton").GetComponent<Button>();
         JumpB = GameObject.Find("JumpButton").GetComponent<Button>();
         fireB = GameObject.Find("FireButton").GetComponent<Button>();
-       // leftM = GameObject.Find("LButton").GetComponent<Button>();
-       // rightM = GameObject.Find("RButton").GetComponent<Button>();
+        leftM = GameObject.Find("LButton").GetComponent<Button>();
+        rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
         manager = audiomanager.Instance;
         attack=GetComponentInChildren<playerAttack>();
@@ -232,12 +262,12 @@ public class PlayerMovement : MonoBehaviour
         fireB.onClick.AddListener(onFireButtonPressed);
         dashB.onClick.AddListener(OnDashButtonPressed);
 
-      //  AddEventTrigger(leftM, (data) => onLeftButtonPressed(), EventTriggerType.PointerDown);
-       // AddEventTrigger(leftM, (data) => onLeftButtonReleased(), EventTriggerType.PointerUp);
+      AddEventTrigger(leftM, (data) => onLeftButtonPressed(), EventTriggerType.PointerDown);
+      AddEventTrigger(leftM, (data) => onLeftButtonReleased(), EventTriggerType.PointerUp);
 
 
-      //  AddEventTrigger(rightM, (data) => onRightButtonPressed(), EventTriggerType.PointerDown);
-       // AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
+      AddEventTrigger(rightM, (data) => onRightButtonPressed(), EventTriggerType.PointerDown);
+      AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
 
         fixedJoystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
         //joystick
