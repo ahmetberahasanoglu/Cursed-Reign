@@ -68,17 +68,37 @@ public class PlayerMovement : MonoBehaviour
 
     playerAttack attack;
     private bool useJoystick = true;
-    public void SwitchControlJoystick()
-    {
-        useJoystick = true;
-        UpdateControlUI();
-
-    }
-    public void SwitchControlButton()
-    {
-        useJoystick = false;
-        UpdateControlUI();
-    }
+    public GameObject panel;                                     ////////////////////////////
+    public GameObject warningText;                               ////////////////////////////
+                                                                 ////////////////////////////
+    public void OnCloseButtonPressed() //                        ////////////////////////////
+    {                                                            //////////////////////////// buralara bak
+        if (!IsSelectionMade())//                                ////////////////////////////
+        {                                                        ////////////////////////////
+            // Seçim yapýlmadýysa uyarý göster                   ////////////////////////////
+            warningText.SetActive(true);                         ////////////////////////////
+        }                                                        ////////////////////////////
+        else                                                     ////////////////////////////
+        {                                                        ////////////////////////////
+            // Seçim yapýldýysa paneli kapat                     ////////////////////////////
+            panel.SetActive(false);                              ////////////////////////////
+        }                                                        ////////////////////////////
+    }                                                            ////////////////////////////
+    public void SwitchControlJoystick()                          ////////////////////////////
+    {                                                            ////////////////////////////
+        useJoystick = true;                                      ////////////////////////////
+        UpdateControlUI();                                       ////////////////////////////
+                                                                 ////////////////////////////
+    }                                                            ////////////////////////////
+    public void SwitchControlButton()                            ////////////////////////////
+    {                                                            ////////////////////////////
+        useJoystick = false;                                     ////////////////////////////
+        UpdateControlUI();                                       ////////////////////////////
+    }                                                            ////////////////////////////
+    public bool IsSelectionMade()                                ////////////////////////////
+    {                                                            ////////////////////////////
+        return useJoystick != useJoystick;
+    }                                                       ////////////////////////////
     private void UpdateControlUI()
     {
         if (useJoystick)
@@ -309,8 +329,7 @@ public class PlayerMovement : MonoBehaviour
        // if (IsAlive)
        // {
             IsMoving = true;
-      //  }
-        // Debug.Log("Sol tuþ basýldý");
+        //  }
     }
 
     public void onRightButtonPressed()
@@ -319,21 +338,21 @@ public class PlayerMovement : MonoBehaviour
        // if (IsAlive)
    //     {
             IsMoving = true;
-     //   }
-        //Debug.Log("Sað tuþ basýldý.");
+        //   }
+        
     }
     public void onLeftButtonReleased()
     {
         moveInput = Vector2.zero;
         IsMoving = false;
-        //Debug.Log("Sol tuþ býrakýldý, karakter durmalý");
+      
     }
 
     public void onRightButtonReleased()
     {
         moveInput = Vector2.zero;
         IsMoving = false;
-        //  Debug.Log("Sað tuþ býrakýldý, karakter durmalý");
+         
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -566,7 +585,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (fixedJoystick != null)
+        /*if (fixedJoystick != null)
         {
             moveInput = new Vector2(fixedJoystick.Horizontal, 0);
             IsMoving = (Mathf.Abs(moveInput.x) > 0);
@@ -576,6 +595,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             }
         }
+        */
 
         if (isDashing)
         {
@@ -617,6 +637,11 @@ public class PlayerMovement : MonoBehaviour
         #region hareket
         if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive)
         {
+            if (useJoystick == true)
+            {
+                moveInput = new Vector2(fixedJoystick.Horizontal, 0);
+                IsMoving = (Mathf.Abs(moveInput.x) > 0);
+            }
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             CanMove = true;
             if (!dashBar.IsCooldownActive())

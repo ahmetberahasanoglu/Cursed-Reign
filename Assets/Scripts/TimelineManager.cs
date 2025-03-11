@@ -8,7 +8,7 @@ public class TimelineManager : MonoBehaviour
 {
     public PlayableDirector timeline;
     public Button nextButton;
-    private double[] timeStamps = { 6.01, 12.01, 18.01, 24.01, 30.01 };
+    private double[] timeStamps = { 8.01, 16.01, 24.01, 32.01, 40.01 };
     private int currentPauseIndex = 0;
 
     void Start()

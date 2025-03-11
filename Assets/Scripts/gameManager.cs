@@ -67,7 +67,16 @@ public class gameManager : MonoBehaviour
         pauseButton.onClick.AddListener(OnPauseButtonPressed);
         resumeButton.onClick.AddListener(OnResumeButtonPressed);
         Time.timeScale = 1;
-        pauseMenuUI.SetActive(false);
+        if (SceneManager.GetActiveScene().name != "FirstScene"){
+            pauseMenuUI.SetActive(false);
+        }
+        else
+        {
+            pauseMenuUI.SetActive(true);
+            isPaused = true;
+        }
+        
+       
     }
 
     private void Update()
