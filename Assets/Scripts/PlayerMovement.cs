@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -68,37 +69,41 @@ public class PlayerMovement : MonoBehaviour
 
     playerAttack attack;
     private bool useJoystick = true;
-    public GameObject panel;                                     ////////////////////////////
-    public GameObject warningText;                               ////////////////////////////
-                                                                 ////////////////////////////
-    public void OnCloseButtonPressed() //                        ////////////////////////////
-    {                                                            //////////////////////////// buralara bak
-        if (!IsSelectionMade())//                                ////////////////////////////
-        {                                                        ////////////////////////////
-            // Seçim yapýlmadýysa uyarý göster                   ////////////////////////////
-            warningText.SetActive(true);                         ////////////////////////////
-        }                                                        ////////////////////////////
-        else                                                     ////////////////////////////
-        {                                                        ////////////////////////////
-            // Seçim yapýldýysa paneli kapat                     ////////////////////////////
-            panel.SetActive(false);                              ////////////////////////////
-        }                                                        ////////////////////////////
-    }                                                            ////////////////////////////
-    public void SwitchControlJoystick()                          ////////////////////////////
-    {                                                            ////////////////////////////
-        useJoystick = true;                                      ////////////////////////////
-        UpdateControlUI();                                       ////////////////////////////
-                                                                 ////////////////////////////
-    }                                                            ////////////////////////////
-    public void SwitchControlButton()                            ////////////////////////////
-    {                                                            ////////////////////////////
-        useJoystick = false;                                     ////////////////////////////
-        UpdateControlUI();                                       ////////////////////////////
-    }                                                            ////////////////////////////
-    public bool IsSelectionMade()                                ////////////////////////////
-    {                                                            ////////////////////////////
-        return useJoystick != useJoystick;
-    }                                                       ////////////////////////////
+    private GameObject panel;                               
+    private TextMeshProUGUI warningText;
+    public bool isSelectionMade=false;                    
+                                                           
+    public void OnCloseButtonPressed() //                  
+    {                                                      
+        if (!IsSelectionMade())//                          
+        {                                                  
+            // Seçim yapýlmadýysa uyarý göster
+            warningText.text= "<-- Please choose one -->";         
+            warningText.gameObject.SetActive(true);                   
+        }                                                  
+        else                                               
+        {                                                  
+            // Seçim yapýldýysa paneli kapat               
+            panel.SetActive(false);                        
+        }                                                  
+    }                                                      
+    public void SwitchControlJoystick()                    
+    {                                                      
+        useJoystick = true;
+        isSelectionMade = true;
+        UpdateControlUI();                                 
+                                                           
+    }                                                      
+    public void SwitchControlButton()                      
+    {                                                      
+        useJoystick = false;
+        isSelectionMade = true;
+        UpdateControlUI();                                 
+    }                                                      
+    public bool IsSelectionMade()                          
+    {                                                      
+        return isSelectionMade;
+    }                                                      
     private void UpdateControlUI()
     {
         if (useJoystick)
@@ -106,7 +111,8 @@ public class PlayerMovement : MonoBehaviour
             fixedJoystick.gameObject.SetActive(true);
              leftM.gameObject.SetActive(false);
              rightM.gameObject.SetActive(false);
-            PlayerOneWayPlatform.downButton.gameObject.SetActive(false); 
+            PlayerOneWayPlatform.downButton.gameObject.SetActive(false);
+            warningText.text = "You chose Joystick!";
         }
         else
         {
@@ -114,7 +120,9 @@ public class PlayerMovement : MonoBehaviour
             leftM.gameObject.SetActive(true);
             rightM.gameObject.SetActive(true);
             PlayerOneWayPlatform.downButton.gameObject.SetActive(true);
+            warningText.text = "You chose Buttons!";
         }
+       
     }
     public float CurrentMoveSpeed
     {
@@ -263,6 +271,8 @@ public class PlayerMovement : MonoBehaviour
         leftM = GameObject.Find("LButton").GetComponent<Button>();
         rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
+        warningText=GameObject.Find("WarningText").GetComponent<TextMeshProUGUI>();
+        panel = GameObject.Find("MovementPanel").GetComponent<GameObject>();
         manager = audiomanager.Instance;
         attack=GetComponentInChildren<playerAttack>();
         staminaBar = GameObject.Find("Stamina Bar").GetComponent<StaminaBar>();
@@ -289,7 +299,7 @@ public class PlayerMovement : MonoBehaviour
       AddEventTrigger(rightM, (data) => onRightButtonPressed(), EventTriggerType.PointerDown);
       AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
 
-        fixedJoystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
+        fixedJoystick = GameObject.Find("FixedJoystick").GetComponent<FixedJoystick>();
         //joystick
 
     }
@@ -644,7 +654,7 @@ public class PlayerMovement : MonoBehaviour
             }
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             CanMove = true;
-            if (!dashBar.IsCooldownActive())
+            if (!dashBar.IsCooldownActive())    
             {
                 canDash = true;
             }
