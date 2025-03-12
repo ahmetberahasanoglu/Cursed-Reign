@@ -7,20 +7,20 @@ public class MovementButton : MonoBehaviour
    private PlayerMovement gameObject;
     void Start()
     {
-        gameObject=GameObject.Find("Player").GetComponent<PlayerMovement>();   
+      //  gameObject=GameObject.Find("Player").GetComponent<PlayerMovement>();   
     }
 
     public void OnJoystick()
     {
-        gameObject.SwitchControlJoystick();
+      //  gameObject.SwitchControlJoystick();
     }
     public void OnButton()
     {
-        gameObject.SwitchControlButton();
+      //  gameObject.SwitchControlButton();
     }
     public void OnBack()
     {
-        gameObject.OnCloseButtonPressed();
+      //  gameObject.OnCloseButtonPressed();
     }
    
 }

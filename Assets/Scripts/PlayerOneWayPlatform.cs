@@ -12,7 +12,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
 
     private void Start()
     {
-        fixedJoystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
+        fixedJoystick = GameObject.Find("FixedJoystick").GetComponent<FixedJoystick>();
         downButton = GameObject.Find("DownButton").GetComponent<Button>();
         downButton.onClick.AddListener(onDownButtonPressed);
     }

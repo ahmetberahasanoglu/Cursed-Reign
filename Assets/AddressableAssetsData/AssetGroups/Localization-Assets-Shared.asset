@@ -16,15 +16,30 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: e159778db05df3f4989bb5481ecc1370
-  m_SerializeEntries:
-  - m_GUID: 705712cdb28d56a4f9b02c3c7ed6e180
-    m_Address: Assets/lang/localization Table Shared Data.asset
-    m_ReadOnly: 1
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ea20b7a46783efe4c810267480eff13c, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: e105189dea9158f4b8cea237f2d241db, type: 2}
     - {fileID: 11400000, guid: c97cadc46d451f24da1ad56df80470e8, type: 2}
+  m_FolderEntryCache: []
+  m_AssetCollectionEntryCache: []
+  <FlaggedDuringContentUpdateRestriction>k__BackingField: 0
+  m_CurrentHash:
+    bytes[0]: 3
+    bytes[1]: 76
+    bytes[2]: 25
+    bytes[3]: 59
+    bytes[4]: 178
+    bytes[5]: 86
+    bytes[6]: 6
+    bytes[7]: 154
+    bytes[8]: 141
+    bytes[9]: 187
+    bytes[10]: 94
+    bytes[11]: 216
+    bytes[12]: 152
+    bytes[13]: 220
+    bytes[14]: 161
+    bytes[15]: 200

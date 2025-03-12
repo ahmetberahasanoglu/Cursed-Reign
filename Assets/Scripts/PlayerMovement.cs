@@ -69,8 +69,8 @@ public class PlayerMovement : MonoBehaviour
 
     playerAttack attack;
     private bool useJoystick = true;
-    private GameObject panel;                               
-    private TextMeshProUGUI warningText;
+    public GameObject panel;                               
+    public TextMeshProUGUI warningText;
     public bool isSelectionMade=false;                    
                                                            
     public void OnCloseButtonPressed() //                  
@@ -271,8 +271,8 @@ public class PlayerMovement : MonoBehaviour
         leftM = GameObject.Find("LButton").GetComponent<Button>();
         rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
-        warningText=GameObject.Find("WarningText").GetComponent<TextMeshProUGUI>();
-        panel = GameObject.Find("MovementPanel").GetComponent<GameObject>();
+       // warningText=GameObject.Find("WarningText").GetComponent<TextMeshProUGUI>();
+       // panel = GameObject.Find("MovementPanel").GetComponent<GameObject>();
         manager = audiomanager.Instance;
         attack=GetComponentInChildren<playerAttack>();
         staminaBar = GameObject.Find("Stamina Bar").GetComponent<StaminaBar>();

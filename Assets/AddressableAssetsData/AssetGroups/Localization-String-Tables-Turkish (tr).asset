@@ -23,3 +23,23 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: 1225e93906fc4504589b22c8fb275ffd, type: 2}
     - {fileID: 11400000, guid: 3132109a424c5f24daa35112a1cdee58, type: 2}
+  m_FolderEntryCache: []
+  m_AssetCollectionEntryCache: []
+  <FlaggedDuringContentUpdateRestriction>k__BackingField: 0
+  m_CurrentHash:
+    bytes[0]: 1
+    bytes[1]: 41
+    bytes[2]: 249
+    bytes[3]: 68
+    bytes[4]: 37
+    bytes[5]: 63
+    bytes[6]: 83
+    bytes[7]: 196
+    bytes[8]: 26
+    bytes[9]: 56
+    bytes[10]: 2
+    bytes[11]: 209
+    bytes[12]: 80
+    bytes[13]: 90
+    bytes[14]: 252
+    bytes[15]: 142
