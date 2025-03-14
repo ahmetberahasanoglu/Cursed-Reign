@@ -1,0 +1,20 @@
+{
+    "items":[
+        {
+            "key":"FIRST_KEY",
+            "value":"Turkce test"
+        },
+        {
+            "key":"SECOND_KEY",
+            "value":"Turkce ikinci test"
+        },
+        {
+            "key":"THIRD_KEY",
+            "value":"This is a test in Turkish"
+        },
+        {
+            "key":"",
+            "value":"This is a test in Turkish"
+        }
+    ]
+}

@@ -9,12 +9,37 @@
             "value":"This is a second test in english"
         },
         {
-            "key":"THIRD_KEY",
-            "value":""
+            "key":"Continue",
+            "value":"Continue"
         },
         {
-            "key":"",
-            "value":""
+            "key":"New",
+            "value":"New Game"
+        },
+        {
+            "key":"Credits",
+            "value":"Credits"
+        },
+        {
+            "key":"Quit",
+            "value":"Quit"
+        },
+        {
+            "key":"Game",
+            "value":"Play Game"
+        },
+        {
+            "key":"Play",
+            "value":"Play"
+        },
+        {
+            "key":"Back",
+            "value":"Back"
+        },
+        {
+            "key":"Build",
+            "value":"Early build by @QuackTales  V0.9.1"
         }
+        
     ]
 }
