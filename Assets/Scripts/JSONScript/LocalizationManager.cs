@@ -96,13 +96,13 @@ public class LocalizationManager : MonoBehaviour
         switch (LANGUAGE_CHOOSE)
         {
             case LocaleApplication.EN:
-                URL = "https://github.com/ahmetberahasanoglu/jsontest/blob/main/text_en.txt";
+                URL = "https://github.com/ahmetberahasanoglu/Cursed-Reign/blob/main/Assets/Resources/text_en.json";
                 break;
             case LocaleApplication.TR:
-                URL = "https://github.com/ahmetberahasanoglu/jsontest/blob/main/text_tr.txt";
+                URL = "https://github.com/ahmetberahasanoglu/Cursed-Reign/blob/main/Assets/Resources/text_tr.json";
                 break;
             default:
-                URL = "https://github.com/ahmetberahasanoglu/jsontest/blob/main/text_en.txt";//HEPSÝNÝN UZANTILARI TXT OLMALI
+                URL = "https://github.com/ahmetberahasanoglu/Cursed-Reign/blob/main/Assets/Resources/text_en.json";//HEPSÝNÝN UZANTILARI TXT OLMALI
                 break;
         }
     }
