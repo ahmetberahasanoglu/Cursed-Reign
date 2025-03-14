@@ -44,6 +44,7 @@ public class DialogueManager : MonoBehaviour
 
         foreach (DialogueLine dialogueLine in dialogue.dialogueLines)
         {
+            dialogueLine.line = LocalizationManager.Instance.GetTextForKey(dialogueLine.localizationKey);
             lines.Enqueue(dialogueLine);
         }
 

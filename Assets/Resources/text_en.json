@@ -1,102 +1,188 @@
 {
-    "items":[
-       
+    "items": [
         {
-            "key":"Continue",
-            "value":"Continue"
+            "key": "Continue",
+            "value": "Continue"
         },
         {
-            "key":"New",
-            "value":"New Game"
+            "key": "New",
+            "value": "New Game"
         },
         {
-            "key":"Credits",
-            "value":"Credits"
+            "key": "Credits",
+            "value": "Credits"
         },
         {
-            "key":"Quit",
-            "value":"Quit"
+            "key": "Quit",
+            "value": "Quit"
         },
         {
-            "key":"Game",
-            "value":"Play Game"
+            "key": "Game",
+            "value": "Play Game"
         },
         {
-            "key":"Play",
-            "value":"Play"
+            "key": "Play",
+            "value": "Play"
         },
         {
-            "key":"Back",
-            "value":"Back"
+            "key": "Back",
+            "value": "Back"
         },
         {
-            "key":"Build",
-            "value":"Early build by @QuackTales  V0.9.1"
+            "key": "Build",
+            "value": "Early build by @QuackTales  V0.9.1"
         },
         {
-            "key":"Button",
-            "value":"Button"
+            "key": "Button",
+            "value": "Button"
         },
         {
-            "key":"Sure",
-            "value":"Are you sure you want to leave the game??"
+            "key": "Sure",
+            "value": "Are you sure you want to leave the game?"
         },
         {
-            "key":"Yes",
-            "value":"Yes"
+            "key": "Yes",
+            "value": "Yes"
         },
         {
-            "key":"Restart",
-            "value":"Restart"
+            "key": "Restart",
+            "value": "Restart"
         },
         {
-            "key":"Resume",
-            "value":"Resume"
+            "key": "Resume",
+            "value": "Resume"
         },
         {
-            "key":"Options",
-            "value":"Options"
+            "key": "Options",
+            "value": "Options"
         },
         {
-            "key":"Movement",
-            "value":"Movement"
+            "key": "Movement",
+            "value": "Movement"
         },
         {
-            "key":"Sfx",
-            "value":"SFX"
+            "key": "Sfx",
+            "value": "SFX"
         },
         {
-            "key":"Music",
-            "value":"Music"
-        },
-
-        {
-            "key":"loading",
-            "value":"loading..."
+            "key": "Music",
+            "value": "Music"
         },
         {
-            "key":"intro1",
-            "value":"Legoria and Kiste had been at war for years, battling for dominion. After relentless battles, the Kingdom of Legoria was exhausted, and despair had spread like a plague across the land."
+            "key": "loading",
+            "value": "loading..."
         },
         {
-            "key":"intro2",
-            "value":"The king and his lords debated using forbidden dark magic. The king made the final decision: dark magic would never be used; the war would be resolved honorably."
+            "key": "intro1",
+            "value": "Legoria and Kiste had been at war for years, battling for dominion. After relentless battles, the Kingdom of Legoria was exhausted, and despair had spread like a plague across the land."
         },
         {
-            "key":"intro3",
-            "value":"However, the legion commander believed the war could no longer be won through traditional means. With the soldiers who followed him, he betrayed the king. The king was dethroned, and dark magic was unleashed."
+            "key": "intro2",
+            "value": "The king and his lords debated using forbidden dark magic. The king made the final decision: dark magic would never be used; the war would be resolved honorably."
         },
         {
-            "key":"intro4",
-            "value":"The Kingdom of Legoria achieved an absolute victory in the war. But as days passed, the terrible cost of dark magic became apparent—the people of Legoria were losing their humanity."
+            "key": "intro3",
+            "value": "However, the legion commander believed the war could no longer be won through traditional means. With the soldiers who followed him, he betrayed the king. The king was dethroned, and dark magic was unleashed."
         },
         {
-            "key":"intro5",
-            "value":"Now, it was too late for everything. The former king—Us, after days of misery in the dungeon, heard a mysterious whisper that filled him with hope."
-        }, {
-            "key":"intro6",
-            "value":"The whisperer said he knew how to break the curse and whispered, 'I’ll wait for you,' then shattered the dungeon’s lock. The king escaped the guards and set out on his journey. He would have to destroy this Cursed Reign, even if it meant facing his own transformed people..."
+            "key": "intro4",
+            "value": "The Kingdom of Legoria achieved an absolute victory in the war. But as days passed, the terrible cost of dark magic became apparent—the people of Legoria were losing their humanity."
+        },
+        {
+            "key": "intro5",
+            "value": "Now, it was too late for everything. The former king—Us, after days of misery in the dungeon, heard a mysterious whisper that filled him with hope."
+        },
+        {
+            "key": "intro6",
+            "value": "The whisperer said he knew how to break the curse and whispered, 'I’ll wait for you,' then shattered the dungeon’s lock. The king escaped the guards and set out on his journey. He would have to destroy this Cursed Reign, even if it meant facing his own transformed people..."
+        },
+        {
+            "key": "fs1",
+            "value": "So you managed to slip past the guards..."
+        },
+        {
+            "key": "fs2",
+            "value": "Who are you? Show yourself! If you're one of them, know this: I won't return to that cell without a fight."
+        },
+        {
+            "key": "fs3",
+            "value": "Don't worry, I am your only ally in this cursed land. I would gladly speak more, but time is short. I'll be waiting for you at the edge of the dark forest. Don't delay, or I won't be able to help you..."
+        },
+        {
+            "key": "fs4",
+            "value": "No time to waste. I must set out."
+        },
+        {
+            "key": "d1D1",
+            "value": "Thank the gods you're here, Your Majesty..."
+        },
+        {
+            "key": "d1D2",
+            "value": "So you're the one who gave Harlaus the key. Thank the heavens, a sane soul still remains... I would share words with you, but I fear our time is short."
+        },
+        {
+            "key": "d1D3",
+            "value": "Do you have any news to share before we depart?"
+        },
+        {
+            "key": "d1D4",
+            "value": "Your Majesty. After the war, General Sarduk seized the council and plans a dark ritual during the eclipse. I've learned how to end the curse of black magic, but I lack the strength to face him."
+        },
+        {
+            "key": "d1D5",
+            "value": "If you provide me with your resources, I can forge new arms and armor for you."
+        },
+        {
+            "key": "d2D1",
+            "value": "You must be weary, but I'm glad you overcame the trials, Your Majesty."
+        },
+        {
+            "key": "d2D2",
+            "value": "You need not address me so formally, my friend. My people and soldiers no longer recognize me, and worse, I no longer recognize them. All have fallen prey to this vile sorcery."
+        },
+        {
+            "key": "d2D3",
+            "value": "I share your sorrow, but as you know, there is no other way to reach the general."
+        },
+        {
+            "key": "d2D4",
+            "value": "... I hate to admit it, but I know it well. Do you have anything else to say?"
+        },
+        {
+            "key": "d2D5",
+            "value": "Let's see what we have that might suit you..."
+        },
+        {
+            "key": "d3D1",
+            "value": "We are close to our goal, with only one final passage remaining. Our efforts will not be in vain!"
+        },
+        {
+            "key": "d3D2",
+            "value": "I am grateful to you for sparing me the fate of watching my kingdom's ruin from behind iron bars."
+        },
+        {
+            "key": "d3D3",
+            "value": "It has always been an honor to stand by your side. Before you face Sarduk, let me tend to your equipment one last time."
+        },
+        {
+            "key": "Boss1",
+            "value": "I knew you would come here eventually."
+        },
+        {
+            "key": "Boss2",
+            "value": "You knew the price of your actions, yet you wielded the dark arts. Prepare yourself! I have come to claim my rightful throne and your head, Sarduk."
+        },
+        {
+            "key": "Boss3",
+            "value": "With your childish whims, you were leading the kingdom to ruin and despair. I did what had to be done. This is not the Legarios of old, but at least our homeland still stands."
+        },
+        {
+            "key": "Boss4",
+            "value": "Enough words have been spoken. Now, let our blades do the talking."
+        },
+        {
+            "key": "Boss5",
+            "value": "The final battle is not yet complete. It will come in the next update. Thank you so much for playing."
         }
-        
     ]
 }
