@@ -76,10 +76,6 @@
             "value":"Music"
         },
         {
-            "key":"SFX",
-            "value":"SFX"
-        },
-        {
             "key":"loading",
             "value":"loading..."
         },
