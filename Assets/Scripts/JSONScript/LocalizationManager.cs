@@ -55,7 +55,12 @@ public class LocalizationManager : MonoBehaviour
     {
         LANGUAGE_CHOOSE = LocaleHelper.GetSupportedLanguageCode();
         FULL_NAME_TEXT_FILE = FILENAME_PREFIX + LANGUAGE_CHOOSE.ToLower() + FILE_EXTENSION;
+
+#if UNITY_ANDROID
+        FULL_PATH_TEXT_FILE = Path.Combine(Application.persistentDataPath, FULL_NAME_TEXT_FILE);
+#else
         FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
+#endif
         yield return StartCoroutine(LoadJsonLanguageData());
         isReady = true;
     }
@@ -96,13 +101,13 @@ public class LocalizationManager : MonoBehaviour
         switch (LANGUAGE_CHOOSE)
         {
             case LocaleApplication.EN:
-                URL = "https://github.com/ahmetberahasanoglu/Cursed-Reign/blob/main/Assets/Resources/text_en.json";
+                URL = "https://raw.githubusercontent.com/ahmetberahasanoglu/Cursed-Reign/refs/heads/main/Assets/Resources/text_en.json";
                 break;
             case LocaleApplication.TR:
-                URL = "https://github.com/ahmetberahasanoglu/Cursed-Reign/blob/main/Assets/Resources/text_tr.json";
+                URL = "https://raw.githubusercontent.com/ahmetberahasanoglu/Cursed-Reign/refs/heads/main/Assets/Resources/text_tr.json";
                 break;
             default:
-                URL = "https://github.com/ahmetberahasanoglu/Cursed-Reign/blob/main/Assets/Resources/text_en.json";//HEPSÝNÝN UZANTILARI TXT OLMALI
+                URL = "https://raw.githubusercontent.com/ahmetberahasanoglu/Cursed-Reign/refs/heads/main/Assets/Resources/text_en.json";//raw dosyalarý almamýz gerekiyormus txt dosyasý olmalarýna gerek yok
                 break;
         }
     }
@@ -128,19 +133,20 @@ public class LocalizationManager : MonoBehaviour
     }
     private void LoadFileContents()
     {
-        LOADED_JSON_TEXT=File.ReadAllText(FULL_PATH_TEXT_FILE);
+        LOADED_JSON_TEXT = File.ReadAllText(FULL_PATH_TEXT_FILE);
         isFileFound = true;
         Debug.Log(LOADED_JSON_TEXT);
+        Debug.Log("Loaded JSON: " + LOADED_JSON_TEXT);
     }
     private void CopyFileFromResources()
     {
-        TextAsset myFile= Resources.Load(FILENAME_PREFIX+LANGUAGE_CHOOSE) as TextAsset;
+        TextAsset myFile = Resources.Load(FILENAME_PREFIX + LANGUAGE_CHOOSE) as TextAsset;
         if (myFile == null)
         {
-            Debug.LogError("Make sure the file"+ FILENAME_PREFIX+LANGUAGE_CHOOSE+"is in resources folder");
+            Debug.LogError("Make sure the file" + FILENAME_PREFIX + LANGUAGE_CHOOSE + "is in resources folder");
             return;
         }
-        LOADED_JSON_TEXT =myFile.ToString();
+        LOADED_JSON_TEXT = myFile.ToString();
         File.WriteAllText(FULL_PATH_TEXT_FILE, LOADED_JSON_TEXT);
         StartCoroutine(WaitCreationFile());
     }
@@ -191,7 +197,7 @@ public class LocalizationManager : MonoBehaviour
         }
         else
         {
-            return "Error keyler "+localizationKey+ " ile uyusmuyor";
+            return "Error keyler " + localizationKey + " ile uyusmuyor";
         }
     }
     IEnumerator SwitchLanguageRunTime(string language)
@@ -204,15 +210,22 @@ public class LocalizationManager : MonoBehaviour
             LANGUAGE_CHOOSE = language;
 
             FULL_NAME_TEXT_FILE = FILENAME_PREFIX + LANGUAGE_CHOOSE.ToLower() + FILE_EXTENSION;
-            FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
+
+#if UNITY_ANDROID
+            FULL_PATH_TEXT_FILE = Path.Combine(Application.persistentDataPath, FULL_NAME_TEXT_FILE);
+#else
+         FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
+#endif
+
             yield return StartCoroutine(LoadJsonLanguageData());
             isReady = true;
 
-            LocalizedText[] arrayText=FindObjectsOfType<LocalizedText>();
-            for (int i = 0; i < arrayText.Length; i++) {
+            LocalizedText[] arrayText = FindObjectsOfType<LocalizedText>();
+            for (int i = 0; i < arrayText.Length; i++)
+            {
                 arrayText[i].AttributionText();
             }
-            isTryChangeLangRunTime=false;
+            isTryChangeLangRunTime = false;
         }
     }
     public void ChangeLanguage(string lang)

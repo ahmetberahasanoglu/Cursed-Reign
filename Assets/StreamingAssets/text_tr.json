@@ -9,12 +9,36 @@
             "value":"Turkce ikinci test"
         },
         {
-            "key":"THIRD_KEY",
-            "value":"This is a test in Turkish"
+            "key":"Continue",
+            "value":"Devam et"
         },
         {
-            "key":"",
-            "value":"This is a test in Turkish"
+            "key":"New",
+            "value":"Yeni Oyun"
+        },
+        {
+            "key":"Credits",
+            "value":"Emeği Geçenler"
+        },
+        {
+            "key":"Quit",
+            "value":"Çık"
+        },
+        {
+            "key":"Game",
+            "value":"Yeni Oyun"
+        },
+        {
+            "key":"Play",
+            "value":"Oyna"
+        },
+        {
+            "key":"Back",
+            "value":"Geri"
+        },
+        {
+            "key":"Build",
+            "value":"Early build by @QuackTales  V0.9.1"
         }
     ]
 }
