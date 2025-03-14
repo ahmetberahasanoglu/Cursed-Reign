@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class IntroTexts : MonoBehaviour
+public class IntroTexts : MonoBehaviour//yazýlarý undertaledeki gibi tek tek yazdýrmayý saglayan kod
 {
     public TextMeshProUGUI textMeshPro;
     public float typingSpeed = 0.02f;

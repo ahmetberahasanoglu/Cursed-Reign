@@ -39,6 +39,73 @@
         {
             "key":"Build",
             "value":"Early build by @QuackTales  V0.9.1"
+        },
+        {
+            "key":"Button",
+            "value":"Button"
+        },
+        {
+            "key":"Sure",
+            "value":"Are you sure you want to leave the game??"
+        },
+        {
+            "key":"Yes",
+            "value":"Yes"
+        },
+        {
+            "key":"Restart",
+            "value":"Restart"
+        },
+        {
+            "key":"Resume",
+            "value":"Resume"
+        },
+        {
+            "key":"Options",
+            "value":"Options"
+        },
+        {
+            "key":"Movement",
+            "value":"Movement"
+        },
+        {
+            "key":"SFX",
+            "value":"SFX"
+        },
+        {
+            "key":"Music",
+            "value":"Music"
+        },
+        {
+            "key":"SFX",
+            "value":"SFX"
+        },
+        {
+            "key":"loading",
+            "value":"loading..."
+        },
+        {
+            "key":"intro1",
+            "value":"Legoria and Kiste had been at war for years, battling for dominion. After relentless battles, the Kingdom of Legoria was exhausted, and despair had spread like a plague across the land."
+        },
+        {
+            "key":"intro2",
+            "value":"The king and his lords debated using forbidden dark magic. The king made the final decision: dark magic would never be used; the war would be resolved honorably."
+        },
+        {
+            "key":"intro3",
+            "value":"However, the legion commander believed the war could no longer be won through traditional means. With the soldiers who followed him, he betrayed the king. The king was dethroned, and dark magic was unleashed."
+        },
+        {
+            "key":"intro4",
+            "value":"The Kingdom of Legoria achieved a crushing victory in the war. But as days passed, the terrible cost of dark magic became apparent—the people of Legoria were losing their humanity."
+        },
+        {
+            "key":"intro5",
+            "value":"Now, it was too late for everything. The former king—Us, after days of misery in the dungeon, heard a mysterious whisper that filled him with hope."
+        }, {
+            "key":"intro6",
+            "value":"The whisperer said he knew how to break the curse and whispered, 'I’ll wait for you,' then shattered the dungeon’s lock. The king escaped the guards and set out on his journey. He would have to destroy this Cursed Reign, even if it meant facing his own transformed people..."
         }
         
     ]
