@@ -135,7 +135,6 @@ public class LocalizationManager : MonoBehaviour
     {
         LOADED_JSON_TEXT = File.ReadAllText(FULL_PATH_TEXT_FILE);
         isFileFound = true;
-        Debug.Log(LOADED_JSON_TEXT);
         Debug.Log("Loaded JSON: " + LOADED_JSON_TEXT);
     }
     private void CopyFileFromResources()
@@ -211,12 +210,12 @@ public class LocalizationManager : MonoBehaviour
 
             FULL_NAME_TEXT_FILE = FILENAME_PREFIX + LANGUAGE_CHOOSE.ToLower() + FILE_EXTENSION;
 
-#if UNITY_ANDROID
-            FULL_PATH_TEXT_FILE = Path.Combine(Application.persistentDataPath, FULL_NAME_TEXT_FILE);
-#else
-         FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
-#endif
-
+            //#if UNITY_ANDROID
+            //           FULL_PATH_TEXT_FILE = Path.Combine(Application.persistentDataPath, FULL_NAME_TEXT_FILE);
+            //#else
+            //     FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
+            //#endif
+            FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
             yield return StartCoroutine(LoadJsonLanguageData());
             isReady = true;
 

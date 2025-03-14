@@ -1,39 +1,38 @@
 {
     "items":[
-       
+      
         {
             "key":"Continue",
-            "value":"Continue"
+            "value":"Devam et"
         },
         {
             "key":"New",
-            "value":"New Game"
+            "value":"Yeni Oyun"
         },
         {
             "key":"Credits",
-            "value":"Credits"
+            "value":"Emegi Gecenler"
         },
         {
             "key":"Quit",
-            "value":"Quit"
+            "value":"Cik"
         },
         {
             "key":"Game",
-            "value":"Play Game"
+            "value":"Yeni Oyun"
         },
         {
             "key":"Play",
-            "value":"Play"
+            "value":"Oyna"
         },
         {
             "key":"Back",
-            "value":"Back"
+            "value":"Geri"
         },
         {
             "key":"Build",
             "value":"Early build by @QuackTales  V0.9.1"
-        },
-        {
+        }, {
             "key":"Button",
             "value":"Button"
         },
@@ -69,7 +68,6 @@
             "key":"Music",
             "value":"Music"
         },
-
         {
             "key":"loading",
             "value":"loading..."
@@ -88,7 +86,7 @@
         },
         {
             "key":"intro4",
-            "value":"The Kingdom of Legoria achieved an absolute victory in the war. But as days passed, the terrible cost of dark magic became apparent—the people of Legoria were losing their humanity."
+            "value":"The Kingdom of Legoria achieved a crushing victory in the war. But as days passed, the terrible cost of dark magic became apparent—the people of Legoria were losing their humanity."
         },
         {
             "key":"intro5",
@@ -97,6 +95,5 @@
             "key":"intro6",
             "value":"The whisperer said he knew how to break the curse and whispered, 'I’ll wait for you,' then shattered the dungeon’s lock. The king escaped the guards and set out on his journey. He would have to destroy this Cursed Reign, even if it meant facing his own transformed people..."
         }
-        
     ]
 }

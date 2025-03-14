@@ -6100,7 +6100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0f4225194e2e040b6230b2a781c9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: SFX
+  localizationKey: Sfx
 --- !u!1 &5420871012920834538
 GameObject:
   m_ObjectHideFlags: 0
