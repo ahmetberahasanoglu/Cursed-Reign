@@ -1,13 +1,6 @@
 {
     "items":[
-        {
-            "key":"FIRST_KEY",
-            "value":"Turkce test"
-        },
-        {
-            "key":"SECOND_KEY",
-            "value":"Turkce ikinci test"
-        },
+      
         {
             "key":"Continue",
             "value":"Devam et"
@@ -68,7 +61,7 @@
             "value":"Movement"
         },
         {
-            "key":"SFX",
+            "key":"Sfx",
             "value":"SFX"
         },
         {

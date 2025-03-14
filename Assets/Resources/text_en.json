@@ -1,13 +1,6 @@
 {
     "items":[
-        {
-            "key":"FIRST_KEY",
-            "value":"This is a test in english"
-        },
-        {
-           "key":"SECOND_KEY",
-            "value":"This is a second test in english"
-        },
+       
         {
             "key":"Continue",
             "value":"Continue"
@@ -69,7 +62,7 @@
             "value":"Movement"
         },
         {
-            "key":"SFX",
+            "key":"Sfx",
             "value":"SFX"
         },
         {
