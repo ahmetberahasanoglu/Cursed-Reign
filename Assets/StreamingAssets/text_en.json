@@ -74,115 +74,115 @@
         },
         {
             "key": "intro1",
-            "value": "Legoria and Kiste had been at war for years, battling for dominion. After relentless battles, the Kingdom of Legoria was exhausted, and despair had spread like a plague across the land."
+            "value": "Legoria and Kiste had been at war for years, fighting for control of the realm. Endless battles had drained Legoria, and despair had settled over the kingdom like a plague."
         },
         {
             "key": "intro2",
-            "value": "The king and his lords debated using forbidden dark magic. The king made the final decision: dark magic would never be used; the war would be resolved honorably."
+            "value": "The king and his lords debated the use of forbidden dark magic. The king spoke his final word: 'No matter the cost, we shall not resort to dark magic. This war must end with honor.'"
         },
         {
             "key": "intro3",
-            "value": "However, the legion commander believed the war could no longer be won through traditional means. With the soldiers who followed him, he betrayed the king. The king was dethroned, and dark magic was unleashed."
+            "value": "But the legion commander believed the war could no longer be won through conventional means. With the soldiers who shared his vision, he betrayed the king. The king is overthrown… and dark magic is unleashed."
         },
         {
             "key": "intro4",
-            "value": "The Kingdom of Legoria achieved an absolute victory in the war. But as days passed, the terrible cost of dark magic became apparent—the people of Legoria were losing their humanity."
+            "value": "Legoria achieved a absolute victory in the war. But as the days passed, the curse of dark magic revealed itself—the people were losing their humanity."
         },
         {
             "key": "intro5",
-            "value": "Now, it was too late for everything. The former king—Us, after days of misery in the dungeon, heard a mysterious whisper that filled him with hope."
+            "value": "It was already too late. After days of misery in the cold, dark cell, the former king heard a mysterious whisper that filled him with hope."
         },
         {
             "key": "intro6",
-            "value": "The whisperer said he knew how to break the curse and whispered, 'I’ll wait for you,' then shattered the dungeon’s lock. The king escaped the guards and set out on his journey. He would have to destroy this Cursed Reign, even if it meant facing his own transformed people..."
+            "value": "The whisper claimed to know how to end the curse and that it was waiting for him. A key was thrown into the cell. The king evaded the guards and set off on his journey. He would have to put an end to this Cursed Reign… even if it meant fighting his own people."
         },
         {
             "key": "fs1",
-            "value": "So you managed to slip past the guards..."
+            "value": "So, you managed to evade the guards..."
         },
         {
             "key": "fs2",
-            "value": "Who are you? Show yourself! If you're one of them, know this: I won't return to that cell without a fight."
+            "value": "Who are you? Show yourself! If you’re one of them, you must know that I won’t return to that cell without a fight."
         },
         {
             "key": "fs3",
-            "value": "Don't worry, I am your only ally in this cursed land. I would gladly speak more, but time is short. I'll be waiting for you at the edge of the dark forest. Don't delay, or I won't be able to help you..."
+            "value": "Don't worry, I am your only ally in this land. I wish we could talk more, but time is short. I will be waiting for you at the end of the dark forest. If you’re not quick, I won’t be able to hel..."
         },
         {
             "key": "fs4",
-            "value": "No time to waste. I must set out."
+            "value": "There’s no time to waste. I must go."
         },
         {
             "key": "d1D1",
-            "value": "Thank the gods you're here, Your Majesty..."
+            "value": "Thank the Lord you made it here, Your Majesty..."
         },
         {
             "key": "d1D2",
-            "value": "So you're the one who gave Harlaus the key. Thank the heavens, a sane soul still remains... I would share words with you, but I fear our time is short."
+            "value": "Harlaus... I should have known you were the one who gave me the key. Thank the heaven there are still some with their sanity intact... I wish we had time to reminisce, but we don’t. Let’s get to the point."
         },
         {
             "key": "d1D3",
-            "value": "Do you have any news to share before we depart?"
+            "value": "How do we end this curse?"
         },
         {
             "key": "d1D4",
-            "value": "Your Majesty. After the war, General Sarduk seized the council and plans a dark ritual during the eclipse. I've learned how to end the curse of black magic, but I lack the strength to face him."
+            "value": "Your Majesty, the dark magic weakens when it has no more victims. General Sarduk is preparing a new ritual during the eclipse. If we stop the ritual before darkness falls, the magic’s power will fade over time."
         },
         {
             "key": "d1D5",
-            "value": "If you provide me with your resources, I can forge new arms and armor for you."
+            "value": "If you provide me with resources, I can craft new equipment for you."
         },
         {
             "key": "d2D1",
-            "value": "You must be weary, but I'm glad you overcame the trials, Your Majesty."
+            "value": "You must be exhausted, but I’m glad you overcame the obstacles, Your Majesty."
         },
         {
             "key": "d2D2",
-            "value": "You need not address me so formally, my friend. My people and soldiers no longer recognize me, and worse, I no longer recognize them. All have fallen prey to this vile sorcery."
+            "value": "Drop the formalities, Harlaus. My people, my soldiers—none of them are the same. Everyone has been corrupted by this wicked magic."
         },
         {
             "key": "d2D3",
-            "value": "I share your sorrow, but as you know, there is no other way to reach the general."
+            "value": "You will have to fight our former soldiers majesty. It’s unfortunate, but as you know, there’s no other way to reach the general."
         },
         {
             "key": "d2D4",
-            "value": "... I hate to admit it, but I know it well. Do you have anything else to say?"
+            "value": "...I hate to admit it, but I know that too. Do you have anything else to say?"
         },
         {
             "key": "d2D5",
-            "value": "Let's see what we have that might suit you..."
+            "value": "Let’s see what we have that suits you..."
         },
         {
             "key": "d3D1",
-            "value": "We are close to our goal, with only one final passage remaining. Our efforts will not be in vain!"
+            "value": "We’re close to the palace, just one last passage remains. Our efforts won’t be in vain!"
         },
         {
             "key": "d3D2",
-            "value": "I am grateful to you for sparing me the fate of watching my kingdom's ruin from behind iron bars."
+            "value": "I am grateful to you, my friend, for not letting me spend the rest of my years behind bars, watching my kingdom crumble."
         },
         {
             "key": "d3D3",
-            "value": "It has always been an honor to stand by your side. Before you face Sarduk, let me tend to your equipment one last time."
+            "value": "It has always been an honor to stand by your side majesty. Before we face Sarduk, let me take one last look at your equipment."
         },
         {
             "key": "Boss1",
-            "value": "I knew you would come here eventually."
+            "value": "I knew you would come here sooner or later."
         },
         {
             "key": "Boss2",
-            "value": "You knew the price of your actions, yet you wielded the dark arts. Prepare yourself! I have come to claim my rightful throne and your head, Sarduk."
+            "value": "You knew there would be consequences for your actions, yet you still chose dark magic. Prepare yourself, Sarduk! I have come for my rightful throne—and your head!"
         },
         {
             "key": "Boss3",
-            "value": "With your childish whims, you were leading the kingdom to ruin and despair. I did what had to be done. This is not the Legarios of old, but at least our homeland still stands."
+            "value": "With your childish ideals, you were leading the kingdom into poverty and ruin. I did what had to be done. This is no longer the old Legoria, but at least our homeland still stands."
         },
         {
             "key": "Boss4",
-            "value": "Enough words have been spoken. Now, let our blades do the talking."
+            "value": "We’ve talked enough. Now, it’s time for our blades to speak."
         },
         {
             "key": "Boss5",
-            "value": "The final battle is not yet complete. It will come in the next update. Thank you so much for playing."
+            "value": "The boss fight is not finished yet. It will be added in the next update. THANK YOU so much for playing!"
         }
     ]
 }
