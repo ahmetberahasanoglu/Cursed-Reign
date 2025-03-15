@@ -136,6 +136,7 @@ public class LocalizationManager : MonoBehaviour
         LOADED_JSON_TEXT = File.ReadAllText(FULL_PATH_TEXT_FILE);
         isFileFound = true;
         Debug.Log("Loaded JSON: " + LOADED_JSON_TEXT);
+        Debug.Log("Dosya yolu: " + FULL_PATH_TEXT_FILE);
     }
     private void CopyFileFromResources()
     {

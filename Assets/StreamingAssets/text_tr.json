@@ -34,11 +34,11 @@
             "value":"Early build by @QuackTales  V0.9.1"
         }, {
             "key":"Button",
-            "value":"Button"
+            "value":"Buton"
         },
         {
             "key":"Sure",
-            "value":"Are you sure you want to leave the game??"
+            "value":"Oyundan çıkmak istediğine emin misin?"
         },
         {
             "key":"Yes",
@@ -46,54 +46,142 @@
         },
         {
             "key":"Restart",
-            "value":"Restart"
+            "value":"Yenile"
         },
         {
             "key":"Resume",
-            "value":"Resume"
+            "value":"Devam"
         },
         {
             "key":"Options",
-            "value":"Options"
+            "value":"Ayarlar"
         },
         {
             "key":"Movement",
-            "value":"Movement"
+            "value":"Hareket"
         },
         {
             "key":"Sfx",
-            "value":"SFX"
+            "value":"Ses"
         },
         {
             "key":"Music",
-            "value":"Music"
+            "value":"Muzik"
         },
         {
             "key":"loading",
-            "value":"loading..."
+            "value":"yükleniyor..."
         },
         {
             "key":"intro1",
-            "value":"Legoria and Kiste had been at war for years, battling for dominion. After relentless battles, the Kingdom of Legoria was exhausted, and despair had spread like a plague across the land."
+            "value":"Legoria ve Kiste diyara hükmetmek için yıllardır savaşıyordu. Amansız muharebeler sonucunda, Legoria Krallığı'ı tükenmiş, umutsuzluk ülkeye veba gibi çökmüştü."
         },
         {
             "key":"intro2",
-            "value":"The king and his lords debated using forbidden dark magic. The king made the final decision: dark magic would never be used; the war would be resolved honorably."
+            "value":"Kral ve lordları, yasaklanmış kara büyüyü kullanmayı tartışıyorlardı. Kral, son kararı verdi: Kara büyü asla kullanılmayacaktı; savaş, adil bir şekilde sonuçlanacaktı."
         },
         {
             "key":"intro3",
-            "value":"However, the legion commander believed the war could no longer be won through traditional means. With the soldiers who followed him, he betrayed the king. The king was dethroned, and dark magic was unleashed."
+            "value":"Ancak lejyon kumandanı, savaşın artık geleneksel yollarla kazanılamayacağına inanıyordu. Ona inanan  askerleriyle birlikte krala ihanet etti. Kral tahtından indirildi ve kara büyü kullanıldı."
         },
         {
             "key":"intro4",
-            "value":"The Kingdom of Legoria achieved a crushing victory in the war. But as days passed, the terrible cost of dark magic became apparent—the people of Legoria were losing their humanity."
+            "value":"Legoria Krallığı, savaşta ezici bir zafer kazandı. Fakat günler geçtikçe, kara büyünün korkunç bedeli ortaya çıktı; halk, insanlığını kaybediyordu."
         },
         {
             "key":"intro5",
-            "value":"Now, it was too late for everything. The former king—Us, after days of misery in the dungeon, heard a mysterious whisper that filled him with hope."
+            "value":"Artık her şey için çok geçti. Eski kral, zindanda sefalet içinde geçen günlerin ardından içini umutla dolduran gizemli bir fısıltı duydu."
         }, {
             "key":"intro6",
-            "value":"The whisperer said he knew how to break the curse and whispered, 'I’ll wait for you,' then shattered the dungeon’s lock. The king escaped the guards and set out on his journey. He would have to destroy this Cursed Reign, even if it meant facing his own transformed people..."
+            "value":"Fısıldayan, laneti nasıl yok edeceğini bildiğini ve onu beklediğini fısıldadı, ardından zindanın kilidini kırdı. Kral, muhafızları atlattı ve yola koyuldu. Canavarlaşmış halkının da dahil olduğu bu Lanetli Saltanat'ı yok etmesi gerekecekti..."
+        },
+        {
+            "key":"fs1",
+            "value":"Demek muhafızları atlatabildiniz..."
+        },
+        {
+            "key":"fs2",
+            "value":"Sen de kimsin? Ortaya çık! Onlardan biriysen, savaşmadan tekrar o hücreye dönmeyeceğimi biliyorsundur."
+        },
+        {
+            "key":"fs3",
+            "value":"Merak etmeyin, ben sizin bu ülkedeki yegâne dostunuzum. Sohbet etmek isterdim ama vaktimiz kısıtlı. Sizi kara ormanın sonunda bekliyor olacağım. Hızlı olmazsanız size yardım edem..."
+        },
+        {
+            "key":"fs4",
+            "value":"Kaybedecek vakit yok. Yola koyulmalıyım."
+        },
+        {
+            "key":"d1D1",
+            "value":"Buraya ulaşabildiğiniz için şükürler olsun majesteleri..."
+        },
+        {
+            "key":"d1D2",
+            "value":"Harlaus anahtarı veren sendin demek.  Şükürler olsun bir tane aklı başında insan kalmış... Hasret gidermek isterdim ama sanırım buna vaktimiz yok."
+        },
+        {
+            "key":"d1D3",
+            "value":"Yola çıkmadan önce vermen gereken havadislerin var mı?"
+        },
+        {
+            "key":"d1D4",
+            "value":"Majesteleri. General sarduk savaş sonrası tüm konseyi ele geçirdi ve ay tutulmasında yeni bir ayin yapacak. Kara büyünün etkilerini sonlandırmayı öğrendim ama onunla savaşacak gücüm yok. "
+        },
+        {
+            "key":"d1D5",
+            "value":"Bana kaynaklarınızı verirseniz size yeni ekipmanlar oluşturacağım."
+        },
+        {
+            "key":"d2D1",
+            "value":"Yorulmuş olmalısınız ama engelleri geçebilmenize sevindim majesteleri. "
+        },
+        {
+            "key":"d2D2",
+            "value":"Artık bu şekilde hitap etmene gerek yok dostum. Ülkemin halkı ve askerleri beni tanımıyor ama daha da kötüsü ben de onları tanıyamıyorum. Herkes bu şer dolu büyüden etkilenmiş."
+        },
+        {
+            "key":"d2D3",
+            "value":"Aynı kederi ben de hissediyorum ancak sizin de bildiğiniz gibi generale ulaşmanın başka bir yolu yok."
+        },
+        {
+            "key":"d2D4",
+            "value":"... İtiraf etmek istemesem de bunu ben de biliyorum. \nDiyeceğin başka bir şey var mı?  "
+        },
+        {
+            "key":"d2D5",
+            "value":"Size uygun neyimiz var bir bakalım..."
+        },
+        {
+            "key":"d3D1",
+            "value":"Hedefe yaklaştık, son bir geçit kaldı çabalarımız boşa gitmeyecek!"
+        },
+        {
+            "key":"d3D2",
+            "value":"Kalan yıllarımı ülkemin çöküşünü parmaklıklar ardında izleyerek geçirmeme engel olduğun için sana minnettarım dostum."
+        },
+        {
+            "key":"d3D3",
+            "value":"Sizin yanınızda olmak her zaman bir onurdu. Sarduk'la savaşmadan önce son kez ekipmanlarınıza bir bakayım."
+        },
+        {
+            "key":"Boss1",
+            "value":"Eninde sonunda buraya geleceğini biliyordum"
+        },
+        {
+            "key":"Boss2",
+            "value":"Yaptıklarının bir bedeli olduğunu biliyordun yine de kara büyü kullandın. Hazırlan! hakkım olan tahtım ve kellen için geldim sarduk."
+        },
+        {
+            "key":"Boss3",
+            "value":"Çocukça fikirlerinle krallığı yoksulluğa ve kayba sürüklüyordun ben yapılması gerekeni yaptım. Burası eski Legarios değil ama en azından memleketimiz hala ayakta."
+        },
+        {
+            "key":"Boss4",
+            "value":"Yeterince konuştuk. Konuşma sırası kılıçlarımızda."
+        },
+        {
+            "key":"Boss5",
+            "value":"Henüz boss savaşını bitiremedim.  En yakın güncellemede gelecek.  Oynadığın için ÇOK TEŞEKKÜRLER."
         }
     ]
 }
