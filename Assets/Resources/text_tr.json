@@ -182,6 +182,46 @@
             {
                 "key":"Boss5",
                 "value":"Henüz boss savaşını bitiremedim.  En yakın güncellemede gelecek. Oynadığın için ÇOK TEŞEKKÜRLER."
+            },
+            {
+                "key": "sword_tech_book",
+                "value": "Yeni bir kılıç teknigi kitabı"
+            },
+            {
+                "key": "dash_cooldown",
+                "value": "Atılma yetenegini daha sık kullanabilirsin"
+            },
+            {
+                "key": "attack_energy_book",
+                "value": "Saldırı enerji kapasitesini arttıran kitap"
+            },
+            {
+                "key": "longer_dash",
+                "value": "Daha uzaga atılabilirsin"
+            },
+            {
+                "key": "sword_talisman",
+                "value": "Hasarını arttıran bir kılıç tılsımı"
+            },
+            {
+                "key": "energy_regen",
+                "value": "Enerjin daha hızlı yenilenir"
+            },
+            {
+                "key": "max_health",
+                "value": "Max can değerini 20 artıran bir zırh"
+            },
+            {
+                "key": "max_mana",
+                "value": "Max Mana değerini 1 arttır"
+            },
+            {
+                "key": "ability_power",
+                "value": "Büyünü güçlendiren bir kitap."
+            },
+            {
+                "key": "default_text",
+                "value": "bilinmeyen güclendirme?"
             }
     ]
 }

@@ -8,7 +8,7 @@ public class ButtonInfo : MonoBehaviour
 {
     public TMP_Text priceText;
     public TMP_Text descriptionText;
-   // private LocalizedText localizedTextComponent;
+    private LocalizedText localizedTextComponent;
     PlayerMovement playerMovement;
     DashBar dashBar;
 
@@ -46,7 +46,7 @@ public class ButtonInfo : MonoBehaviour
         }
         else if ((SceneManager.GetActiveScene().name == "Door2") && itemPrice == 180)
         {
-            descriptionText.text = "Saldýrý enerjisini arttýran kitap ";
+            descriptionText.text = "Saldýrý enerji kapasitesini arttýran kitap";
         }
         else if ((SceneManager.GetActiveScene().name == "Door3") && itemPrice == 300)
         {
@@ -62,14 +62,10 @@ public class ButtonInfo : MonoBehaviour
             descriptionText.text = "Enerjin daha hýzlý yenilenir";
         }
 
-       /* localizedTextComponent = descriptionText.GetComponent<LocalizedText>();
+       localizedTextComponent = descriptionText.GetComponent<LocalizedText>();
 
     
-        if (localizedTextComponent != null)
-        {
-            localizedTextComponent.localizationKey = GetLocalizationKeyForItem();
-            localizedTextComponent.AttributionText(); // Güncelle
-        }*/
+       
         priceText.text = itemPrice.ToString();
         purchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
         manager = audiomanager.Instance;
@@ -89,8 +85,13 @@ public class ButtonInfo : MonoBehaviour
         staminaBar = FindObjectOfType<StaminaBar>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         dashBar = FindObjectOfType<DashBar>();
+        if (localizedTextComponent != null)
+        {
+            localizedTextComponent.localizationKey = GetLocalizationKeyForItem();
+            localizedTextComponent.AttributionText(); 
+        }
     }
-    /*
+  
     private string GetLocalizationKeyForItem()
     {
        
@@ -98,19 +99,25 @@ public class ButtonInfo : MonoBehaviour
 
         if (sceneName == "Door2")
         {
-            if (itemPrice == 300) return "new_sword_technique_book";
-            if (itemPrice == 1) return "dash_ability_upgrade";
+            if (itemPrice == 300) return "sword_tech_book";
+            if (itemPrice == 1) return "dash_cooldown";
             if (itemPrice == 180) return "attack_energy_book";
         }
         else if (sceneName == "Door3")
         {
             if (itemPrice == 300) return "longer_dash";
             if (itemPrice == 1) return "sword_talisman";
-            if (itemPrice == 180) return "faster_energy_regen";
+            if (itemPrice == 180) return "energy_regen";
+        }
+        else if(sceneName == "Door1")
+        {
+            if (itemPrice == 300) return "max_health";
+            if (itemPrice == 1) return "max_mana";
+            if (itemPrice == 180) return "ability_power";
         }
 
         return "default_text"; 
-    }*/
+    }
     public void OnPurchaseButtonClicked()
     {
 
