@@ -7,7 +7,7 @@ using TMPro;
 public class LocalizedText : MonoBehaviour
 {
     [SerializeField]
-    private string localizationKey;
+    private string localizationKey;//public yapabiliriz
     TextMeshProUGUI textMeshProComponent;
    IEnumerator Start()
     {

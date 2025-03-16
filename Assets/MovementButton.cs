@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class MovementButton : MonoBehaviour
 {
-   private PlayerMovement gameObject;
+   private PlayerMovement playerMovement;
     void Start()
     {
-      //  gameObject=GameObject.Find("Player").GetComponent<PlayerMovement>();   
-    }
+        FindPlayerMovement();
 
+    }
+    private void FindPlayerMovement()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+        }
+      
+    }
     public void OnJoystick()
     {
-      //  gameObject.SwitchControlJoystick();
+      playerMovement.SwitchControlJoystick();
     }
     public void OnButton()
     {
-      //  gameObject.SwitchControlButton();
-    }
-    public void OnBack()
-    {
-      //  gameObject.OnCloseButtonPressed();
+       playerMovement.SwitchControlButton();
     }
    
+    void Update()
+    {
+        if (playerMovement == null)
+        {
+            FindPlayerMovement();
+        }
+    }
 }

@@ -28,7 +28,12 @@ public class gameManager : MonoBehaviour
     public float timerCurrency = 0f;  // vakit nakittir
     public bool crownTaken = false;
 
+
     public bool isRewarded = false;
+
+    public TextMeshProUGUI warningText;
+    public GameObject panel;
+    
     private void OnEnable()
     {
         ActionsListener.OnHourglassCollected += HourglassCollected;
@@ -67,15 +72,35 @@ public class gameManager : MonoBehaviour
         pauseButton.onClick.AddListener(OnPauseButtonPressed);
         resumeButton.onClick.AddListener(OnResumeButtonPressed);
         Time.timeScale = 1;
-       
+       if(SceneManager.GetActiveScene().name == "FirstScene")
+        {
             pauseMenuUI.SetActive(true);
             isPaused = true;
+        }
+        else
+        {
+            pauseMenuUI.SetActive(false);
+            isPaused = false;
+        }
+            
         
         
        
     }
 
-    private void Update()
+
+    public void OnCloseButtonPressed()
+    {
+       panel.SetActive(false);
+    }
+
+ 
+   
+
+  
+
+
+private void Update()
     {
         if (timerRunning)
         {

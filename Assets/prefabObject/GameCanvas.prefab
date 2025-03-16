@@ -2207,6 +2207,8 @@ MonoBehaviour:
   timerCurrency: 0
   crownTaken: 0
   isRewarded: 0
+  warningText: {fileID: 7550909059207768658}
+  panel: {fileID: 5010208841628429802}
   playerPrefab: {fileID: 2614096723743006477, guid: 78caedb5c38074b448162e1e5b32aa90, type: 3}
 --- !u!1 &1844263010026514308
 GameObject:
@@ -5019,6 +5021,7 @@ GameObject:
   - component: {fileID: 1053166972189590045}
   - component: {fileID: 6668811304479355961}
   - component: {fileID: 1128278817479376985}
+  - component: {fileID: 8818243231714542041}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -5128,9 +5131,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: SwitchControlButton
+      - m_Target: {fileID: 8818243231714542041}
+        m_TargetAssemblyTypeName: MovementButton, Assembly-CSharp
+        m_MethodName: OnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5140,6 +5143,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8818243231714542041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583639799160077269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba304fa8f41632a48b4cf463e400e17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4681028117619178140
 GameObject:
   m_ObjectHideFlags: 0
@@ -5589,11 +5604,11 @@ GameObject:
   - component: {fileID: 3497144394735525808}
   m_Layer: 5
   m_Name: MovementPanel
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4833263734407128595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5820,6 +5835,7 @@ GameObject:
   - component: {fileID: 3508351292629847701}
   - component: {fileID: 4664891097022105911}
   - component: {fileID: 50694633956357285}
+  - component: {fileID: 6067343543110112216}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -5941,8 +5957,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 5975725152678294304}
+        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
         m_MethodName: OnCloseButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -5953,6 +5969,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6067343543110112216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335353321491062292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba304fa8f41632a48b4cf463e400e17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5360501304923408774
 GameObject:
   m_ObjectHideFlags: 0
@@ -6250,7 +6278,7 @@ GameObject:
   - component: {fileID: 7550909059207768658}
   m_Layer: 5
   m_Name: Text (TMP) (2)
-  m_TagString: Untagged
+  m_TagString: WarningText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7697,7 +7725,7 @@ GameObject:
   - component: {fileID: 1570691040913955205}
   m_Layer: 5
   m_Name: DownButton
-  m_TagString: Untagged
+  m_TagString: down
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8458,7 +8486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8296190848467597741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10506,6 +10534,7 @@ GameObject:
   - component: {fileID: 4484048388252113566}
   - component: {fileID: 1721971991523156832}
   - component: {fileID: 5326075931642125470}
+  - component: {fileID: 9212506657230634908}
   m_Layer: 5
   m_Name: Joystick
   m_TagString: Untagged
@@ -10615,9 +10644,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: SwitchControlJoystick
+      - m_Target: {fileID: 9212506657230634908}
+        m_TargetAssemblyTypeName: MovementButton, Assembly-CSharp
+        m_MethodName: OnJoystick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10627,6 +10656,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9212506657230634908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8773989388706376733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba304fa8f41632a48b4cf463e400e17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8828972251122484927
 GameObject:
   m_ObjectHideFlags: 0

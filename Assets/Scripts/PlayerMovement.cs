@@ -61,49 +61,34 @@ public class PlayerMovement : MonoBehaviour
     public Button leftM;
     public Button rightM; // joystick dolayýsýyla kapadýk
     public Button dashB;
+    public Button downB;
 
     public FixedJoystick fixedJoystick;
+
 
     private bool isJoystickUp = false; 
 
 
     playerAttack attack;
     private bool useJoystick = true;
-    public GameObject panel;                               
-    public TextMeshProUGUI warningText;
-    public bool isSelectionMade=false;                    
+  //  public GameObject panel;                               
+   // public TextMeshProUGUI warningText;
+                   
                                                            
-    public void OnCloseButtonPressed() //                  
-    {                                                      
-        if (!IsSelectionMade())//                          
-        {                                                  
-            // Seçim yapýlmadýysa uyarý göster
-            warningText.text= "<-- Please choose one -->";         
-            warningText.gameObject.SetActive(true);                   
-        }                                                  
-        else                                               
-        {                                                  
-            // Seçim yapýldýysa paneli kapat               
-            panel.SetActive(false);                        
-        }                                                  
-    }                                                      
+                                                  
     public void SwitchControlJoystick()                    
     {                                                      
         useJoystick = true;
-        isSelectionMade = true;
         UpdateControlUI();                                 
                                                            
     }                                                      
     public void SwitchControlButton()                      
     {                                                      
         useJoystick = false;
-        isSelectionMade = true;
+        
         UpdateControlUI();                                 
     }                                                      
-    public bool IsSelectionMade()                          
-    {                                                      
-        return isSelectionMade;
-    }                                                      
+                                                       
     private void UpdateControlUI()
     {
         if (useJoystick)
@@ -111,16 +96,18 @@ public class PlayerMovement : MonoBehaviour
             fixedJoystick.gameObject.SetActive(true);
              leftM.gameObject.SetActive(false);
              rightM.gameObject.SetActive(false);
-            PlayerOneWayPlatform.downButton.gameObject.SetActive(false);
-            warningText.text = "You chose Joystick!";
+           // PlayerOneWayPlatform.downButton.gameObject.SetActive(false);
+           downB.gameObject.SetActive(false);
+           // warningText.text = "You chose Joystick!";
         }
         else
         {
             fixedJoystick.gameObject.SetActive(false);
             leftM.gameObject.SetActive(true);
             rightM.gameObject.SetActive(true);
-            PlayerOneWayPlatform.downButton.gameObject.SetActive(true);
-            warningText.text = "You chose Buttons!";
+            downB.gameObject.SetActive(true);
+            //PlayerOneWayPlatform.downButton.gameObject.SetActive(true);
+          //  warningText.text = "You chose Buttons!";
         }
        
     }
@@ -271,9 +258,11 @@ public class PlayerMovement : MonoBehaviour
         leftM = GameObject.Find("LButton").GetComponent<Button>();
         rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
-       // warningText=GameObject.Find("WarningText").GetComponent<TextMeshProUGUI>();
-       // panel = GameObject.Find("MovementPanel").GetComponent<GameObject>();
-        manager = audiomanager.Instance;
+        downB = GameObject.Find("DownButton").GetComponent<Button>();
+       
+            // warningText=GameObject.Find("WarningText").GetComponent<TextMeshProUGUI>();
+            // panel = GameObject.Find("MovementPanel").GetComponent<GameObject>();
+            manager = audiomanager.Instance;
         attack=GetComponentInChildren<playerAttack>();
         staminaBar = GameObject.Find("Stamina Bar").GetComponent<StaminaBar>();
 
@@ -291,7 +280,7 @@ public class PlayerMovement : MonoBehaviour
         JumpB.onClick.AddListener(onJumpButtonPressed);
         fireB.onClick.AddListener(onFireButtonPressed);
         dashB.onClick.AddListener(OnDashButtonPressed);
-
+        //downB.onClick.AddListener(PlayerOneWayPlatform.onDownButtonPressed());
       AddEventTrigger(leftM, (data) => onLeftButtonPressed(), EventTriggerType.PointerDown);
       AddEventTrigger(leftM, (data) => onLeftButtonReleased(), EventTriggerType.PointerUp);
 
@@ -300,7 +289,11 @@ public class PlayerMovement : MonoBehaviour
       AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
 
         fixedJoystick = GameObject.Find("FixedJoystick").GetComponent<FixedJoystick>();
-        //joystick
+        useJoystick = false;
+        UpdateControlUI();
+  
+        
+
 
     }
 
@@ -335,34 +328,44 @@ public class PlayerMovement : MonoBehaviour
     }
     public void onLeftButtonPressed()
     {
-        moveInput = new Vector2(-1, 0);
+        if (!useJoystick)
+        {
+            moveInput = new Vector2(-1, 0);
+            IsMoving = true;
+        }
+        
        // if (IsAlive)
        // {
-            IsMoving = true;
+           
         //  }
     }
 
     public void onRightButtonPressed()
     {
         moveInput = new Vector2(1, 0);
-       // if (IsAlive)
-   //     {
+        if (!useJoystick)
+        {
             IsMoving = true;
-        //   }
+         }
         
     }
     public void onLeftButtonReleased()
     {
-        moveInput = Vector2.zero;
-        IsMoving = false;
+        if (!useJoystick)
+        {
+            moveInput = Vector2.zero;
+            IsMoving = false;
+        }
       
     }
 
     public void onRightButtonReleased()
     {
-        moveInput = Vector2.zero;
-        IsMoving = false;
-         
+        if (!useJoystick)
+        {
+            moveInput = Vector2.zero;
+            IsMoving = false;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -651,6 +654,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 moveInput = new Vector2(fixedJoystick.Horizontal, 0);
                 IsMoving = (Mathf.Abs(moveInput.x) > 0);
+            }
+            else                                                            //
+            {                                                               //
+                IsMoving = (moveInput != Vector2.zero);                     //
             }
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             CanMove = true;

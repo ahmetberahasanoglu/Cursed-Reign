@@ -16,6 +16,9 @@ TagManager:
   - punch
   - mami
   - yumruk
+  - down
+  - Panel
+  - WarningText
   layers:
   - Default
   - TransparentFX

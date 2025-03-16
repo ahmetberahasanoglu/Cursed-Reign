@@ -8,6 +8,7 @@ public class ButtonInfo : MonoBehaviour
 {
     public TMP_Text priceText;
     public TMP_Text descriptionText;
+   // private LocalizedText localizedTextComponent;
     PlayerMovement playerMovement;
     DashBar dashBar;
 
@@ -60,6 +61,15 @@ public class ButtonInfo : MonoBehaviour
         {
             descriptionText.text = "Enerjin daha hýzlý yenilenir";
         }
+
+       /* localizedTextComponent = descriptionText.GetComponent<LocalizedText>();
+
+    
+        if (localizedTextComponent != null)
+        {
+            localizedTextComponent.localizationKey = GetLocalizationKeyForItem();
+            localizedTextComponent.AttributionText(); // Güncelle
+        }*/
         priceText.text = itemPrice.ToString();
         purchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
         manager = audiomanager.Instance;
@@ -80,7 +90,27 @@ public class ButtonInfo : MonoBehaviour
         playerMovement = FindObjectOfType<PlayerMovement>();
         dashBar = FindObjectOfType<DashBar>();
     }
+    /*
+    private string GetLocalizationKeyForItem()
+    {
+       
+        string sceneName = SceneManager.GetActiveScene().name;
 
+        if (sceneName == "Door2")
+        {
+            if (itemPrice == 300) return "new_sword_technique_book";
+            if (itemPrice == 1) return "dash_ability_upgrade";
+            if (itemPrice == 180) return "attack_energy_book";
+        }
+        else if (sceneName == "Door3")
+        {
+            if (itemPrice == 300) return "longer_dash";
+            if (itemPrice == 1) return "sword_talisman";
+            if (itemPrice == 180) return "faster_energy_regen";
+        }
+
+        return "default_text"; 
+    }*/
     public void OnPurchaseButtonClicked()
     {
 

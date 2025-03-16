@@ -7,20 +7,22 @@ public class PlayerOneWayPlatform : MonoBehaviour
 {
     private GameObject currentOneWayPlatform;
     [SerializeField] private CapsuleCollider2D playerCollider;
-    private FixedJoystick fixedJoystick;
+    PlayerMovement playerMovement;
+    private Joystick Joystick;
     public Button downButton;
 
     private void Start()
     {
-        fixedJoystick = GameObject.Find("FixedJoystick").GetComponent<FixedJoystick>();
-        downButton = GameObject.Find("DownButton").GetComponent<Button>();
+        playerMovement = GetComponentInParent<PlayerMovement>();
+        Joystick = playerMovement.fixedJoystick;
+        downButton = playerMovement.downB;
         downButton.onClick.AddListener(onDownButtonPressed);
     }
 
     private void Update()
     {
        
-            if (fixedJoystick != null && fixedJoystick.Vertical < -0.5f)
+            if (Joystick != null && Joystick.Vertical < -0.5f)
             {
                 onDownButtonPressed();
             }
