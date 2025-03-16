@@ -211,12 +211,12 @@ public class LocalizationManager : MonoBehaviour
 
             FULL_NAME_TEXT_FILE = FILENAME_PREFIX + LANGUAGE_CHOOSE.ToLower() + FILE_EXTENSION;
 
-            //#if UNITY_ANDROID
-            //           FULL_PATH_TEXT_FILE = Path.Combine(Application.persistentDataPath, FULL_NAME_TEXT_FILE);
-            //#else
-            //     FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
-            //#endif
-            FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
+            #if UNITY_ANDROID
+                       FULL_PATH_TEXT_FILE = Path.Combine(Application.persistentDataPath, FULL_NAME_TEXT_FILE);
+            #else
+                 FULL_PATH_TEXT_FILE = Path.Combine(Application.streamingAssetsPath, FULL_NAME_TEXT_FILE);
+            #endif
+           
             yield return StartCoroutine(LoadJsonLanguageData());
             isReady = true;
 

@@ -183,6 +183,47 @@
         {
             "key": "Boss5",
             "value": "The boss fight is not finished yet. It will be added in the next update. THANK YOU so much for playing!"
+        },
+        {
+            "key": "sword_tech_book",
+            "value": "A new sword technique book"
+        },
+        {
+            "key": "dash_cooldown",
+            "value": "You can use the dash ability more frequently"
+        },
+        {
+            "key": "attack_energy_book",
+            "value": "A book that increases attack energy capacity"
+        },
+        {
+            "key": "longer_dash",
+            "value": "You can dash farther"
+        },
+        {
+            "key": "sword_talisman",
+            "value": "A sword talisman that increases your damage"
+        },
+        {
+            "key": "energy_regen",
+            "value": "Your energy regenerates faster"
+        },
+        {
+            "key": "max_health",
+            "value": "An armor that increases max health by 20"
+        },
+        {
+            "key": "max_mana",
+            "value": "Increases max mana by 1"
+        },
+        {
+            "key": "ability_power",
+            "value": "A book that enhances your magic power"
+        },
+        {
+            "key": "default_text",
+            "value": "Unknown enhancement"
         }
+        
     ]
 }
