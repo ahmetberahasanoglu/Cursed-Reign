@@ -93,8 +93,16 @@ public class LocalizationManager : MonoBehaviour
         }
         else
         {
-            LoadFileContents();
+            StartCoroutine(WaitForFileAndLoad());
         }
+    }
+    private IEnumerator WaitForFileAndLoad()
+    {
+        while (!File.Exists(FULL_PATH_TEXT_FILE))
+        {
+            yield return null;
+        }
+        LoadFileContents();
     }
     private void GetURLFileText()
     {
@@ -128,7 +136,10 @@ public class LocalizationManager : MonoBehaviour
         Debug.Log("WE copy file on a string");
         File.WriteAllText(FULL_PATH_TEXT_FILE, LOADED_JSON_TEXT);
         Debug.Log("WE writting our file on streaming asset");
-        StartCoroutine(WaitCreationFile());
+        yield return StartCoroutine(WaitForFileAndLoad());
+        //yield return new WaitForSeconds(0.5f);
+       // LoadFileContents();//yeni
+       // StartCoroutine(WaitCreationFile());
 
     }
     private void LoadFileContents()
@@ -155,7 +166,7 @@ public class LocalizationManager : MonoBehaviour
         FileInfo myFile = new FileInfo(FULL_PATH_TEXT_FILE);
         float timeOut = 0.0f;
 
-        while (timeOut < 5.0f && !IsFileFinishCreate(myFile))
+        while (timeOut < 1.0f && !IsFileFinishCreate(myFile))
         {
             timeOut += Time.deltaTime;
             yield return null;

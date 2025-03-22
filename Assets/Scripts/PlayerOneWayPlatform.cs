@@ -9,7 +9,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
     [SerializeField] private CapsuleCollider2D playerCollider;
     PlayerMovement playerMovement;
     private Joystick Joystick;
-    public Button downButton;
+    private Button downButton;
 
     private void Start()
     {

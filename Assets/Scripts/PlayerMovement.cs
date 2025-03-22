@@ -209,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
         touchDirection = GetComponent<TouchDirection>();
         damageable = GetComponent<Damageable>();
         PlayerOneWayPlatform=GetComponent<PlayerOneWayPlatform>();
+        downB = GameObject.Find("DownButton").GetComponent<Button>();
         currentJumpCount = maxJumpCount;
         if (instance != null && instance != this)
         {
@@ -258,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
         leftM = GameObject.Find("LButton").GetComponent<Button>();
         rightM = GameObject.Find("RButton").GetComponent<Button>();
         dashB = GameObject.Find("dashButton").GetComponent<Button>();
-        downB = GameObject.Find("DownButton").GetComponent<Button>();
+       
        
             // warningText=GameObject.Find("WarningText").GetComponent<TextMeshProUGUI>();
             // panel = GameObject.Find("MovementPanel").GetComponent<GameObject>();
@@ -289,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
       AddEventTrigger(rightM, (data) => onRightButtonReleased(), EventTriggerType.PointerUp);
 
         fixedJoystick = GameObject.Find("FixedJoystick").GetComponent<FixedJoystick>();
-        useJoystick = false;
+        useJoystick = true;
         UpdateControlUI();
   
         
