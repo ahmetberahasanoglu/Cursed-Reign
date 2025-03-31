@@ -327,47 +327,7 @@ public class PlayerMovement : MonoBehaviour
         }
        
     }
-    public void onLeftButtonPressed()
-    {
-        if (!useJoystick)
-        {
-            moveInput = new Vector2(-1, 0);
-            IsMoving = true;
-        }
-        
-       // if (IsAlive)
-       // {
-           
-        //  }
-    }
-
-    public void onRightButtonPressed()
-    {
-        moveInput = new Vector2(1, 0);
-        if (!useJoystick)
-        {
-            IsMoving = true;
-         }
-        
-    }
-    public void onLeftButtonReleased()
-    {
-        if (!useJoystick)
-        {
-            moveInput = Vector2.zero;
-            IsMoving = false;
-        }
-      
-    }
-
-    public void onRightButtonReleased()
-    {
-        if (!useJoystick)
-        {
-            moveInput = Vector2.zero;
-            IsMoving = false;
-        }
-    }
+   
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -538,11 +498,62 @@ public class PlayerMovement : MonoBehaviour
 
        canDash = true; // Cooldown süresi doldu, dash tekrar kullanýlabilir
     }
+    private Vector2 _cachedMoveInput;
+    private bool _requestJump;
+    private bool _leftButtonPressed;
+    private bool _rightButtonPressed;
+
     private void Update()
     {
+        // Girdi toplama
+        if (useJoystick)
+        {
+            float deadZone = 0.1f;
+            float joystickInput = fixedJoystick.Horizontal;
+            _cachedMoveInput.x = Mathf.Abs(joystickInput) > deadZone ? joystickInput : 0f;
+        }
+        else
+        {
+            // Buton giriþlerini iþleme
+            _cachedMoveInput.x = (_rightButtonPressed ? 1 : 0) + (_leftButtonPressed ? -1 : 0);
+        }
+
+        // Yön deðiþtirme kontrolü
+        if (IsAlive && !isDashing)
+        {
+            if (_cachedMoveInput.x > 0.1f && transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector2(3, 3);
+                PlayDust();
+            }
+            else if (_cachedMoveInput.x < -0.1f && transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector2(-3, 3);
+                PlayDust();
+            }
+        }
+
+        // Zýplama girdisi
         if (isJumpButtonPressed)
         {
-            if ((touchDirection.IsGrounded || coyoteTimeCounter > 0f || currentJumpCount > 0) && CanMove)
+            _requestJump = true;
+            isJumpButtonPressed = false;
+        }
+
+        // Animator güncelleme
+        animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
+
+        // Ayak sesleri
+        HandleFootstepSound();
+    }
+
+    private void FixedUpdate()
+    {
+        if (isDashing) return;
+
+        if (_requestJump && CanMove)
+        {
+            if (touchDirection.IsGrounded || coyoteTimeCounter > 0f || currentJumpCount > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, Jump);
                 manager.PlaySFX(manager.pjump, 0.6f);
@@ -554,49 +565,160 @@ public class PlayerMovement : MonoBehaviour
                     currentJumpCount--;
                 }
             }
-            isJumpButtonPressed = false; // Zýplama iþlemi tamamlandýktan sonra flag'i sýfýrla
+            _requestJump = false;
         }
 
-        if (isDashing)
+        if (touchDirection.IsGrounded)
         {
-            return;
+            coyoteTimeCounter = coyoteTime;
+            IsJumping = false;
+            currentJumpCount = maxJumpCount;
         }
-        animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
-        if (IsAlive)
+        else
         {
-            if (moveInput.x > 0)
-            {
-                if (lastXDirection <= 0) // Yön deðiþtiriyorsa
-                {
-                    transform.localScale = new Vector2(3, 3);
-                    PlayDust();
-                }
-                lastXDirection = 1;
-            }
-            else if (moveInput.x < 0)
-            {
-                if (lastXDirection >= 0) // Yön deðiþtiriyorsa
-                {
-                    transform.localScale = new Vector2(-3, 3);
-                    PlayDust();
-                }
-                lastXDirection = -1;
-            }
-            HandleFootstepSound(); // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
-
-
+            coyoteTimeCounter -= Time.fixedDeltaTime;
         }
-       
+
+        if (hangTimeCounter > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.9f);
+            hangTimeCounter -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            hangTimeCounter = 0;
+        }
+
+        if (!damageable.IsHit && !DialogueManager.Instance.isDialogueActive)
+        {
+            IsMoving = Mathf.Abs(_cachedMoveInput.x) > 0.1f;
+            float targetSpeed = _cachedMoveInput.x * CurrentMoveSpeed;
+            rb.velocity = new Vector2(targetSpeed, rb.velocity.y);
+            CanMove = true;
+            canDash = !dashBar.IsCooldownActive();
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+            CanMove = false;
+            canDash = false;
+        }
+
+        if (platformTransform != null)
+        {
+            Vector2 platformVelocity = platformTransform.GetComponent<Rigidbody2D>().velocity;
+            rb.velocity += new Vector2(platformVelocity.x, 0);
+        }
+
+        if (rb.velocity.y < 0) // Falling
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (rb.velocity.y > 0) // Rising
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 0.5f - 1) * Time.fixedDeltaTime;
+        }
+
+        if (isAttacking)
+        {
+            attackTimer -= Time.fixedDeltaTime;
+            if (attackTimer <= 0f)
+            {
+                OnAttackAnimationFinished();
+            }
+        }
     }
+
+    // Buton fonksiyonlarýný güncelle
+    public void onLeftButtonPressed()
+    {
+        if (!useJoystick)
+        {
+            _leftButtonPressed = true;
+        }
+    }
+
+    public void onRightButtonPressed()
+    {
+        if (!useJoystick)
+        {
+            _rightButtonPressed = true;
+        }
+    }
+
+    public void onLeftButtonReleased()
+    {
+        if (!useJoystick)
+        {
+            _leftButtonPressed = false;
+        }
+    }
+
+    public void onRightButtonReleased()
+    {
+        if (!useJoystick)
+        {
+            _rightButtonPressed = false;
+        }
+    }
+
     private void MoveCharacter(Vector2 direction)
     {
-      
-        Vector3 movement = new Vector3(direction.x, 0, 0) * speed;  
 
-
-        rb.velocity = movement;
+       _cachedMoveInput=direction;
     }
+    /* private void Update()
+     {
+         if (isJumpButtonPressed)
+         {
+             if ((touchDirection.IsGrounded || coyoteTimeCounter > 0f || currentJumpCount > 0) && CanMove)
+             {
+                 rb.velocity = new Vector2(rb.velocity.x, Jump);
+                 manager.PlaySFX(manager.pjump, 0.6f);
+                 PlayDust();
+                 hangTimeCounter = hangTime;
 
+                 if (!touchDirection.IsGrounded)
+                 {
+                     currentJumpCount--;
+                 }
+             }
+             isJumpButtonPressed = false; // Zýplama iþlemi tamamlandýktan sonra flag'i sýfýrla
+         }
+
+         if (isDashing)
+         {
+             return;
+         }
+         animator.SetFloat(AnimStrings.yVelocity, rb.velocity.y);
+         if (IsAlive)
+         {
+             if (moveInput.x > 0)
+             {
+                 if (lastXDirection <= 0) // Yön deðiþtiriyorsa
+                 {
+                     transform.localScale = new Vector2(3, 3);
+                     PlayDust();
+                 }
+                 lastXDirection = 1;
+             }
+             else if (moveInput.x < 0)
+             {
+                 if (lastXDirection >= 0) // Yön deðiþtiriyorsa
+                 {
+                     transform.localScale = new Vector2(-3, 3);
+                     PlayDust();
+                 }
+                 lastXDirection = -1;
+             }
+             HandleFootstepSound(); // Yürüme sesi kontrolü FixedUpdate içinde yapýlacak
+
+
+         }
+
+     }*/
+
+    /*
     private void FixedUpdate()
     {
         /*if (fixedJoystick != null)
@@ -608,8 +730,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
             }
-        }
-        */
+        }//
+        
 
         if (isDashing)
         {
@@ -617,7 +739,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isAttacking) 
         {
-            attackTimer -= Time.deltaTime;
+            attackTimer -= Time.fixedDeltaTime;
             if (attackTimer <= 0f)
             {
                 OnAttackAnimationFinished(); // Saldýrý zamanlayýcý süresi doldu //CanMove = false;
@@ -701,7 +823,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-         }
+         }*/
     private void PlayDust()
     {
         if (!dust.isPlaying)
